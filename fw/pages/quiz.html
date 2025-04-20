@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste Test Trivia - World Flavors</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../images/logo.png" alt="World Flavors Logo">
+            </a>
+        </div>
+        <nav>
+            <div class="nav-links">
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Dishes</a>
+                    <div class="dropdown-content">
+                        <a href="dish-tale.html">Butter Chicken</a>
+                        <a href="tacodishtale.html">Tacos</a>
+                        <a href="pizzamargeritatale.html">Pizza Margherita</a>
+                        <a href="dishes/australian-pie.html">Australian Pie</a>
+                    </div>
+                </div>
+                <a href="trivia.html" class="nav-link">Taste Test Trivia</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Add a container for the confetti canvas -->
+    <div id="confetti-container"></div>
+
+    <main>
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h1 class="section-title">Cultural Food Quiz</h1>
+                <p>Test your knowledge about world cuisines!</p>
+            </div>
+            
+            <div class="quiz-stats">
+                <div class="timer-container">
+                    <div class="timer-circle"></div>
+                    <div class="timer-bar"></div>
+                    <div class="timer-number" id="timer-display">15</div>
+                </div>
+                <div class="score">Score: <span id="score">0</span></div>
+            </div>
+
+            <div class="question-container">
+                <p class="question-text" id="question"></p>
+                <div class="options-container" id="options">
+                    <!-- Options will be inserted here -->
+                </div>
+            </div>
+
+            <div class="quiz-controls">
+                <button class="quiz-btn" id="prev-btn">Previous</button>
+                <button class="quiz-btn" id="next-btn">Next</button>
+            </div>
+
+            <div class="result-container" id="result">
+                <h3 class="score-display">
+                    <span id="result-message"></span>
+                </h3>
+                <button class="quiz-btn" id="restart-btn">Try Again</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/help">Help</a>
+            <a href="map.html">Map</a>
+            <a href="/policy">Policy</a>
+            <a href="all-recipes.html">All Recipes</a>
+        </div>
+        <p class="contact-info">Contact us: asethi@gmail.com</p>
+        <p class="license-info">Visual elements and imagery are licensed through Adobe Stock</p>
+        <p class="copyright">© 2025 Aitareya Sethi . All rights reserved.</p>
+    </footer>
+
+   
+    <script src="../js/script.js"></script>
+</body>
+</html> 
