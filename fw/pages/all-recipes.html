@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Recipes - World Flavors</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../index.html"><img src="../images/logo.png" alt="World Flavors Logo"></a>
+        </div>
+        
+        <nav>
+            <div class="nav-links">
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Dishes</a>
+                    <div class="dropdown-content">
+                        <a href="dish-tale.html">Butter Chicken</a>
+                        <a href="tacodishtale.html">Tacos</a>
+                        <a href="pizzamargeritatale.html">Pizza Margherita</a>
+                        <a href="dishes/australian-pie.html">Australian Pie</a>
+                    </div>
+                </div>
+                <a href="trivia.html" class="nav-link">Taste Test Trivia</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="dishes-container animate-fade-in">
+            <h1 class="section-title">All Recipes</h1>
+            
+            <div class="recipes-grid">
+                <div class="recipe-card">
+                    <img src="../images/butterchicken.jpg" alt="Butter Chicken">
+                    <div class="recipe-info">
+                        <h3>Butter Chicken</h3>
+                        <p class="recipe-country">India</p>
+                        <p class="recipe-time">Prep: 30 min | Cook: 45 min</p>
+                        <a href="cook.html" class="cook-recipe-btn">Cook Recipe</a>
+                    </div>
+                </div>
+                
+                <div class="recipe-card">
+                    <img src="../images/tacos.jpg" alt="Street Tacos">
+                    <div class="recipe-info">
+                        <h3>Street Tacos</h3>
+                        <p class="recipe-country">Mexico</p>
+                        <p class="recipe-time">Prep: 15 min | Cook: 20 min</p>
+                        <a href="tacocook.html" class="cook-recipe-btn">Cook Recipe</a>
+                    </div>
+                </div>
+                
+                <div class="recipe-card">
+                    <img src="../images/pizza-margherita.jpg" alt="Pizza Margherita">
+                    <div class="recipe-info">
+                        <h3>Pizza Margherita</h3>
+                        <p class="recipe-country">Italy</p>
+                        <p class="recipe-time">Prep: 30 min | Cook: 15 min</p>
+                        <a href="pizzamargeritacook.html" class="cook-recipe-btn">Cook Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="map.html">Map</a>
+            <a href="all-recipes.html">All Recipes</a>
+        </div>
+        <p class="contact-info">Contact us: asethi@gmail.com</p>
+        <p class="license-info">Visual elements and imagery are licensed through Adobe Stock</p>
+        <p class="copyright">© 2025 Aitareya Sethi . All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuIcon.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.nav-links') && !event.target.closest('.mobile-menu-icon')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
