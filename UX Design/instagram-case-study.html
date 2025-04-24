@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram UX Research Case Study | Tanzil Garg</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to case study */
+        .case-study-header {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 60px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1920x1080') center/cover no-repeat;
+        }
+
+        .case-study-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--color-text-muted);
+        }
+
+        .case-study-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .meta-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-purple-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-content {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .case-study-section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .case-study-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-heading {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-purple-light);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .image-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .quote-block {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid var(--color-purple);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .quote-text {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .persona-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .persona-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .persona-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .persona-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .persona-title {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .persona-item h4 {
+            color: var(--color-purple-light);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .persona-item p {
+            color: var(--color-text-muted);
+        }
+
+        .solution-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: var(--backdrop-blur);
+            transition: var(--transition);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .solution-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(168, 85, 247, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-description {
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .next-prev-projects {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .prev-project, .next-project {
+            max-width: 45%;
+        }
+
+        .project-nav-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .project-nav-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-nav-title:hover {
+            color: var(--color-purple-light);
+        }
+
+        @media (max-width: 992px) {
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .persona-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-study-title {
+                font-size: 2.5rem;
+            }
+
+            .case-study-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .meta-item {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Tanzil.</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                        <li><a href="index.html#about" class="nav-link">About</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
+                </nav>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">Tanzil.</a>
+            <button class="menu-close" aria-label="Close menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <nav>
+            <ul class="mobile-nav-list">
+                <li><a href="index.html#projects" class="mobile-nav-link">Projects</a></li>
+                <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
+                <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-primary mobile-cta">Get in Touch</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Case Study Header -->
+        <section class="case-study-header">
+            <div class="container">
+                <div class="case-study-content">
+                    <h1 class="case-study-title">Understanding the Instagram User Experience</h1>
+                    <p class="case-study-subtitle">A comprehensive UX research study exploring user behaviors, pain points, and unmet needs</p>
+                    <div class="case-study-meta">
+                        <div class="meta-item">
+                            <h4 class="meta-title">My Role</h4>
+                            <p class="meta-content">Solo UX Researcher</p>
+                        </div>
+                        <div class="meta-item">
+                            <h4 class="meta-title">Duration</h4>
+                            <p class="meta-content">2.5 Weeks (April 2025)</p>
+                        </div>
+                        <div class="meta-item">
+                            <h4 class="meta-title">Platform</h4>
+                            <p class="meta-content">Instagram (Mobile and Web)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Overview -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Project Overview</h2>
+                <div class="two-column">
+                    <div>
+                        <p>Instagram is a widely-used social platform, yet many users experience a range of emotions during use, from entertainment to anxiety. This UX research project aimed to understand real-world user behaviors, pain points, and unmet needs to provide data-backed recommendations for improving the Instagram experience.</p>
+                        <p>The research focused particularly on Gen Z, daily users, and digital creators who form a significant portion of Instagram's user base and are most affected by the platform's design decisions.</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="Instagram /Features Hub.png" alt="Instagram Features Hub interface showing new features">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem & Goals -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Problem + Goals</h2>
+                <p>Despite its popularity, Instagram continues to cause emotional fatigue and confusion among its user base. Features such as the algorithm, account privacy settings, and business tools frequently emerge as confusing or misaligned with user expectations.</p>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Project Goals:</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>Explore user motivations and emotional responses to Instagram usage</li>
+                    <li>Identify pain points across features like Stories, Reels, Explore, and DMs</li>
+                    <li>Uncover unmet user needs to inform future design improvements</li>
+                </ul>
+
+                <div class="quote-block">
+                    <p class="quote-text">"Instagram is a platform that millions use daily, yet the emotional impact of its design choices remains understudied. This research aims to bridge that gap."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Plan -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Research Plan</h2>
+                <p>To gather insights, I launched a large-scale survey targeting active and occasional Instagram users across multiple age groups. The questions addressed usage habits, emotional responses, frustrations, and feature expectations.</p>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Methodologies</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>Screener Survey (n = 70+ responses)</li>
+                    <li>Thematic Analysis for open-ended responses</li>
+                    <li>Quantitative Data Analysis for usage patterns and ratings</li>
+                    <li>Persona Development based on key user types</li>
+                </ul>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Questions Asked</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>How often do you use Instagram?</li>
+                    <li>What features do you use most frequently?</li>
+                    <li>What parts of Instagram feel confusing or frustrating?</li>
+                    <li>How does Instagram make you feel after use?</li>
+                    <li>Have you ever taken a break from the platform? Why?</li>
+                    <li>What is one thing you wish Instagram would fix?</li>
+                    <li>What new feature would you add?</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Research Findings -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Quantitative & Qualitative Summary</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">70+</div>
+                        <div class="stat-label">Survey Responses</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">85%</div>
+                        <div class="stat-label">Use Instagram Multiple Times Daily</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4.2</div>
+                        <div class="stat-label">Average Ease of Use Rating (1-5)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Key User Personas Identified</div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem; margin-bottom: 1rem;">Key Findings</h3>
+                
+                <div class="two-column" style="margin-top: 2rem;">
+                    <div>
+                        <h4 style="color: var(--color-purple-light); margin-bottom: 1rem;">User Quotes</h4>
+                        <div class="quote-block">
+                            <p class="quote-text">"I feel drained after scrolling for too long."</p>
+                        </div>
+                        <div class="quote-block">
+                            <p class="quote-text">"Instagram hides posts; I want to refresh it manually."</p>
+                        </div>
+                        <div class="quote-block">
+                            <p class="quote-text">"I couldn't find a post I saw earlier—there should be a history."</p>
+                        </div>
+                        <div class="quote-block">
+                            <p class="quote-text">"I just want to post a reel from my private account, but it's confusing."</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-purple-light); margin-bottom: 1rem;">Pain Points</h4>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                            <li>Lack of clarity in account and privacy settings</li>
+                            <li>Over-personalized algorithm and irrelevant content</li>
+                            <li>Invasive ads based on external browsing</li>
+                            <li>Missing features like a content history tab</li>
+                            <li>Emotional pressure tied to posting, comparing, or managing appearance</li>
+                        </ul>
+
+                        <h4 style="color: var(--color-purple-light); margin-bottom: 1rem;">Emotional Themes</h4>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                            <li>Drained or anxious after extended use</li>
+                            <li>FOMO and performance pressure when not posting</li>
+                            <li>Reluctance to post due to fear of judgment</li>
+                            <li>Preference for passive browsing without interaction</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personas -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Personas + Empathy Map</h2>
+                
+                <div class="persona-card">
+                    <div class="persona-header">
+                        <div class="persona-avatar">👩</div>
+                        <div>
+                            <h3 class="persona-name">Gen Z Drained Scroller</h3>
+                            <p class="persona-title">Age: 18-24 | Heavy User</p>
+                        </div>
+                    </div>
+                    <div class="persona-grid">
+                        <div class="persona-item">
+                            <h4>Thinks</h4>
+                            <p>"Why is my feed full of the same ads?"</p>
+                            <p>"I should be doing something more productive."</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>Feels</h4>
+                            <p>Anxious, overstimulated, sometimes insecure</p>
+                            <p>Addicted but wants to reduce usage</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>Says</h4>
+                            <p>"I need a break, but I keep coming back."</p>
+                            <p>"I wish I could filter out certain content."</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>Does</h4>
+                            <p>Scrolls Reels at night, rarely posts, DMs close friends</p>
+                            <p>Checks Instagram first thing in the morning</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="persona-card">
+                    <div class="persona-header">
+                        <div class="persona-avatar">👨</div>
+                        <div>
+                            <h3 class="persona-name">Hustling Creator</h3>
+                            <p class="persona-title">Age: 25-34 | Content Creator</p>
+                        </div>
+                    </div>
+                    <div class="persona-grid">
+                        <div class="persona-item">
+                            <h4>Thinks</h4>
+                            <p>"Why are my posts not reaching people?"</p>
+                            <p>"I need better analytics to grow my audience."</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>Feels</h4>
+                            <p>Motivated but frustrated by platform limitations</p>
+                            <p>Pressured to keep up with algorithm changes</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>Says</h4>
+                            <p>"Instagram's tools don't help me grow enough."</p>
+                            <p>"I need more control over who sees my content."</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>Does</h4>
+                            <p>Posts Stories/Reels regularly, tracks insights manually</p>
+                            <p>Spends hours planning content and engagement</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="persona-card">
+                    <div class="persona-header">
+                        <div class="persona-avatar">👧</div>
+                        <div>
+                            <h3 class="persona-name">Under-18 Mindful Lurker</h3>
+                            <p class="persona-title">Age: 13-17 | Occasional User</p>
+                        </div>
+                    </div>
+                    <div class="persona-grid">
+                        <div class="persona-item">
+                            <h4>Thinks</h4>
+                            <p>"This is fun but it distracts me."</p>
+                            <p>"I don't want everyone to see what I'm doing."</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>Feels</h4>
+                            <p>Curious, but guilt from overuse</p>
+                            <p>Concerned about privacy and parental oversight</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>Says</h4>
+                            <p>"I took a break for my exams."</p>
+                            <p>"I prefer watching than posting."</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>Does</h4>
+                            <p>Uses Instagram mostly on weekends, avoids posting</p>
+                            <p>Follows friends and interests, rarely comments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights & Opportunities -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Insights & Opportunities</h2>
+                
+                <div class="two-column">
+                    <div>
+                        <p>Many users crave greater control over their content experience, particularly with the algorithm.</p>
+                        <p>Emotional well-being is a key factor in usage behavior—users seek more mindful tools.</p>
+                        <p>Younger users often want features that allow them to engage passively, without pressure to post or share publicly.</p>
+                        <p>Creators feel underserved by current promotion tools and tracking systems.</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="Instagram /Beginner Interface.png" alt="Simplified posting interface for beginners">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proposed Solutions -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Proposed Solutions</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        </div>
+                        <h3 class="solution-title">Rewatch History Feature</h3>
+                        <p class="solution-description">Enables users to revisit recently viewed Reels and Stories, addressing the frustration of losing content they enjoyed.</p>
+                        <div class="image-container">
+                            <img src="Instagram /Rewatch History.png" alt="Rewatch History Feature Interface">
+                        </div>
+                    </div>
+                    
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <h3 class="solution-title">Digital Wellbeing Mode</h3>
+                        <p class="solution-description">Includes reminders, usage stats, mood check-ins, and focused usage limits to help users maintain a healthier relationship with the platform.</p>
+                        <div class="image-container">
+                            <img src="Instagram /Digital Wellbeing Mode.png" alt="Digital Wellbeing Mode Interface">
+                        </div>
+                    </div>
+                    
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </div>
+                        <h3 class="solution-title">Custom Feed Filters</h3>
+                        <p class="solution-description">Let users create categories like "Chill," "Inspo," "Study Mode" for better feed organization and content control.</p>
+                        <div class="image-container">
+                            <img src="Instagram /Account Filter Activity.png" alt="Custom Feed Filters Interface">
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Reflection -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Reflection + Lessons Learned</h2>
+                
+                <p>This project showed the emotional complexity behind what appears to be routine app usage. While Instagram is heavily used, it doesn't always serve user well-being. I learned how to translate open-ended feedback into actionable insights, and how to identify overlooked feature opportunities.</p>
+                
+                <p>If continued, this project would benefit from one-on-one interviews and usability testing of proposed designs. The next steps would involve creating high-fidelity prototypes and conducting A/B testing to validate the solutions.</p>
+
+                <div class="quote-block" style="margin-top: 2rem;">
+                    <p class="quote-text">"The most valuable insight from this research was understanding that users don't just want new features—they want more control over their existing experience."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next/Prev Projects -->
+        <div class="container">
+            <div class="next-prev-projects">
+                <div class="prev-project">
+                    <span class="project-nav-label">Previous Project</span>
+                    <a href="#" class="project-nav-title">FinTech Mobile App Redesign</a>
+                </div>
+                <div class="next-project">
+                    <span class="project-nav-label">Next Project</span>
+                    <a href="#" class="project-nav-title">E-commerce User Experience Optimization</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Tanzil.</a>
+                    <p>Designing future-ready experiences</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> Tanzil. All rights reserved.</p>
+                <p>Designed and built with passion and precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
