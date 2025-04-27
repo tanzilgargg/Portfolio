@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("currentYear").textContent = new Date().getFullYear()
 
   // Typewriter effect
-  const typewriterText = "Hi, I'm Tanzil. I design future-ready experiences."
+  const typewriterText = "Hi, I'm Tanzil. I design future-ready experiences and games."
   const typewriterElement = document.getElementById("typewriter")
   let i = 0
   const typeSpeed = 100
@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
         span.textContent = "future-ready"
         typewriterElement.appendChild(span)
         i += "future-ready".length
-      } else if (i === typewriterText.indexOf("experiences.")) {
+      } else if (i === typewriterText.indexOf("experiences and games.")) {
         const span = document.createElement("span")
         span.style.color = "#ec4899"
-        span.textContent = "experiences."
+        span.textContent = "experiences and games."
         typewriterElement.appendChild(span)
-        i += "experiences.".length
+        i += "experiences and games.".length
       } else {
         typewriterElement.innerHTML += typewriterText.charAt(i)
         i++
