@@ -1,3 +1,91 @@
+/* Add these styles to your existing CSS file */
+
+/* Coming Soon Badge for Project Card */
+.coming-soon-badge {
+  position: absolute;
+  top: 12px;
+  right: -30px;
+  background: var(--gradient-primary);
+  color: white;
+  padding: 5px 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transform: rotate(45deg);
+  box-shadow: 0 4px 10px rgba(168, 85, 247, 0.3);
+  z-index: 1;
+}
+
+.project-card:hover .coming-soon-badge {
+  box-shadow: 0 6px 15px rgba(168, 85, 247, 0.5);
+}
+
+/* Coming Soon Page Styles */
+.coming-soon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  text-align: center;
+  padding: 2rem;
+}
+
+.coming-soon-title {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.coming-soon-text {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.coming-soon-date {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.coming-soon-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-glow);
+  border: 1px solid var(--color-border);
+}
+
+.back-button {
+  margin-top: 2rem;
+}
+
+.back-button svg {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+@media (max-width: 768px) {
+  .coming-soon-title {
+    font-size: 2rem;
+  }
+  
+  .coming-soon-date {
+    font-size: 1.25rem;
+  }
+}
+
+
 /* Base Styles */
 :root {
   --color-background: #000000;
