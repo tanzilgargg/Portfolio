@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Fractal Tree: A Visual Interaction Experiment | Tanzil Garg</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Case study specific styles */
+        .case-study-header {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 60px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7)), url('/placeholder.svg?height=1080&width=1920&query=neon fractal tree digital art with glowing blue and purple branches against dark background') center/cover no-repeat;
+        }
+
+        .case-study-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--color-text-muted);
+        }
+
+        .case-study-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .meta-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-purple-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-content {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .case-study-section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .case-study-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-heading {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-purple-light);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .image-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .quote-block {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid var(--color-purple);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .quote-text {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .persona-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .persona-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .persona-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .persona-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .persona-title {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .persona-item h4 {
+            color: var(--color-purple-light);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .persona-item p {
+            color: var(--color-text-muted);
+        }
+
+        .solution-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: var(--backdrop-blur);
+            transition: var(--transition);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .solution-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(168, 85, 247, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-description {
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .next-prev-projects {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .prev-project, .next-project {
+            max-width: 45%;
+        }
+
+        .project-nav-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .project-nav-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-nav-title:hover {
+            color: var(--color-purple-light);
+        }
+
+        .role-list {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-list li {
+            margin-bottom: 0.5rem;
+            color: var(--color-text-muted);
+        }
+
+        .process-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .process-flow::before {
+            content: "";
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            z-index: 0;
+        }
+
+        .process-step {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            min-width: 120px;
+            margin: 0 0.5rem 1rem;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .process-step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: 600;
+        }
+
+        .process-step-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .fractal-demo {
+            width: 100%;
+            height: 400px;
+            background: #000;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--color-border);
+            margin: 2rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fractal-demo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .fractal-demo::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+            pointer-events: none;
+        }
+
+        .research-method {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: var(--backdrop-blur);
+            transition: var(--transition);
+        }
+
+        .research-method:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .research-method h4 {
+            color: var(--color-purple-light);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .research-method h4 svg {
+            margin-right: 0.75rem;
+        }
+
+        .research-method p {
+            color: var(--color-text-muted);
+            margin-bottom: 0;
+        }
+
+        .emotion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .emotion-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: var(--backdrop-blur);
+            transition: var(--transition);
+        }
+
+        .emotion-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .emotion-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .emotion-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-purple-light);
+        }
+
+        .emotion-description {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        @media (max-width: 992px) {
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .persona-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-flow::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-study-title {
+                font-size: 2.5rem;
+            }
+
+            .case-study-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .meta-item {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Tanzil.</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                        <li><a href="index.html#about" class="nav-link">About</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
+                </nav>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">Tanzil.</a>
+            <button class="menu-close" aria-label="Close menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <nav>
+            <ul class="mobile-nav-list">
+                <li><a href="index.html#projects" class="mobile-nav-link">Projects</a></li>
+                <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
+                <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-primary mobile-cta">Get in Touch</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Case Study Header -->
+        <section class="case-study-header">
+            <div class="container">
+                <div class="case-study-content">
+                    <h1 class="case-study-title">Neon Fractal Tree: A Visual Interaction Experiment</h1>
+                    <p class="case-study-subtitle">Exploring emotional responses to minimalist visuals and recursive growth patterns without traditional UI elements</p>
+                    <div class="case-study-meta">
+                        <div class="meta-item">
+                            <h4 class="meta-title">My Role</h4>
+                            <p class="meta-content">Interaction Designer & Creative Technologist</p>
+                        </div>
+                        <div class="meta-item">
+                            <h4 class="meta-title">Duration</h4>
+                            <p class="meta-content">4 Weeks (Feb 2025)</p>
+                        </div>
+                        <div class="meta-item">
+                            <h4 class="meta-title">Project Type</h4>
+                            <p class="meta-content">Generative Art & UX Research</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Role & Duration -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">My Role & Duration</h2>
+                <div class="two-column">
+                    <div>
+                        <h3 style="margin-top: 0; margin-bottom: 1rem;">Role:</h3>
+                        <ul class="role-list">
+                            <li>Interaction Designer</li>
+                            <li>Creative Technologist</li>
+                            <li>UX Researcher</li>
+                            <li>Visual Systems Thinker</li>
+                        </ul>
+                        
+                        <h3 style="margin-bottom: 1rem;">Duration:</h3>
+                        <ul class="role-list">
+                            <li>4 weeks</li>
+                            <li>February 2025</li>
+                        </ul>
+                    </div>
+                    <div class="image-container">
+                        <img src="/placeholder.svg?height=400&width=600&query=neon fractal tree digital art with glowing branches against dark background" alt="Neon Fractal Tree Visualization">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Overview -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Project Overview</h2>
+                <p>The Neon Fractal Tree is a generative art project designed to explore how minimalist visuals and recursive growth patterns can emotionally impact viewers without text, UI, or sound. The project tests how users engage with fractal motion and color-driven feedback in an ambient, digital environment.</p>
+                
+                <div class="fractal-demo">
+                    <img src="/placeholder.svg?height=400&width=800&query=animated neon fractal tree with electric blue and magenta branches growing recursively" alt="Neon Fractal Tree Animation">
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">83%</div>
+                        <div class="stat-label">Described as "Calming"</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">67%</div>
+                        <div class="stat-label">Preferred Blue Palette</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2min</div>
+                        <div class="stat-label">Average Engagement Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">User Test Participants</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem + Goals -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Problem + Goals</h2>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Problem:</h3>
+                <p>Digital experiences often rely on explicit interaction (buttons, menus, feedback loops). But emotional or meditative responses are harder to achieve without direct guidance.</p>
+                
+                <div class="quote-block">
+                    <p class="quote-text">"How can we create digital experiences that evoke emotional responses without traditional interface elements?"</p>
+                </div>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Goals:</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>Create a screen-based experience that evokes emotional response without using traditional interface elements.</li>
+                    <li>Observe how viewers interpret, engage, or disconnect from purely visual, recursive interaction.</li>
+                    <li>Evaluate how fractal growth, color dynamics, and cursor movement influence perceived calmness, attention, or curiosity.</li>
+                </ul>
+                
+                <div class="image-container">
+                    <img src="/placeholder.svg?height=400&width=800&query=person interacting with digital art installation with glowing fractal patterns" alt="User Interacting with Fractal Visualization">
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Plan -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Research Plan</h2>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Methodologies</h3>
+                <div class="two-column" style="margin-bottom: 2rem;">
+                    <div>
+                        <div class="research-method">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                                </svg>
+                                Exploratory User Testing
+                            </h4>
+                            <p>6 participants, aged 18–30, observed while interacting with the fractal animation</p>
+                        </div>
+                        <div class="research-method">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                                </svg>
+                                Think-Aloud Protocol
+                            </h4>
+                            <p>Participants verbalized thoughts and feelings while watching the animation</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="research-method">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                                A/B Testing
+                            </h4>
+                            <p>Comparison of color schemes (neon magenta vs. electric blue) to assess emotional impact</p>
+                        </div>
+                        <div class="research-method">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                Behavioral Observation
+                            </h4>
+                            <p>Tracking hover/click behavior over a 2-minute interaction window</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Questions Asked</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>What words would you use to describe this experience?</li>
+                    <li>What did you expect to happen when the tree grew?</li>
+                    <li>Did the visuals feel calming, intense, or disorienting?</li>
+                    <li>Would you interact with this again? Why or why not?</li>
+                </ul>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Quantitative & Qualitative Summary</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                    <li>83% described the tree growth as "calming" or "mesmerizing"</li>
+                    <li>67% showed more interaction with the blue palette version</li>
+                    <li>4 of 6 participants hovered or clicked multiple times to "see what happens"</li>
+                    <li>Emotional terms collected: hypnotic, rebirth, peaceful, futuristic</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Findings -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Findings</h2>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">User Quotes</h3>
+                <div class="quote-block">
+                    <p class="quote-text">"It feels like the tree is alive — like breathing in and out."</p>
+                </div>
+                <div class="quote-block">
+                    <p class="quote-text">"I don't know what it's for, but I kept watching anyway."</p>
+                </div>
+                <div class="quote-block">
+                    <p class="quote-text">"This would make a great visualizer for meditation."</p>
+                </div>
+                
+                <div class="two-column" style="margin-top: 3rem;">
+                    <div>
+                        <h3 style="margin-top: 0; margin-bottom: 1rem;">Pain Points</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                            <li>Some users expected interaction feedback (click-to-grow, audio, etc.)</li>
+                            <li>A few expressed confusion about when the animation loops</li>
+                            <li>One user thought it was a loading screen at first glance</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="margin-top: 0; margin-bottom: 1rem;">Emotional Themes</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                            <li>Calmness, stillness, and curiosity</li>
+                            <li>Users framed the visual as organic, alive, or spiritual</li>
+                            <li>The neon palette prompted a sense of future-forward aesthetics</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="emotion-grid">
+                    <div class="emotion-card">
+                        <div class="emotion-icon">✨</div>
+                        <h4 class="emotion-title">Hypnotic</h4>
+                        <p class="emotion-description">Users reported feeling drawn into the recursive patterns</p>
+                    </div>
+                    <div class="emotion-card">
+                        <div class="emotion-icon">🌱</div>
+                        <h4 class="emotion-title">Rebirth</h4>
+                        <p class="emotion-description">Growth patterns evoked feelings of renewal and possibility</p>
+                    </div>
+                    <div class="emotion-card">
+                        <div class="emotion-icon">🧘</div>
+                        <h4 class="emotion-title">Peaceful</h4>
+                        <p class="emotion-description">Rhythmic animations created a sense of calm</p>
+                    </div>
+                    <div class="emotion-card">
+                        <div class="emotion-icon">🔮</div>
+                        <h4 class="emotion-title">Futuristic</h4>
+                        <p class="emotion-description">Neon aesthetics created a sense of technological wonder</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personas + Empathy Map -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Personas + Empathy Map</h2>
+                
+                <div class="persona-card">
+                    <div class="persona-header">
+                        <div class="persona-avatar">👁️</div>
+                        <div>
+                            <h3 class="persona-name">"The Visual Meditator"</h3>
+                            <p class="persona-title">Age: 20–35 | Digital Art Enthusiast</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Profile</h3>
+                    <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                        <li><strong>Values:</strong> Looking for peace, novelty, or mood elevation</li>
+                        <li><strong>Frustrations:</strong> Overly interactive or cluttered designs</li>
+                        <li><strong>Needs:</strong> Emotional calm without needing to "do" anything</li>
+                    </ul>
+                    
+                    <h3 style="margin-bottom: 1rem;">Empathy Map Highlights</h3>
+                    <div class="persona-grid">
+                        <div class="persona-item">
+                            <h4>Think & Feel</h4>
+                            <p>Looking for peace, novelty, or mood elevation</p>
+                            <p>Seeks digital experiences that feel organic</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>Hear</h4>
+                            <p>Digital art as a form of mindful escape</p>
+                            <p>Friends discussing digital wellness tools</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>See</h4>
+                            <p>Overstimulating content, constant notifications</p>
+                            <p>Too many options requiring active choices</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>Say & Do</h4>
+                            <p>Enjoys ambient media, lo-fi visuals, Spotify visualizers</p>
+                            <p>Uses digital tools to decompress</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>Pain</h4>
+                            <p>Overly interactive or cluttered designs</p>
+                            <p>Experiences that demand constant attention</p>
+                        </div>
+                        <div class="persona-item">
+                            <h4>Gain</h4>
+                            <p>Emotional calm without needing to "do" anything</p>
+                            <p>Visual experiences that surprise and delight</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights & Opportunities -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Insights & Opportunities</h2>
+                
+                <div class="two-column">
+                    <div>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                            <li>Visual feedback alone can sustain user attention for ~2 minutes</li>
+                            <li>Fractal growth mimics organic motion, triggering emotional resonance</li>
+                            <li>Color palette plays a huge role in perceived tone — cooler tones = more relaxing</li>
+                            <li>Potential use cases: digital art displays, mindfulness apps, idle background interactions</li>
+                        </ul>
+                        
+                        <h3 style="margin-bottom: 1rem;">Brief User Flow</h3>
+                        <p>User visits → Sees static tree seed → Tree grows recursively → Subtle cursor reaction → Color pulse with hover → Seamless loop</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="/placeholder.svg?height=400&width=600&query=digital art interface showing fractal tree growth stages with neon colors" alt="Fractal Tree Growth Stages">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proposed Solutions -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Proposed Solutions</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        </div>
+                        <h3 class="solution-title">Cursor Trail Effect</h3>
+                        <p class="solution-description">Added a gentle cursor trail effect to increase perceived interactivity without requiring explicit actions.</p>
+                        <div class="image-container">
+                            <img src="/placeholder.svg?height=300&width=400&query=cursor trail effect with neon particles following mouse movement" alt="Cursor Trail Effect">
+                        </div>
+                    </div>
+                    
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <h3 class="solution-title">Seamless Loop Timing</h3>
+                        <p class="solution-description">Reworked animation timing to fade seamlessly instead of hard resets, creating a more meditative experience.</p>
+                        <div class="image-container">
+                            <img src="/placeholder.svg?height=300&width=400&query=animation timeline showing seamless loop transition with fade effect" alt="Seamless Loop Timing">
+                        </div>
+                    </div>
+                    
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                        </div>
+                        <h3 class="solution-title">Color Palette Refinement</h3>
+                        <p class="solution-description">Reworked color schemes with reduced brightness for a softer experience based on user feedback.</p>
+                        <div class="image-container">
+                            <img src="/placeholder.svg?height=300&width=400&query=color palette comparison showing bright versus soft neon colors for digital art" alt="Color Palette Refinement">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflection + Lessons Learned -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Reflection + Lessons Learned</h2>
+                
+                <p>This project expanded my understanding of non-verbal UX — experiences that rely on emotion, rhythm, and visual intuition rather than text or interface logic. It reminded me that users bring their own interpretations, and even the simplest interaction (like watching a fractal tree grow) can carry deep meaning.</p>
+                
+                <div class="quote-block">
+                    <p class="quote-text">"The most valuable insight was discovering how much emotional connection can be created without traditional UI elements — sometimes less interaction creates more engagement."</p>
+                </div>
+                
+                <p>Moving forward, I'm interested in applying similar emotional UX principles to areas like meditation tech, ambient interfaces, and interactive digital art.</p>
+                
+                <div class="image-container">
+                    <img src="/placeholder.svg?height=400&width=800&query=person experiencing digital art installation with glowing fractal patterns in dark room" alt="User Experiencing Fractal Art Installation">
+                </div>
+            </div>
+        </section>
+
+        <!-- Next/Prev Projects -->
+        <div class="container">
+            <div class="next-prev-projects">
+                <div class="prev-project">
+                    <span class="project-nav-label">Previous Project</span>
+                    <a href="monofuesto-case-study.html" class="project-nav-title">MONOFUESTO Board Game</a>
+                </div>
+                <div class="next-project">
+                    <span class="project-nav-label">Next Project</span>
+                    <a href="instagram-case-study.html" class="project-nav-title">Instagram User Experience Research</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Tanzil.</a>
+                    <p>Designing future-ready experiences</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/tanzilgarg/" class="social-icon" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.instagram.com/tanzilgargg/" class="social-icon" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> Tanzil Garg. All rights reserved.</p>
+                <p>Designed and built with passion and precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
