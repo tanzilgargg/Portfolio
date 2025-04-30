@@ -8,51 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        .coming-soon-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 70vh;
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        .coming-soon-title {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, #3a7bd5, #00d2ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .coming-soon-text {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            line-height: 1.6;
-        }
-        
-        .coming-soon-date {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-        }
-        
-        .coming-soon-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .back-button {
-            margin-top: 2rem;
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -147,6 +102,37 @@
     <script>
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Add scrolled class to header on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menuClose = document.querySelector('.menu-close');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        if (menuToggle && menuClose && mobileMenu) {
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+            });
+            
+            menuClose.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.mobile-nav-link, .mobile-cta').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        }
     </script>
 </body>
 </html>
