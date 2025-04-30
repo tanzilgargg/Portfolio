@@ -3,346 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monofuesto Board Game UX Research Case Study | Tanzil Garg</title>
+    <title>MONOFUESTO Case Study | Tanzil Garg</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Case study specific styles */
-        .case-study-header {
-            min-height: 60vh;
+        .coming-soon-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding: 120px 0 60px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7)), url('MONOFUESTO/MONOFUESTO.png') center/cover no-repeat;
+            justify-content: center;
+            min-height: 70vh;
+            text-align: center;
+            padding: 2rem;
         }
-
-        .case-study-title {
+        
+        .coming-soon-title {
             font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .case-study-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--color-text-muted);
-        }
-
-        .case-study-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .meta-item {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .meta-title {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--color-purple-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .meta-content {
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .case-study-section {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .case-study-section:last-child {
-            border-bottom: none;
-        }
-
-        .section-heading {
-            font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--color-purple-light);
-        }
-
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .image-container {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            border: 1px solid var(--color-border);
-        }
-
-        .image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .quote-block {
-            background: rgba(168, 85, 247, 0.1);
-            border-left: 4px solid var(--color-purple);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-        }
-
-        .quote-text {
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .stat-card {
-            background: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            text-align: center;
-            backdrop-filter: var(--backdrop-blur);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: var(--gradient-text);
+            background: linear-gradient(90deg, #3a7bd5, #00d2ff);
             -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: transparent;
         }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
-        }
-
-        .persona-card {
-            background: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            backdrop-filter: var(--backdrop-blur);
-        }
-
-        .persona-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .persona-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-right: 1rem;
-        }
-
-        .persona-name {
-            font-size: 1.5rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .persona-title {
-            color: var(--color-text-muted);
-            font-size: 0.9rem;
-        }
-
-        .persona-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .persona-item h4 {
-            color: var(--color-purple-light);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .persona-item p {
-            color: var(--color-text-muted);
-        }
-
-        .solution-card {
-            background: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            backdrop-filter: var(--backdrop-blur);
-            transition: var(--transition);
-        }
-
-        .solution-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--color-purple);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .solution-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(168, 85, 247, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .solution-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .solution-description {
-            color: var(--color-text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .next-prev-projects {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--color-border);
-        }
-
-        .prev-project, .next-project {
-            max-width: 45%;
-        }
-
-        .project-nav-label {
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .project-nav-title {
+        
+        .coming-soon-text {
             font-size: 1.2rem;
-            font-weight: 500;
-            transition: var(--transition);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
         }
-
-        .project-nav-title:hover {
-            color: var(--color-purple-light);
-        }
-
-        .role-list {
-            list-style-type: disc;
-            margin-left: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .role-list li {
-            margin-bottom: 0.5rem;
-            color: var(--color-text-muted);
-        }
-
-        .process-flow {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin: 2rem 0;
-            position: relative;
-        }
-
-        .process-flow::before {
-            content: "";
-            position: absolute;
-            top: 25px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--gradient-primary);
-            z-index: 0;
-        }
-
-        .process-step {
-            background: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius);
-            padding: 1rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            flex: 1;
-            min-width: 120px;
-            margin: 0 0.5rem 1rem;
-            backdrop-filter: var(--backdrop-blur);
-        }
-
-        .process-step-number {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
+        
+        .coming-soon-date {
+            font-size: 1.5rem;
             font-weight: 600;
+            margin-bottom: 2rem;
         }
-
-        .process-step-title {
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
+        
+        .coming-soon-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-
-        @media (max-width: 992px) {
-            .two-column {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .persona-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .process-flow::before {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .case-study-title {
-                font-size: 2.5rem;
-            }
-
-            .case-study-meta {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .meta-item {
-                min-width: 100%;
-            }
+        
+        .back-button {
+            margin-top: 2rem;
         }
     </style>
 </head>
@@ -391,398 +99,20 @@
     </div>
 
     <main>
-        <!-- Case Study Header -->
-        <section class="case-study-header">
-            <div class="container">
-                <div class="case-study-content">
-                    <h1 class="case-study-title">Monofuesto: Board Game UX Research Case Study</h1>
-                    <p class="case-study-subtitle">A culturally immersive, festival-themed board game experience that bridges traditional gameplay with modern mechanics</p>
-                    <div class="case-study-meta">
-                        <div class="meta-item">
-                            <h4 class="meta-title">My Role</h4>
-                            <p class="meta-content">UX Researcher & Game Designer</p>
-                        </div>
-                        <div class="meta-item">
-                            <h4 class="meta-title">Duration</h4>
-                            <p class="meta-content">6 Months (Jan - Jun 2025)</p>
-                        </div>
-                        <div class="meta-item">
-                            <h4 class="meta-title">Project Type</h4>
-                            <p class="meta-content">Board Game Design & Research</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Role & Duration -->
-        <section class="case-study-section">
-            <div class="container">
-                <h2 class="section-heading">My Role & Duration</h2>
-                <div class="two-column">
-                    <div>
-                        <h3 style="margin-top: 0; margin-bottom: 1rem;">Role:</h3>
-                        <ul class="role-list">
-                            <li>UX Researcher</li>
-                            <li>Playtesting Coordinator</li>
-                            <li>Game Mechanic Consultant</li>
-                            <li>Rulebook Writer</li>
-                            <li>Game Designer</li>
-                        </ul>
-                        
-                        <h3 style="margin-bottom: 1rem;">Duration:</h3>
-                        <ul class="role-list">
-                            <li>6 months (from initial concept to final playtested version)</li>
-                            <li>January 2025 – June 2025</li>
-                        </ul>
-                    </div>
-                    <div class="image-container">
-                        <img src="/placeholder.svg?height=400&width=600&query=board game design process with colorful game pieces and prototype boards" alt="Monofuesto Board Game Design Process">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Project Overview -->
-        <section class="case-study-section">
-            <div class="container">
-                <h2 class="section-heading">Project Overview</h2>
-                <p>Monofuesto is a culturally immersive, festival-themed board game inspired by the structure of Monopoly but reimagined to engage modern players. The goal was to create a hybrid board game experience that respects traditional gaming principles while introducing culturally rich content and modern mechanics like electronic banking and a dynamic month-based spinner system.</p>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-number">85%</div>
-                        <div class="stat-label">Final Game Clarity Rating</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">90%</div>
-                        <div class="stat-label">Cultural Theme Enjoyment</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">70%</div>
-                        <div class="stat-label">Would Replay with New Players</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">2</div>
-                        <div class="stat-label">Game Sides (Traditional & Modern)</div>
-                    </div>
-                </div>
-                
-                <div class="process-flow">
-                    <div class="process-step">
-                        <div class="process-step-number">1</div>
-                        <div class="process-step-title">Concept</div>
-                    </div>
-                    <div class="process-step">
-                        <div class="process-step-number">2</div>
-                        <div class="process-step-title">Research</div>
-                    </div>
-                    <div class="process-step">
-                        <div class="process-step-number">3</div>
-                        <div class="process-step-title">Prototype</div>
-                    </div>
-                    <div class="process-step">
-                        <div class="process-step-number">4</div>
-                        <div class="process-step-title">Playtest</div>
-                    </div>
-                    <div class="process-step">
-                        <div class="process-step-number">5</div>
-                        <div class="process-step-title">Iterate</div>
-                    </div>
-                    <div class="process-step">
-                        <div class="process-step-number">6</div>
-                        <div class="process-step-title">Final Design</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Problem + Goals -->
-        <section class="case-study-section">
-            <div class="container">
-                <h2 class="section-heading">Problem + Goals</h2>
-                
-                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Problem:</h3>
-                <p>While traditional board games like Monopoly maintain strong nostalgic value, they often lack cultural representation, adaptability for younger audiences, and gameplay that integrates both traditional and contemporary experiences.</p>
-                
-                <div class="quote-block">
-                    <p class="quote-text">"Classic board games are beloved but often fail to represent diverse cultural experiences or adapt to modern gaming expectations."</p>
-                </div>
-                
-                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Goals:</h3>
-                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
-                    <li>Create an engaging, culturally rooted board game experience.</li>
-                    <li>Maintain the structured, rule-driven integrity of traditional board games.</li>
-                    <li>Introduce innovative mechanics like "game flipping" between Traditional and Modern sides without overwhelming players.</li>
-                    <li>Ensure clear rules, intuitive board actions, and high replay value.</li>
-                </ul>
-                
-                <div class="image-container">
-                    <img src="/placeholder.svg?height=400&width=600&query=board game with traditional and modern sides showing cultural festivals" alt="Monofuesto Board Game Concept">
-                </div>
-            </div>
-        </section>
-
-        <!-- Research Plan -->
-        <section class="case-study-section">
-            <div class="container">
-                <h2 class="section-heading">Research Plan</h2>
-                
-                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Methodologies</h3>
-                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
-                    <li>Competitor Analysis: Monopoly, Ticket to Ride, Festival of Colors, Unstable Unicorns.</li>
-                    <li>User Interviews: Semi-structured interviews with casual and avid board game players.</li>
-                    <li>Live Playtesting: Multiple rounds of observation sessions, both moderated and unmoderated.</li>
-                    <li>Surveys: Quantitative feedback from post-playtest forms.</li>
-                    <li>Heuristic Evaluation: Usability evaluation based on traditional UX heuristics.</li>
-                </ul>
-                
-                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Questions Asked</h3>
-                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
-                    <li>How easy was it to understand the game's rules and objectives?</li>
-                    <li>At what points did you feel confused during gameplay?</li>
-                    <li>How engaging was the cultural theme for you personally?</li>
-                    <li>What was your emotional experience flipping from the Traditional to the Modern side?</li>
-                    <li>Would you recommend this game to others? Why or why not?</li>
-                </ul>
-                
-                <div class="two-column">
-                    <div class="image-container">
-                        <img src="/placeholder.svg?height=400&width=600&query=people playtesting a board game with notes and feedback forms" alt="Monofuesto Playtesting Session">
-                    </div>
-                    <div>
-                        <h3 style="margin-top: 0; margin-bottom: 1rem;">Quantitative & Qualitative Summary</h3>
-                        <p><strong>Quantitative:</strong></p>
-                        <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem;">
-                            <li>85% rated final game clarity as "Excellent" (vs. 40% in early versions).</li>
-                            <li>90% of players enjoyed the cultural theme integration.</li>
-                            <li>70% said they would replay the game with new players.</li>
-                        </ul>
-                        
-                        <p><strong>Qualitative:</strong></p>
-                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
-                            <li>Strong emotional connection to festival representations.</li>
-                            <li>Confusion around specific board spaces ("Metro Hub," "Lost and Found") initially.</li>
-                            <li>Players loved the unpredictability introduced by the Month Spinner.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Findings -->
-        <section class="case-study-section">
-            <div class="container">
-                <h2 class="section-heading">Findings</h2>
-                
-                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">User Quotes</h3>
-                <div class="quote-block">
-                    <p class="quote-text">"The board feels so alive — it's like a celebration while playing."</p>
-                </div>
-                <div class="quote-block">
-                    <p class="quote-text">"I wasn't sure what to do when I landed on Metro Hub... the instructions weren't obvious."</p>
-                </div>
-                <div class="quote-block">
-                    <p class="quote-text">"Flipping the board midway made it feel like two games in one — that was super cool!"</p>
-                </div>
-                
-                <div class="two-column" style="margin-top: 3rem;">
-                    <div>
-                        <h3 style="margin-top: 0; margin-bottom: 1rem;">Pain Points</h3>
-                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
-                            <li>Lack of immediate clarity for some special board spaces.</li>
-                            <li>First-time players found flip timing slightly ambiguous.</li>
-                            <li>Some Masala Moment cards needed simpler language for easier in-game understanding.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 style="margin-top: 0; margin-bottom: 1rem;">Emotional Themes</h3>
-                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
-                            <li>Nostalgia for family board games mixed with excitement over cultural representation.</li>
-                            <li>Sense of adventure and unpredictability with month-based spinner.</li>
-                            <li>Joy derived from cultural storytelling through festivals.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="image-container" style="margin-top: 3rem;">
-                    <img src="/placeholder.svg?height=400&width=800&query=board game components showing festival cards, spinner, and game board with traditional and modern sides" alt="Monofuesto Game Components">
-                </div>
-            </div>
-        </section>
-
-        <!-- Personas + Empathy Map -->
-        <section class="case-study-section">
-            <div class="container">
-                <h2 class="section-heading">Personas + Empathy Map</h2>
-                
-                <div class="persona-card">
-                    <div class="persona-header">
-                        <div class="persona-avatar">👨‍👩‍👧</div>
-                        <div>
-                            <h3 class="persona-name">"The Casual Game Night Host"</h3>
-                            <p class="persona-title">Age: 18–30 | Social Gamer</p>
-                        </div>
-                    </div>
-                    
-                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Profile</h3>
-                    <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
-                        <li><strong>Values:</strong> Social connection, cultural exploration, light competition.</li>
-                        <li><strong>Frustrations:</strong> Long, complicated setup or confusing rules.</li>
-                        <li><strong>Needs:</strong> Easy-to-learn, replayable games with storytelling elements.</li>
-                    </ul>
-                    
-                    <h3 style="margin-bottom: 1rem;">Empathy Map Highlights</h3>
-                    <div class="persona-grid">
-                        <div class="persona-item">
-                            <h4>Think & Feel</h4>
-                            <p>Wants meaningful group experiences.</p>
-                            <p>Seeks games that create memories.</p>
-                        </div>
-                        <div class="persona-item">
-                            <h4>Hear</h4>
-                            <p>Friends suggesting new types of games.</p>
-                            <p>Complaints about overly complex rules.</p>
-                        </div>
-                        <div class="persona-item">
-                            <h4>See</h4>
-                            <p>Lots of modern games but few with cultural depth.</p>
-                            <p>Friends losing interest in games that take too long to learn.</p>
-                        </div>
-                        <div class="persona-item">
-                            <h4>Say & Do</h4>
-                            <p>Hosts casual gatherings, enjoys teaching new games.</p>
-                            <p>Seeks games that work for mixed groups.</p>
-                        </div>
-                        <div class="persona-item">
-                            <h4>Pain</h4>
-                            <p>Games that feel like a "chore" to explain.</p>
-                            <p>Experiences that don't engage all players equally.</p>
-                        </div>
-                        <div class="persona-item">
-                            <h4>Gain</h4>
-                            <p>Games that "click" easily and entertain a mixed-age crowd.</p>
-                            <p>Cultural learning through play.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Insights & Opportunities -->
-        <section class="case-study-section">
-            <div class="container">
-                <h2 class="section-heading">Insights & Opportunities</h2>
-                
-                <div class="two-column">
-                    <div>
-                        <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
-                            <li>Clearer onboarding is critical, especially around new board mechanics (e.g., Month Spinner outcomes, Metro Hub teleportation).</li>
-                            <li>Players valued the emotional storytelling behind each festival more than abstract gameplay mechanics.</li>
-                            <li>Hybrid board mechanics (flip from Traditional to Modern) created a strong novelty effect — future board designs should consider dynamic evolutions during play.</li>
-                        </ul>
-                        
-                        <h3 style="margin-bottom: 1rem;">User Flow</h3>
-                        <p>Start Game ➔ Spin Month ➔ Move ➔ Land on Space ➔ Draw Card/Perform Action ➔ Manage Money ➔ Flip Game Side ➔ End Game</p>
-                    </div>
-                    <div class="image-container">
-                        <img src="/placeholder.svg?height=400&width=600&query=board game user flow diagram showing game progression" alt="Monofuesto Game Flow">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Proposed Solutions -->
-        <section class="case-study-section">
-            <div class="container">
-                <h2 class="section-heading">Proposed Solutions</h2>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-                    <div class="solution-card">
-                        <div class="solution-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 1-4 4v14a3 3 0 0 1 3-3h6z"></path></svg>
-                        </div>
-                        <h3 class="solution-title">Professional Game Manual</h3>
-                        <p class="solution-description">Developed a comprehensive game manual inspired by Monopoly, ensuring clarity, brevity, and tradition.</p>
-                        <div class="image-container">
-                            <img src="/placeholder.svg?height=300&width=400&query=board game instruction manual with clear illustrations" alt="Professional Game Manual">
-                        </div>
-                    </div>
-                    
-                    <div class="solution-card">
-                        <div class="solution-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                        </div>
-                        <h3 class="solution-title">Mini Instruction Cards</h3>
-                        <p class="solution-description">Introduced quick reference cards for unique spaces like Metro Hub and Lost & Found to reduce confusion during gameplay.</p>
-                        <div class="image-container">
-                            <img src="/placeholder.svg?height=300&width=400&query=small instruction cards for board game special spaces" alt="Mini Instruction Cards">
-                        </div>
-                    </div>
-                    
-                    <div class="solution-card">
-                        <div class="solution-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-                        </div>
-                        <h3 class="solution-title">Spinner Quick Reference</h3>
-                        <p class="solution-description">Created a visual guide to reduce confusion during monthly spins and clarify outcomes for each month.</p>
-                        <div class="image-container">
-                            <img src="/placeholder.svg?height=300&width=400&query=board game spinner reference guide with monthly outcomes" alt="Spinner Quick Reference Guide">
-                        </div>
-                    </div>
-                </div>
-                
-                <h3 style="margin-bottom: 1rem;">Card Language Refinement</h3>
-                <div class="two-column">
-                    <div>
-                        <div class="quote-block">
-                            <p class="quote-text">BEFORE: "Proceed to acquire cultural tokens from the nearest festival celebration, contingent upon availability."</p>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="quote-block" style="border-left-color: var(--color-pink);">
-                            <p class="quote-text">AFTER: "Take 2 festival tokens from the nearest celebration space if available."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Reflection + Lessons Learned -->
-        <section class="case-study-section">
-            <div class="container">
-                <h2 class="section-heading">Reflection + Lessons Learned</h2>
-                
-                <p>This project solidified my understanding of how small UX adjustments — such as clearer microcopy or simplified player actions — can dramatically improve user satisfaction. It also reinforced the importance of respecting traditional structures while innovating thoughtfully to meet modern user expectations.</p>
-                
-                <div class="quote-block">
-                    <p class="quote-text">"Ultimately, Monofuesto became a bridge between traditional gaming nostalgia and fresh cultural storytelling — a project that reflects my passion for user-centered design grounded in respect for heritage."</p>
-                </div>
-                
-                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">If I were to repeat this process:</h3>
-                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
-                    <li>I would incorporate iterative testing earlier in the prototype phase.</li>
-                    <li>I would explore a companion digital app for banking and spinner tracking to further streamline the experience.</li>
-                </ul>
-                
-                <div class="image-container">
-                    <img src="/placeholder.svg?height=400&width=800&query=final board game prototype with players enjoying the game" alt="Final Monofuesto Game Prototype">
-                </div>
-            </div>
-        </section>
-
-        <!-- Next/Prev Projects -->
-        <div class="container">
-            <div class="next-prev-projects">
-                <div class="prev-project">
-                    <span class="project-nav-label">Previous Project</span>
-                    <a href="zara-case-study.html" class="project-nav-title">Zara User Experience Research</a>
-                </div>
-                <div class="next-project">
-                    <span class="project-nav-label">Next Project</span>
-                    <a href="instagram-case-study.html" class="project-nav-title">Instagram User Experience Research</a>
-                </div>
-            </div>
+        <div class="coming-soon-container">
+            <h1 class="coming-soon-title">MONOFUESTO Case Study</h1>
+            <img src="MONOFUESTO/MONOFUESTO.png" alt="MONOFUESTO Board Game" class="coming-soon-image">
+            <div class="coming-soon-date">Coming Soon - May 2024</div>
+            <p class="coming-soon-text">
+                I'm currently finalizing the details of this exciting board game project. The case study will showcase the complete UX research process, game design principles, and playtesting insights that went into creating MONOFUESTO.
+            </p>
+            <p class="coming-soon-text">
+                Check back soon to learn how we combined traditional and modern design elements to create an engaging festival-themed strategy board game experience.
+            </p>
+            <a href="index.html#projects" class="btn btn-outline back-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Back to Projects
+            </a>
         </div>
     </main>
 
@@ -802,7 +132,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                     </a>
                     <a href="https://www.instagram.com/tanzilgargg/" class="social-icon" aria-label="Instagram">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
                     </a>
                 </div>
             </div>
@@ -814,5 +144,9 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
