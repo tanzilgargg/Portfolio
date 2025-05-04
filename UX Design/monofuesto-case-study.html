@@ -8,6 +8,421 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* MONOFUESTO specific styles */
+        .coming-soon-container {
+            max-width: 1000px;
+            margin: 120px auto 80px;
+            padding: 0 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .coming-soon-title {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 107, 107, 0.2);
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+            }
+        }
+
+        .coming-soon-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+            border-radius: 2px;
+        }
+
+        .coming-soon-image-container {
+            position: relative;
+            margin: 3rem auto;
+            max-width: 800px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateX(5deg);
+            transition: all 0.5s ease;
+        }
+
+        .coming-soon-image-container:hover {
+            transform: perspective(1000px) rotateX(0deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .coming-soon-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.3) 0%, rgba(255, 230, 109, 0.3) 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .coming-soon-image-container:hover::before {
+            opacity: 1;
+        }
+
+        .coming-soon-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .coming-soon-image-container:hover .coming-soon-image {
+            transform: scale(1.05);
+        }
+
+        .coming-soon-date {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 230, 109, 0.1) 100%);
+            border: 2px solid rgba(255, 107, 107, 0.3);
+            color: #FF6B6B;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon-date::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 107, 107, 0.4);
+            border-radius: 50%;
+            animation: floatBubble 8s infinite linear;
+        }
+
+        .coming-soon-date::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 230, 109, 0.4);
+            border-radius: 50%;
+            animation: floatBubble 6s infinite linear reverse;
+        }
+
+        @keyframes floatBubble {
+            0% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(20px, 10px);
+            }
+            50% {
+                transform: translate(40px, 0);
+            }
+            75% {
+                transform: translate(20px, -10px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .coming-soon-text {
+            color: var(--color-text-muted);
+            max-width: 700px;
+            margin: 1.5rem auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .coming-soon-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            width: 220px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #FF6B6B;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+
+        .feature-description {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .countdown-container {
+            margin: 3rem auto;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            min-width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .countdown-value::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .next-prev-projects {
+            display: flex;
+            justify-content: space-between;
+            margin: 4rem 0 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .prev-project, .next-project {
+            max-width: 45%;
+        }
+
+        .project-nav-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-nav-title {
+            font-weight: 600;
+            color: var(--color-text);
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .prev-project .project-nav-title::before {
+            content: '←';
+            margin-right: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .next-project .project-nav-title::after {
+            content: '→';
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .prev-project .project-nav-title:hover::before {
+            transform: translateX(-5px);
+        }
+
+        .next-project .project-nav-title:hover::after {
+            transform: translateX(5px);
+        }
+
+        .project-nav-title:hover {
+            color: #FF6B6B;
+        }
+
+        .back-button {
+            margin: 3rem auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 230, 109, 0.1) 100%);
+            border-color: #FF6B6B;
+            color: #FF6B6B;
+            transform: translateY(-3px);
+        }
+
+        .back-button svg {
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover svg {
+            transform: translateX(-5px);
+        }
+
+        .newsletter-container {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.05) 0%, rgba(255, 230, 109, 0.05) 100%);
+            border: 1px solid rgba(255, 107, 107, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 4rem auto;
+            max-width: 600px;
+        }
+
+        .newsletter-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .newsletter-description {
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid var(--color-border);
+            border-radius: 50px;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .newsletter-button {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .coming-soon-title {
+                font-size: 2.5rem;
+            }
+
+            .coming-soon-features {
+                gap: 1rem;
+            }
+
+            .feature-card {
+                width: calc(50% - 1rem);
+            }
+
+            .countdown-container {
+                gap: 1rem;
+            }
+
+            .countdown-value {
+                font-size: 2rem;
+                min-width: 60px;
+                height: 60px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .feature-card {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -56,16 +471,73 @@
     <main>
         <div class="coming-soon-container">
             <h1 class="coming-soon-title">MONOFUESTO Case Study</h1>
-            <img src="MONOFUESTO/MONOFUESTO.png" alt="MONOFUESTO Board Game" class="coming-soon-image">
+            
+            <div class="coming-soon-image-container">
+                <img src="MONOFUESTO/MONOFUESTO.png" alt="MONOFUESTO Board Game" class="coming-soon-image">
+            </div>
+            
             <div class="coming-soon-date">Coming Soon - June 2025</div>
+            
             <p class="coming-soon-text">
                 I'm currently finalizing the details of this exciting board game project. The case study will showcase the complete UX research process, game design principles, and playtesting insights that went into creating MONOFUESTO.
             </p>
+            
             <p class="coming-soon-text">
                 Check back soon to learn how we combined traditional and modern design elements to create an engaging festival-themed strategy board game experience.
             </p>
+            
+            <div class="coming-soon-features">
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3 class="feature-title">Game UX Research</h3>
+                    <p class="feature-description">Discover our player-centered design approach</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">Visual Design</h3>
+                    <p class="feature-description">Festival-inspired aesthetics and components</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3 class="feature-title">Game Mechanics</h3>
+                    <p class="feature-description">Strategic depth with accessible rules</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧪</div>
+                    <h3 class="feature-title">Playtesting</h3>
+                    <p class="feature-description">Iterative design based on player feedback</p>
+                </div>
+            </div>
+            
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="countdown-days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="countdown-hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="countdown-minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="countdown-seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+            
+            <div class="newsletter-container">
+                <h3 class="newsletter-title">Get Notified When It's Ready</h3>
+                <p class="newsletter-description">Subscribe to receive an email when this case study is published.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-button">Notify Me</button>
+                </form>
+            </div>
+            
             <!-- Next/Prev Projects -->
-        <div class="container">
             <div class="next-prev-projects">
                 <div class="prev-project">
                     <span class="project-nav-label">Previous Project</span>
@@ -73,13 +545,11 @@
                 </div>
                 <div class="next-project">
                     <span class="project-nav-label">Next Project</span>
-                    <a href="neon-fractal-tree-case-study.html" class="project-nav-title">Neon Fractal Tree: A Visual Interaction Experiment</a>
+                    <a href="neon-fractal-tree-case-study.html" class="project-nav-title">Neon Fractal Tree</a>
                 </div>
             </div>
-        </div>
-    </main>
-
-            <a href="index.html#projects" class="btn btn-outline back-button">
+            
+            <a href="index.html#projects" class="back-button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                 Back to Projects
             </a>
@@ -146,6 +616,38 @@
                 link.addEventListener('click', function() {
                     mobileMenu.classList.remove('active');
                 });
+            });
+        }
+        
+        // Countdown timer
+        function updateCountdown() {
+            const releaseDate = new Date('June 1, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = releaseDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown-days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('countdown-hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('countdown-minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('countdown-seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Newsletter form submission (placeholder)
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                alert(`Thank you! We'll notify ${email} when the case study is published.`);
+                this.reset();
             });
         }
     </script>
