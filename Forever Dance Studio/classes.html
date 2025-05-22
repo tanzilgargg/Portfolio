@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes & Schedule - Forever Dance Fitness Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .classes-hero {
+            height: 50vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/classes-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .classes-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 50px 0 30px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background-color: var(--light-gray);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .class-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .class-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .class-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .class-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .class-card:hover .class-image img {
+            transform: scale(1.1);
+        }
+        
+        .class-level {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .beginner {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .intermediate {
+            background-color: #FF9800;
+            color: white;
+        }
+        
+        .advanced {
+            background-color: #F44336;
+            color: white;
+        }
+        
+        .class-info {
+            padding: 20px;
+        }
+        
+        .class-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .class-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .class-meta span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .class-meta i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+        
+        .class-description {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .class-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .book-btn {
+            padding: 8px 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .book-btn:hover {
+            background-color: #d62839;
+        }
+        
+        .favorite-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .favorite-btn:hover {
+            background-color: #FFD700;
+        }
+        
+        .favorite-btn i {
+            color: var(--black);
+        }
+        
+        .schedule-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .timetable {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .timetable-header {
+            display: grid;
+            grid-template-columns: 100px repeat(7, 1fr);
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .timetable-header div {
+            padding: 15px 10px;
+            font-weight: 600;
+        }
+        
+        .timetable-row {
+            display: grid;
+            grid-template-columns: 100px repeat(7, 1fr);
+            text-align: center;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .timetable-row:last-child {
+            border-bottom: none;
+        }
+        
+        .timetable-time {
+            background-color: var(--primary-color);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
+        
+        .timetable-cell {
+            padding: 15px 10px;
+            font-size: 0.9rem;
+            position: relative;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .class-item {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        
+        .zumba {
+            background-color: rgba(76, 175, 80, 0.2);
+        }
+        
+        .hiphop {
+            background-color: rgba(33, 150, 243, 0.2);
+        }
+        
+        .classical {
+            background-color: rgba(156, 39, 176, 0.2);
+        }
+        
+        .freestyle {
+            background-color: rgba(255, 152, 0, 0.2);
+        }
+        
+        .class-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .class-item h4 {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .class-item p {
+            font-size: 0.8rem;
+            margin: 0;
+        }
+        
+        @media (max-width: 992px) {
+            .timetable-header, .timetable-row {
+                grid-template-columns: 80px repeat(7, 1fr);
+            }
+            
+            .timetable-cell {
+                padding: 10px 5px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .timetable {
+                overflow-x: auto;
+            }
+            
+            .timetable-container {
+                width: 900px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Forever Dance</h1>
+                <p>Fitness Studio</p>
+            </div>
+            <nav>
+                <div class="hamburger">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="classes.html" class="active">Classes</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="classes-hero">
+        <div class="container">
+            <h1>Our Classes</h1>
+            <p>Discover the perfect dance style for you and check our weekly schedule</p>
+        </div>
+    </section>
+
+    <section class="classes-section">
+        <div class="container">
+            <h2 class="section-title">Dance Classes</h2>
+            
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">All Classes</button>
+                <button class="filter-btn" data-filter="zumba">Zumba</button>
+                <button class="filter-btn" data-filter="hiphop">Hip-Hop</button>
+                <button class="filter-btn" data-filter="classical">Classical Fusion</button>
+                <button class="filter-btn" data-filter="freestyle">Freestyle</button>
+                <button class="filter-btn" data-filter="beginner">Beginner</button>
+                <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+                <button class="filter-btn" data-filter="advanced">Advanced</button>
+            </div>
+            
+            <div class="classes-grid">
+                <div class="class-card" data-category="zumba" data-level="beginner" data-aos="fade-up">
+                    <div class="class-image">
+                        <img src="assets/zumba-class.jpg" alt="Zumba Fitness">
+                    </div>
+                    <span class="class-level beginner">Beginner</span>
+                    <div class="class-info">
+                        <h3>Zumba Fitness</h3>
+                        <div class="class-meta">
+                            <span><i class="fas fa-user"></i> Mayur Arora</span>
+                            <span><i class="fas fa-clock"></i> 60 min</span>
+                        </div>
+                        <p class="class-description">A high-energy Latin dance workout that combines all the rhythms in Zumba. Perfect for beginners looking for a fun way to get fit.</p>
+                        <div class="class-actions">
+                            <button class="book-btn">Book Class</button>
+                            <button class="favorite-btn" onclick="saveFavoriteClass('Zumba Fitness')"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-card" data-category="zumba" data-level="intermediate" data-aos="fade-up" data-aos-delay="100">
+                    <div class="class-image">
+                        <img src="assets/zumba-toning.jpg" alt="Zumba Toning">
+                    </div>
+                    <span class="class-level intermediate">Intermediate</span>
+                    <div class="class-info">
+                        <h3>Zumba Toning</h3>
+                        <div class="class-meta">
+                            <span><i class="fas fa-user"></i> Mayur Arora</span>
+                            <span><i class="fas fa-clock"></i> 60 min</span>
+                        </div>
+                        <p class="class-description">Perfect for those who want to party but put extra emphasis on toning and sculpting to define muscles. Uses Zumba Toning Sticks.</p>
+                        <div class="class-actions">
+                            <button class="book-btn">Book Class</button>
+                            <button class="favorite-btn" onclick="saveFavoriteClass('Zumba Toning')"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-card" data-category="hiphop" data-level="beginner" data-aos="fade-up" data-aos-delay="200">
+                    <div class="class-image">
+                        <img src="assets/hiphop-basics.jpg" alt="Hip-Hop Basics">
+                    </div>
+                    <span class="class-level beginner">Beginner</span>
+                    <div class="class-info">
+                        <h3>Hip-Hop Basics</h3>
+                        <div class="class-meta">
+                            <span><i class="fas fa-user"></i> Tarun Arora</span>
+                            <span><i class="fas fa-clock"></i> 75 min</span>
+                        </div>
+                        <p class="class-description">Learn the fundamentals of hip-hop dance including popping, locking, and breaking. No experience necessary.</p>
+                        <div class="class-actions">
+                            <button class="book-btn">Book Class</button>
+                            <button class="favorite-btn" onclick="saveFavoriteClass('Hip-Hop Basics')"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-card" data-category="hiphop" data-level="advanced" data-aos="fade-up" data-aos-delay="300">
+                    <div class="class-image">
+                        <img src="assets/urban-choreography.jpg" alt="Urban Choreography">
+                    </div>
+                    <span class="class-level advanced">Advanced</span>
+                    <div class="class-info">
+                        <h3>Urban Choreography</h3>
+                        <div class="class-meta">
+                            <span><i class="fas fa-user"></i> Tarun Arora</span>
+                            <span><i class="fas fa-clock"></i> 90 min</span>
+                        </div>
+                        <p class="class-description">Advanced hip-hop choreography class focusing on complex routines, musicality, and performance quality.</p>
+                        <div class="class-actions">
+                            <button class="book-btn">Book Class</button>
+                            <button class="favorite-btn" onclick="saveFavoriteClass('Urban Choreography')"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-card" data-category="classical" data-level="beginner" data-aos="fade-up">
+                    <div class="class-image">
+                        <img src="assets/classical-intro.jpg" alt="Classical Introduction">
+                    </div>
+                    <span class="class-level beginner">Beginner</span>
+                    <div class="class-info">
+                        <h3>Classical Introduction</h3>
+                        <div class="class-meta">
+                            <span><i class="fas fa-user"></i> Tarun Arora</span>
+                            <span><i class="fas fa-clock"></i> 60 min</span>
+                        </div>
+                        <p class="class-description">An introduction to Indian classical dance forms with a focus on basic postures, hand gestures, and expressions.</p>
+                        <div class="class-actions">
+                            <button class="book-btn">Book Class</button>
+                            <button class="favorite-btn" onclick="saveFavoriteClass('Classical Introduction')"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-card" data-category="classical" data-level="intermediate" data-aos="fade-up" data-aos-delay="100">
+                    <div class="class-image">
+                        <img src="assets/fusion-flow.jpg" alt="Fusion Flow">
+                    </div>
+                    <span class="class-level intermediate">Intermediate</span>
+                    <div class="class-info">
+                        <h3>Fusion Flow</h3>
+                        <div class="class-meta">
+                            <span><i class="fas fa-user"></i> Tarun Arora</span>
+                            <span><i class="fas fa-clock"></i> 75 min</span>
+                        </div>
+                        <p class="class-description">Blend classical Indian dance with contemporary movements for a unique fusion experience. Some dance experience recommended.</p>
+                        <div class="class-actions">
+                            <button class="book-btn">Book Class</button>
+                            <button class="favorite-btn" onclick="saveFavoriteClass('Fusion Flow')"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-card" data-category="freestyle" data-level="beginner" data-aos="fade-up" data-aos-delay="200">
+                    <div class="class-image">
+                        <img src="assets/freestyle-basics.jpg" alt="Freestyle Basics">
+                    </div>
+                    <span class="class-level beginner">Beginner</span>
+                    <div class="class-info">
+                        <h3>Freestyle Basics</h3>
+                        <div class="class-meta">
+                            <span><i class="fas fa-user"></i> Tarun Arora</span>
+                            <span><i class="fas fa-clock"></i> 60 min</span>
+                        </div>
+                        <p class="class-description">Learn to express yourself through movement with this introduction to freestyle dance. Focus on improvisation and finding your own style.</p>
+                        <div class="class-actions">
+                            <button class="book-btn">Book Class</button>
+                            <button class="favorite-btn" onclick="saveFavoriteClass('Freestyle Basics')"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-card" data-category="freestyle" data-level="advanced" data-aos="fade-up" data-aos-delay="300">
+                    <div class="class-image">
+                        <img src="assets/freestyle-advanced.jpg" alt="Freestyle Advanced">
+                    </div>
+                    <span class="class-level advanced">Advanced</span>
+                    <div class="class-info">
+                        <h3>Freestyle Advanced</h3>
+                        <div class="class-meta">
+                            <span><i class="fas fa-user"></i> Tarun Arora</span>
+                            <span><i class="fas fa-clock"></i> 90 min</span>
+                        </div>
+                        <p class="class-description">Advanced freestyle class focusing on developing your unique style, musicality, and performance skills. Prior dance experience required.</p>
+                        <div class="class-actions">
+                            <button class="book-btn">Book Class</button>
+                            <button class="favorite-btn" onclick="saveFavoriteClass('Freestyle Advanced')"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="schedule-section">
+        <div class="container">
+            <h2 class="section-title">Weekly Schedule</h2>
+            <div class="timetable">
+                <div class="timetable-container">
+                    <div class="timetable-header">
+                        <div>Time</div>
+                        <div>Monday</div>
+                        <div>Tuesday</div>
+                        <div>Wednesday</div>
+                        <div>Thursday</div>
+                        <div>Friday</div>
+                        <div>Saturday</div>
+                        <div>Sunday</div>
+                    </div>
+                    
+                    <div class="timetable-row">
+                        <div class="timetable-time">9:00 AM</div>
+                        <div class="timetable-cell">
+                            <div class="class-item zumba">
+                                <h4>Zumba Fitness</h4>
+                                <p>Mayur A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">-</div>
+                        <div class="timetable-cell">
+                            <div class="class-item classical">
+                                <h4>Classical Intro</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">-</div>
+                        <div class="timetable-cell">
+                            <div class="class-item zumba">
+                                <h4>Zumba Fitness</h4>
+                                <p>Mayur A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item freestyle">
+                                <h4>Freestyle Basics</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">-</div>
+                    </div>
+                    
+                    <div class="timetable-row">
+                        <div class="timetable-time">11:00 AM</div>
+                        <div class="timetable-cell">-</div>
+                        <div class="timetable-cell">
+                            <div class="class-item hiphop">
+                                <h4>Hip-Hop Basics</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">-</div>
+                        <div class="timetable-cell">
+                            <div class="class-item freestyle">
+                                <h4>Freestyle Basics</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">-</div>
+                        <div class="timetable-cell">
+                            <div class="class-item classical">
+                                <h4>Fusion Flow</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item zumba">
+                                <h4>Zumba Toning</h4>
+                                <p>Mayur A.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timetable-row">
+                        <div class="timetable-time">4:00 PM</div>
+                        <div class="timetable-cell">
+                            <div class="class-item classical">
+                                <h4>Classical Intro</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item zumba">
+                                <h4>Zumba Toning</h4>
+                                <p>Mayur A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item hiphop">
+                                <h4>Hip-Hop Basics</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item classical">
+                                <h4>Fusion Flow</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item freestyle">
+                                <h4>Freestyle Basics</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">-</div>
+                        <div class="timetable-cell">-</div>
+                    </div>
+                    
+                    <div class="timetable-row">
+                        <div class="timetable-time">6:00 PM</div>
+                        <div class="timetable-cell">
+                            <div class="class-item hiphop">
+                                <h4>Urban Choreography</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item freestyle">
+                                <h4>Freestyle Advanced</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item zumba">
+                                <h4>Zumba Fitness</h4>
+                                <p>Mayur A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item hiphop">
+                                <h4>Urban Choreography</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item classical">
+                                <h4>Fusion Flow</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item freestyle">
+                                <h4>Freestyle Advanced</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">-</div>
+                    </div>
+                    
+                    <div class="timetable-row">
+                        <div class="timetable-time">8:00 PM</div>
+                        <div class="timetable-cell">
+                            <div class="class-item zumba">
+                                <h4>Zumba Fitness</h4>
+                                <p>Mayur A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item classical">
+                                <h4>Classical Intro</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item freestyle">
+                                <h4>Freestyle Advanced</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item zumba">
+                                <h4>Zumba Toning</h4>
+                                <p>Mayur A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">
+                            <div class="class-item hiphop">
+                                <h4>Hip-Hop Basics</h4>
+                                <p>Tarun A.</p>
+                            </div>
+                        </div>
+                        <div class="timetable-cell">-</div>
+                        <div class="timetable-cell">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="floating-cta">
+        <a href="https://wa.me/919729602605" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="pricing.html" class="join-btn">Join Now</a>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Forever Dance</h2>
+                    <p>Fitness Studio</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="classes.html">Classes</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Shahabad Markanda, Haryana</p>
+                    <p><i class="fas fa-phone"></i> +91 9729602605</p>
+                    <p><i class="fas fa-envelope"></i> info@foreverdance.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Forever Dance Fitness Studio. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Class Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const classCards = document.querySelectorAll('.class-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Get filter value
+                const filterValue = btn.getAttribute('data-filter');
+                
+                // Filter classes
+                classCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                    } else if (card.getAttribute('data-category') === filterValue || card.getAttribute('data-level') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Book Class Alert
+        const bookBtns = document.querySelectorAll('.book-btn');
+        
+        bookBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const className = btn.closest('.class-info').querySelector('h3').textContent;
+                alert(`You've booked a spot in ${className}! Check your email for confirmation.`);
+            });
+        });
+    </script>
+</body>
+</html>
