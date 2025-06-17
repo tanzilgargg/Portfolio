@@ -1,0 +1,2320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markandeshwar Foods - Pure Traditional Dairy Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Modern Fresh Color Palette */
+            --primary-color: #1e5f74; /* Deep teal blue */
+            --secondary-color: #fbb040; /* Warm golden yellow */
+            --accent-color: #133b5c; /* Dark navy blue */
+            --cream-light: #fef9f0; /* Light cream */
+            --cream-medium: #f8f1e0; /* Medium cream */
+            --text-dark: #2d3748; /* Dark slate for text */
+            --text-medium: #4a5568; /* Medium slate for secondary text */
+            --text-light: #718096; /* Light slate for tertiary text */
+            --bg-light: #ffffff;
+            --bg-dark: #1a202c;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 25px rgba(0,0,0,0.05);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --text-dark: #f7fafc;
+            --text-medium: #e2e8f0;
+            --text-light: #cbd5e0;
+            --bg-light: #1a202c;
+            --bg-dark: #2d3748;
+            --card-bg: #2d3748;
+            --cream-light: #2d3748;
+            --cream-medium: #1a202c;
+            --shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            transition: var(--transition);
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(30, 95, 116, 0.2);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .theme-toggle, .lang-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover, .lang-toggle:hover {
+            color: var(--secondary-color);
+            background-color: rgba(251, 176, 64, 0.1);
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 0.7rem 2.5rem 0.7rem 1.2rem;
+            border: 2px solid rgba(30, 95, 116, 0.2);
+            border-radius: 30px;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+            width: 200px;
+            font-size: 0.9rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            width: 250px;
+            box-shadow: 0 0 0 4px rgba(30, 95, 116, 0.1);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 80vh; /* Adjust as needed */
+            background: url('banner-2.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            border-bottom-left-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
+            margin-top: 70px; /* Adjust based on header height */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/images/logo.png') center/contain no-repeat;
+            opacity: 0.05;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.4); /* Slightly darker overlay for text readability */
+            border-radius: var(--border-radius);
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: var(--cream-light); /* Lighter color for contrast */
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--cream-medium); /* Lighter color for contrast */
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--secondary-color);
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(251, 176, 64, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(251, 176, 64, 0.5);
+            background: #ffc266;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 5%;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 3.5rem;
+            color: var(--primary-color);
+            position: relative;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--cream-light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--secondary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .about-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary-color), #133b5c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: white;
+            font-size: 2.2rem;
+            box-shadow: 0 10px 20px rgba(30, 95, 116, 0.2);
+        }
+
+        .about-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .about-card p {
+            color: var(--text-medium);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Infrastructure Section */
+        .infrastructure-section {
+            background: var(--bg-light);
+        }
+
+        .infrastructure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .infrastructure-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .infrastructure-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .infrastructure-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .infrastructure-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .infrastructure-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--secondary-color);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.8rem;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 20px rgba(251, 176, 64, 0.2);
+            transform: rotate(-5deg);
+        }
+
+        .infrastructure-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .infrastructure-card p {
+            color: var(--text-medium);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Market Section */
+        .market-section {
+            background: linear-gradient(135deg, var(--cream-light), #ffffff);
+        }
+
+        .market-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 95, 116, 0.05), rgba(251, 176, 64, 0.05));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.8rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+
+        .stat-card p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        .market-locations {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .market-locations h3 {
+            color: var(--primary-color);
+            margin-bottom: 2.5rem;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .location-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .location-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(30, 95, 116, 0.2);
+        }
+
+        .location-tag:hover {
+            background: var(--secondary-color);
+            color: var(--text-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(251, 176, 64, 0.3);
+        }
+
+        /* Product Carousel */
+        .products-section {
+            background: var(--bg-light);
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            padding: 20px 0;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card {
+            min-width: 320px;
+            margin: 0 15px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            border: none;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            transition: var(--transition);
+            padding: 1.5rem;
+            background: linear-gradient(45deg, var(--cream-light), #ffffff);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.8rem;
+            position: relative;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .product-description {
+            color: var(--text-medium);
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-nav:hover {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 8px 20px rgba(30, 95, 116, 0.3);
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+        /* Brand Badge */
+        .brand-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--secondary-color);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(251, 176, 64, 0.3);
+            z-index: 2;
+        }
+
+        /* Quality Indicators */
+        .quality-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            margin: 0.25rem 0.25rem 0.25rem 0;
+            font-weight: 500;
+        }
+
+        /* Process Timeline */
+        .process-section {
+            background: linear-gradient(135deg, var(--cream-light), #ffffff);
+            position: relative;
+        }
+
+        .timeline {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 4rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            width: 45%;
+            position: relative;
+            border: none;
+            transition: var(--transition);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -30px;
+            border-left-color: var(--card-bg);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -30px;
+            border-right-color: var(--card-bg);
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            z-index: 2;
+            border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-content p {
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--bg-light);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: none;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.8rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            padding: 0 1.8rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            color: var(--text-medium);
+        }
+
+        .faq-answer.active {
+            padding: 0 1.8rem 1.8rem;
+            max-height: 300px;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            background: linear-gradient(135deg, var(--primary-color), #133b5c);
+            color: white;
+        }
+
+        .testimonials-section .section-title {
+            color: white;
+        }
+
+        .testimonials-section .section-title::after {
+            background: var(--secondary-color);
+        }
+
+        .testimonials-carousel {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            display: none;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .testimonial-card.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .testimonial-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: white;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--secondary-color);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.5;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 2.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        /* Newsletter Popup */
+        .newsletter-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .newsletter-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .newsletter-content {
+            background: var(--card-bg);
+            padding: 3.5rem;
+            border-radius: var(--border-radius);
+            max-width: 550px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .newsletter-popup.show .newsletter-content {
+            transform: scale(1);
+        }
+
+        .newsletter-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-light);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .newsletter-close:hover {
+            background: rgba(0,0,0,0.05);
+            color: var(--primary-color);
+        }
+
+        .newsletter-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .newsletter-content p {
+            color: var(--text-medium);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(30, 95, 116, 0.2);
+            border-radius: 50px;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(30, 95, 116, 0.1);
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+        }
+
+        .call-btn {
+            background: var(--primary-color);
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Sticky Cart Bar */
+        .sticky-cart {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            padding: 1.2rem 5%;
+            box-shadow: 0 -5px 25px rgba(0,0,0,0.1);
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            z-index: 999;
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .sticky-cart.show {
+            transform: translateY(0);
+        }
+
+        .cart-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cart-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .cart-image {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+            border: 2px solid var(--cream-light);
+        }
+
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            top: 100px;
+            right: 2rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform: translateX(400px);
+            transition: transform 0.4s ease;
+            z-index: 10001;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.error {
+            background: #e53e3e;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), #133b5c);
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+
+        .footer-section i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .timeline::before {
+                left: 40px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 90px);
+                margin-left: 90px !important;
+            }
+
+            .timeline-content::before {
+                left: -30px !important;
+                border-right-color: var(--card-bg) !important;
+                border-left-color: transparent !important;
+            }
+
+            .timeline-icon {
+                left: 40px;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--card-bg);
+                flex-direction: column;
+                padding: 1.5rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .floating-buttons {
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .cart-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .about-grid, .infrastructure-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 140px 5% 100px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 70px 5%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .testimonial-card {
+                padding: 2rem;
+            }
+            
+            .testimonial-text {
+                font-size: 1.1rem;
+            }
+            
+            .newsletter-content {
+                padding: 2.5rem;
+            }
+        }
+
+        /* Search Results */
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            max-height: 350px;
+            overflow-y: auto;
+            z-index: 1001;
+            display: none;
+            border: none;
+        }
+
+        .search-results.show {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 1.2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-result-item:hover {
+            background: rgba(30, 95, 116, 0.05);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Lazy Loading */
+        .lazy-image {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .lazy-image.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <img src="logo.png" alt="Markandeshwar Foods Logo">
+                <span class="logo-text">Markandeshwar Foods</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" data-en="Home" data-hi="होम">Home</a></li>
+                <li><a href="#about" data-en="About" data-hi="हमारे बारे में">About</a></li>
+                <li><a href="#products" data-en="Products" data-hi="उत्पाद">Products</a></li>
+                <li><a href="#process" data-en="Our Process" data-hi="हमारी प्रक्रिया">Our Process</a></li>
+                <li><a href="#contact" data-en="Contact" data-hi="संपर्क">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search products..." id="searchInput">
+                    <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <button class="lang-toggle" id="langToggle">हिं</button>
+                <button class="mobile-menu" id="mobileMenu"><i class="fas fa-bars"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 data-en="The beginning of a pure life..." data-hi="शुद्ध जीवन की शुरुआत...">The beginning of a pure life...</h1>
+            <div class="cta-buttons">
+                <a href="#products" class="btn btn-primary" data-en="Explore Products" data-hi="उत्पाद देखें">Explore Products</a>
+                <a href="#contact" class="btn btn-secondary" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in" data-en="About MFAPL" data-hi="MFAPL के बारे में">About MFAPL</h2>
+            
+            <div class="about-grid fade-in">
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 data-en="Our Vision" data-hi="हमारा दृष्टिकोण">Our Vision</h3>
+                    <p data-en="As vision, determination and expertise came together MFAPL was born. Driven by the passion of providing quality dairy products, MFAPL collects large quantities of fresh milk from farmers directly spread over northern states, using hygienic methods. We have consistently redefined our frontiers to evolve into one of the leading manufacturers, exporters and importers of dairy products in India." data-hi="जब दृष्टिकोण, दृढ़ संकल्प और विशेषज्ञता एक साथ आईं तो MFAPL का जन्म हुआ। गुणवत्तापूर्ण डेयरी उत्पाद प्रदान करने के जुनून से प्रेरित, MFAPL उत्तरी राज्यों में फैले किसानों से सीधे बड़ी मात्रा में ताजा दूध एकत्र करता है।">As vision, determination and expertise came together MFAPL was born. Driven by the passion of providing quality dairy products, MFAPL collects large quantities of fresh milk from farmers directly spread over northern states, using hygienic methods. We have consistently redefined our frontiers to evolve into one of the leading manufacturers, exporters and importers of dairy products in India.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 data-en="Our Mission" data-hi="हमारा मिशन">Our Mission</h3>
+                    <p data-en="To emerge as a strong global player in international trade capitalizing on our potential of providing quality products and achieving customer satisfaction. To be a single window company from enquiry to supply setting uncompromising standards in quality delivery schedule and speed." data-hi="गुणवत्तापूर्ण उत्पाद प्रदान करने और ग्राहक संतुष्टि प्राप्त करने की हमारी क्षमता का लाभ उठाते हुए अंतर्राष्ट्रीय व्यापार में एक मजबूत वैश्विक खिलाड़ी के रूप में उभरना।">To emerge as a strong global player in international trade capitalizing on our potential of providing quality products and achieving customer satisfaction. To be a single window company from enquiry to supply setting uncompromising standards in quality delivery schedule and speed.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 data-en="Global Reach" data-hi="वैश्विक पहुंच">Global Reach</h3>
+                    <p data-en="In synergy with expanding global markets MFAPL has already taken rapid strides, with MURLI, MADHUSAGAR, LORD KRISHNA & GOODDAY brands dairy products reaching and serving the Indian/global markets with excellence." data-hi="विस्तृत होते वैश्विक बाजारों के साथ तालमेल में MFAPL ने तेजी से प्रगति की है, MURLI, MADHUSAGAR, LORD KRISHNA और GOODDAY ब्रांड्स के डेयरी उत्पाद भारतीय/वैश्विक बाजारों तक पहुंच रहे हैं।">In synergy with expanding global markets MFAPL has already taken rapid strides, with MURLI, MADHUSAGAR, LORD KRISHNA & GOODDAY brands dairy products reaching and serving the Indian/global markets with excellence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infrastructure Section -->
+    <section class="infrastructure-section">
+        <div class="container">
+            <h2 class="section-title fade-in" data-en="Global Technology For Global Needs" data-hi="वैश्विक आवश्यकताओं के लिए वैश्विक तकनीक">Global Technology For Global Needs</h2>
+            
+            <div class="infrastructure-grid fade-in">
+                <div class="infrastructure-card">
+                    <div class="infrastructure-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 data-en="Strategic Locations" data-hi="रणनीतिक स्थान">Strategic Locations</h3>
+                    <p data-en="Our office is strategically located only 30 kms from international airport New Delhi. MFAPL plant is located in holy land of LORD KRISHNA at KURUKSHETRA, 166 KMs from New Delhi on national highway, with additional plants in Malekotla (Punjab) and Palwal (Haryana)." data-hi="हमारा कार्यालय नई दिल्ली के अंतर्राष्ट्रीय हवाई अड्डे से केवल 30 किमी दूर रणनीतिक रूप से स्थित है। MFAPL का प्लांट भगवान कृष्ण की पवित्र भूमि कुरुक्षेत्र में स्थित है।">Our office is strategically located only 30 kms from international airport New Delhi. MFAPL plant is located in holy land of LORD KRISHNA at KURUKSHETRA, 166 KMs from New Delhi on national highway, with additional plants in Malekotla (Punjab) and Palwal (Haryana).</p>
+                </div>
+                
+                <div class="infrastructure-card">
+                    <div class="infrastructure-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3 data-en="Modern Facilities" data-hi="आधुनिक सुविधाएं">Modern Facilities</h3>
+                    <p data-en="The plant is equipped with most modern processing facilities with state-of-art laboratories to test genetic material and manufacturing process in hygienic conditions ensuring total quality management. Our plant is certified by ISI standard grade." data-hi="प्लांट अत्याधुनिक प्रसंस्करण सुविधाओं से सुसज्जित है जिसमें आनुवंशिक सामग्री का परीक्षण करने के लिए अत्याधुनिक प्रयोगशालाएं हैं।">The plant is equipped with most modern processing facilities with state-of-art laboratories to test genetic material and manufacturing process in hygienic conditions ensuring total quality management. Our plant is certified by ISI standard grade.</p>
+                </div>
+                
+                <div class="infrastructure-card">
+                    <div class="infrastructure-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 data-en="Rich Milk Belt" data-hi="समृद्ध दूध पट्टी">Rich Milk Belt</h3>
+                    <p data-en="Being located in the richest milk belt of India, our location ensures availability of quality milk in abundance directly from farmers spread over northern states using hygienic collection methods." data-hi="भारत की सबसे समृद्ध दूध पट्टी में स्थित होने के कारण, हमारा स्थान स्वच्छ संग्रह विधियों का उपयोग करके उत्तरी राज्यों में फैले किसानों से सीधे प्रचुर मात्रा में गुणवत्तापूर्ण दूध की उपलब्धता सुनिश्चित करता है।">Being located in the richest milk belt of India, our location ensures availability of quality milk in abundance directly from farmers spread over northern states using hygienic collection methods.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Presence Section -->
+    <section class="market-section">
+        <div class="container">
+            <h2 class="section-title fade-in" data-en="Customer Driven Growth" data-hi="ग्राहक संचालित विकास">Customer Driven Growth</h2>
+            
+            <div class="market-stats fade-in">
+                <div class="stat-card">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label" data-en="Sales Offices" data-hi="बिक्री कार्यालय">Sales Offices</div>
+                    <p data-en="Major locations across India" data-hi="भारत भर में प्रमुख स्थान">Major locations across India</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">670</div>
+                    <div class="stat-label" data-en="Distributors" data-hi="वितरक">Distributors</div>
+                    <p data-en="Nationwide distribution network" data-hi="राष्ट्रव्यापी वितरण नेटवर्क">Nationwide distribution network</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">1,00,000+</div>
+                    <div class="stat-label" data-en="Retailers" data-hi="खुदरा विक्रेता">Retailers</div>
+                    <p data-en="Extensive retail presence" data-hi="व्यापक खुदरा उपस्थिति">Extensive retail presence</p>
+                </div>
+            </div>
+            
+            <div class="market-locations fade-in">
+                <h3 data-en="Our Presence" data-hi="हमारी उपस्थिति">Our Presence</h3>
+                <div class="location-tags">
+                    <span class="location-tag">Delhi</span>
+                    <span class="location-tag">Kolkata</span>
+                    <span class="location-tag">Chandigarh</span>
+                    <span class="location-tag">Himachal Pradesh</span>
+                    <span class="location-tag">Uttarakhand</span>
+                    <span class="location-tag">Uttar Pradesh</span>
+                    <span class="location-tag">Mumbai</span>
+                    <span class="location-tag">Indore</span>
+                    <span class="location-tag">North East</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Carousel -->
+    <section class="products-section" id="products">
+        <h2 class="section-title fade-in" data-en="Our Premium Products" data-hi="हमारे प्रीमियम उत्पाद">Our Premium Products</h2>
+        <div class="carousel-container fade-in">
+            <div class="carousel" id="productCarousel">
+                <div class="product-card">
+                    <div class="brand-badge">Premium Quality</div>
+                    <img src="mannuban ghee.png" alt="Mannuban Desi Ghee" class="product-image lazy-image">
+                    <div class="product-info">
+                        <h3 class="product-title" data-en="Mannuban Desi Ghee" data-hi="मन्नुबन देसी घी">Mannuban Desi Ghee</h3>
+                        <p class="product-description" data-en="Delicious natural flavour made from fresh milk using traditional methods" data-hi="पारंपरिक तरीकों से ताजे दूध से बना स्वादिष्ट प्राकृतिक स्वाद">Delicious natural flavour made from fresh milk using traditional methods</p>
+                        <div class="quality-badge">AGMARK</div>
+                        <div class="quality-badge">Granular</div>
+                        <div class="product-price">₹850/kg</div>
+                        <button class="btn btn-primary add-to-cart" data-product="Mannuban Desi Ghee" data-price="850">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="brand-badge">Natural Pure</div>
+                    <img src="naturalcowghee.png" alt="Natural Cow Ghee" class="product-image lazy-image">
+                    <div class="product-info">
+                        <h3 class="product-title" data-en="Natural Cow Ghee" data-hi="नेचुरल काउ घी">Natural Cow Ghee</h3>
+                        <p class="product-description" data-en="Pure cow ghee made with traditional churning methods for authentic taste" data-hi="प्रामाणिक स्वाद के लिए पारंपरिक मंथन विधि से बना शुद्ध गाय का घी">Pure cow ghee made with traditional churning methods for authentic taste</p>
+                        <div class="quality-badge">100% Pure</div>
+                        <div class="quality-badge">Traditional</div>
+                        <div class="product-price">₹920/kg</div>
+                        <button class="btn btn-primary add-to-cart" data-product="Natural Cow Ghee" data-price="920">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="brand-badge">AGMARK Certified</div>
+                    <img src="murli ghee.png" alt="Murli Desi Ghee" class="product-image lazy-image">
+                    <div class="product-info">
+                        <h3 class="product-title" data-en="Murli Desi Ghee" data-hi="मुरली देसी घी">Murli Desi Ghee</h3>
+                        <p class="product-description" data-en="AGMARK granular desi ghee - A dream of healthy family with pure ingredients" data-hi="AGMARK ग्रेन्युलर देसी घी - शुद्ध सामग्री के साथ स्वस्थ परिवार का सपना">AGMARK granular desi ghee - A dream of healthy family with pure ingredients</p>
+                        <div class="quality-badge">AGMARK</div>
+                        <div class="quality-badge">Healthy Family</div>
+                        <div class="product-price">₹880/kg</div>
+                        <button class="btn btn-primary add-to-cart" data-product="Murli Desi Ghee" data-price="880">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="brand-badge">Premium Quality</div>
+                    <img src="madhusagar ghee.png" alt="Madhusagar Desi Ghee" class="product-image lazy-image">
+                    <div class="product-info">
+                        <h3 class="product-title" data-en="Madhusagar Desi Ghee" data-hi="मधुसागर देसी घी">Madhusagar Desi Ghee</h3>
+                        <p class="product-description" data-en="AGMARK granular desi ghee with delicious natural flavour made from fresh milk" data-hi="ताजे दूध से बने स्वादिष्ट प्राकृतिक स्वाद के साथ AGMARK ग्रेन्युलर देसी घी">AGMARK granular desi ghee with delicious natural flavour made from fresh milk</p>
+                        <div class="quality-badge">AGMARK</div>
+                        <div class="quality-badge">Fresh Milk</div>
+                        <div class="product-price">₹900/kg</div>
+                        <button class="btn btn-primary add-to-cart" data-product="Madhusagar Desi Ghee" data-price="900">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="brand-badge">Premium Grade</div>
+                    <img src="goodday milk powder.png" alt="Goodday Milk Powder" class="product-image lazy-image">
+                    <div class="product-info">
+                        <h3 class="product-title" data-en="Goodday Milk Powder" data-hi="गुडडे मिल्क पाउडर">Goodday Milk Powder</h3>
+                        <p class="product-description" data-en="Premium spray dried powder - Untouched by hands with 20 years of service" data-hi="प्रीमियम स्प्रे ड्राइड पाउडर - 20 साल की सेवा के साथ हाथों से अछूता">Premium spray dried powder - Untouched by hands with 20 years of service</p>
+                        <div class="quality-badge">20 Years</div>
+                        <div class="quality-badge">Untouched</div>
+                        <div class="product-price">₹450/kg</div>
+                        <button class="btn btn-primary add-to-cart" data-product="Goodday Milk Powder" data-price="450">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="brand-badge">Standard Grade</div>
+                    <img src="mahadev milk powder.png" alt="Mahadev Milk Powder" class="product-image lazy-image">
+                    <div class="product-info">
+                        <h3 class="product-title" data-en="Mahadev Milk Powder" data-hi="महादेव मिल्क पाउडर">Mahadev Milk Powder</h3>
+                        <p class="product-description" data-en="Premium spray dried skimmed milk powder - Specially for Khoya & Chhenna" data-hi="प्रीमियम स्प्रे ड्राइड स्किम्ड मिल्क पाउडर - विशेष रूप से खोया और छेना के लिए">Premium spray dried skimmed milk powder - Specially for Khoya & Chhenna</p>
+                        <div class="quality-badge">Skimmed</div>
+                        <div class="quality-badge">For Sweets</div>
+                        <div class="product-price">₹420/kg</div>
+                        <button class="btn btn-primary add-to-cart" data-product="Mahadev Milk Powder" data-price="420">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="brand-badge">Standard Grade</div>
+                    <img src="lordkrishna milk powder.png" alt="Lord Krishna Milk Powder" class="product-image lazy-image">
+                    <div class="product-info">
+                        <h3 class="product-title" data-en="Lord Krishna Milk Powder" data-hi="लॉर्ड कृष्णा मिल्क पाउडर">Lord Krishna Milk Powder</h3>
+                        <p class="product-description" data-en="Skimmed milk powder spray dried - Specially for Khoya & Chhenna making" data-hi="स्किम्ड मिल्क पाउडर स्प्रे ड्राइड - विशेष रूप से खोया और छेना बनाने के लिए">Skimmed milk powder spray dried - Specially for Khoya & Chhenna making</p>
+                        <div class="quality-badge">Standard Grade</div>
+                        <div class="quality-badge">Traditional Use</div>
+                        <div class="product-price">₹400/kg</div>
+                        <button class="btn btn-primary add-to-cart" data-product="Lord Krishna Milk Powder" data-price="400">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-nav carousel-prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-nav carousel-next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="process-section" id="process">
+        <h2 class="section-title fade-in" data-en="Our Traditional Process" data-hi="हमारी पारंपरिक प्रक्रिया">Our Traditional Process</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fas fa-cow"></i></div>
+                <div class="timeline-content">
+                    <h3 data-en="Pure Milk Sourcing" data-hi="शुद्ध दूध की सोर्सिंग">Pure Milk Sourcing</h3>
+                    <p data-en="We source the finest quality fresh milk from healthy cows maintained in hygienic conditions by trusted local farmers." data-hi="हम विश्वसनीय स्थानीय किसानों द्वारा स्वच्छ परिस्थितियों में पाले गए स्वस्थ गायों से बेहतरीन गुणवत्ता का ताजा दूध प्राप्त करते हैं।">We source the finest quality fresh milk from healthy cows maintained in hygienic conditions by trusted local farmers.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                <div class="timeline-content">
+                    <h3 data-en="Traditional Churning" data-hi="पारंपरिक मंथन">Traditional Churning</h3>
+                    <p data-en="Using time-tested traditional churning methods passed down through generations to preserve authentic taste and nutritional value." data-hi="प्रामाणिक स्वाद और पोषण मूल्य को संरक्षित करने के लिए पीढ़ियों से चली आ रही समय-परीक्षित पारंपरिक मंथन विधियों का उपयोग।">Using time-tested traditional churning methods passed down through generations to preserve authentic taste and nutritional value.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="timeline-content">
+                    <h3 data-en="AGMARK Quality Control" data-hi="AGMARK गुणवत्ता नियंत्रण">AGMARK Quality Control</h3>
+                    <p data-en="Rigorous AGMARK certified quality checks at every stage to ensure the highest standards of purity, taste and nutritional value." data-hi="शुद्धता, स्वाद और पोषण मूल्य के उच्चतम मानकों को सुनिश्चित करने के लिए हर चरण में कठोर AGMARK प्रमाणित गुणवत्ता जांच।">Rigorous AGMARK certified quality checks at every stage to ensure the highest standards of purity, taste and nutritional value.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fas fa-shipping-fast"></i></div>
+                <div class="timeline-content">
+                    <h3 data-en="Hygienic Packaging & Delivery" data-hi="स्वच्छ पैकेजिंग और डिलीवरी">Hygienic Packaging & Delivery</h3>
+                    <p data-en="Carefully packaged in hygienic conditions and delivered fresh to maintain the quality, purity and nutritional value of our products." data-hi="हमारे उत्पादों की गुणवत्ता, शुद्धता और पोषण मूल्य बनाए रखने के लिए स्वच्छ परिस्थितियों में सावधानीपूर्वक पैक किया गया और ताजा डिलीवर किया गया।">Carefully packaged in hygienic conditions and delivered fresh to maintain the quality, purity and nutritional value of our products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <h2 class="section-title fade-in" data-en="Frequently Asked Questions" data-hi="अक्सर पूछे जाने वाले प्रश्न">Frequently Asked Questions</h2>
+        <div class="faq-container fade-in">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span data-en="Are your products AGMARK certified?" data-hi="क्या आपके उत्पाद AGMARK प्रमाणित हैं?">Are your products AGMARK certified?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <p data-en="Yes, our ghee products are AGMARK certified ensuring the highest quality standards and purity as per government regulations." data-hi="हां, हमारे घी उत्पाद AGMARK प्रमाणित हैं जो सरकारी नियमों के अनुसार उच्चतम गुणवत्ता मानकों और शुद्धता को सुनिश्चित करते हैं।">Yes, our ghee products are AGMARK certified ensuring the highest quality standards and purity as per government regulations.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span data-en="What makes your ghee different from others?" data-hi="आपका घी दूसरों से कैसे अलग है?">What makes your ghee different from others?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <p data-en="Our ghee is made using traditional churning methods from pure cow milk, ensuring authentic taste and maximum nutritional benefits without any artificial additives." data-hi="हमारा घी शुद्ध गाय के दूध से पारंपरिक मंथन विधि का उपयोग करके बनाया जाता है, जो बिना किसी कृत्रिम योजक के प्रामाणिक स्वाद और अधिकतम पोषण लाभ सुनिश्चित करता है।">Our ghee is made using traditional churning methods from pure cow milk, ensuring authentic taste and maximum nutritional benefits without any artificial additives.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span data-en="Do you offer bulk orders for businesses?" data-hi="क्या आप व्यवसायों के लिए बल्क ऑर्डर की सुविधा देते हैं?">Do you offer bulk orders for businesses?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <p data-en="Yes, we provide bulk orders for restaurants, sweet shops, and other businesses. Contact us for special pricing and delivery arrangements." data-hi="हां, हम रेस्तरां, मिठाई की दुकानों और अन्य व्यवसायों के लिए बल्क ऑर्डर प्रदान करते हैं। विशेष मूल्य निर्धारण और डिलीवरी व्यवस्था के लिए हमसे संपर्क करें।">Yes, we provide bulk orders for restaurants, sweet shops, and other businesses. Contact us for special pricing and delivery arrangements.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span data-en="What is the shelf life of your products?" data-hi="आपके उत्पादों की शेल्फ लाइफ क्या है?">What is the shelf life of your products?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <p data-en="Our ghee has a shelf life of 12 months when stored in cool, dry conditions. Milk powder has a shelf life of 6 months from the date of manufacture." data-hi="ठंडी, सूखी परिस्थितियों में संग्रहीत होने पर हमारे घी की शेल्फ लाइफ 12 महीने है। मिल्क पाउडर की शेल्फ लाइफ निर्माण की तारीख से 6 महीने है।">Our ghee has a shelf life of 12 months when stored in cool, dry conditions. Milk powder has a shelf life of 6 months from the date of manufacture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section" id="testimonials">
+        <h2 class="section-title fade-in" data-en="What Our Customers Say" data-hi="हमारे ग्राहक क्या कहते हैं">What Our Customers Say</h2>
+        <div class="testimonials-carousel fade-in">
+            <div class="testimonial-card active">
+                <p class="testimonial-text" data-en="The Mannuban ghee quality is exceptional! It tastes exactly like my grandmother used to make. The aroma and purity are unmatched." data-hi="मन्नुबन घी की गुणवत्ता असाधारण है! इसका स्वाद बिल्कुल वैसा ही है जैसा मेरी दादी बनाती थीं। सुगंध और शुद्धता बेजोड़ है।">The Mannuban ghee quality is exceptional! It tastes exactly like my grandmother used to make. The aroma and purity are unmatched.</p>
+                <div class="testimonial-author">- Priya Sharma, Delhi</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text" data-en="I've been using Markandeshwar Foods products for my sweet shop for 3 years. The consistency and quality are perfect for making traditional sweets." data-hi="मैं अपनी मिठाई की दुकान के लिए 3 साल से मार्कंडेश्वर फूड्स के उत्पादों का उपयोग कर रहा हूं। पारंपरिक मिठाइयां बनाने के लिए स्थिरता और गुणवत्ता बिल्कुल सही है।">I've been using Markandeshwar Foods products for my sweet shop for 3 years. The consistency and quality are perfect for making traditional sweets.</p>
+                <div class="testimonial-author">- Rajesh Kumar, Mumbai</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text" data-en="The milk powder quality is excellent for making khoya and paneer. AGMARK certification gives me confidence in the purity." data-hi="खोया और पनीर बनाने के लिए मिल्क पाउडर की गुणवत्ता उत्कृष्ट है। AGMARK प्रमाणन मुझे शुद्धता में विश्वास दिलाता है।">The milk powder quality is excellent for making khoya and paneer. AGMARK certification gives me confidence in the purity.</p>
+                <div class="testimonial-author">- Meera Patel, Ahmedabad</div>
+            </div>
+        </div>
+        <div class="testimonial-dots">
+            <span class="dot active" onclick="currentTestimonial(1)"></span>
+            <span class="dot" onclick="currentTestimonial(2)"></span>
+            <span class="dot" onclick="currentTestimonial(3)"></span>
+        </div>
+    </section>
+
+    <!-- Newsletter Popup -->
+    <div class="newsletter-popup" id="newsletterPopup">
+        <div class="newsletter-content">
+            <button class="newsletter-close" id="newsletterClose">&times;</button>
+            <h3 data-en="Stay Updated with Markandeshwar Foods!" data-hi="मार्कंडेश्वर फूड्स के साथ अपडेट रहें!">Stay Updated with Markandeshwar Foods!</h3>
+            <p data-en="Subscribe to our newsletter for exclusive offers, new product launches, and traditional recipes." data-hi="विशेष ऑफर, नए उत्पाद लॉन्च और पारंपरिक व्यंजनों के लिए हमारे न्यूज़लेटर की सदस्यता लें।">Subscribe to our newsletter for exclusive offers, new product launches, and traditional recipes.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                <button type="submit" class="btn btn-primary" data-en="Subscribe" data-hi="सदस्यता लें">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/919876543210" class="floating-btn whatsapp-btn" target="_blank" title="WhatsApp Us">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+919876543210" class="floating-btn call-btn" title="Call Us">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+
+    <!-- Sticky Cart Bar -->
+    <div class="sticky-cart" id="stickyCart">
+        <div class="cart-content">
+            <div class="cart-info">
+                <img src="/images/mannuban-ghee.png" alt="Product" class="cart-image" id="cartImage">
+                <div>
+                    <div id="cartProductName">Mannuban Desi Ghee</div>
+                    <div id="cartProductPrice">₹850</div>
+                </div>
+            </div>
+            <button class="btn btn-primary" data-en="Proceed to Checkout" data-hi="चेकआउट पर जाएं">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-en="MFAPL - Markandeshwar Foods" data-hi="MFAPL - मार्कंडेश्वर फूड्स">MFAPL - Markandeshwar Foods</h3>
+                <p data-en="Leading manufacturer, exporter and importer of dairy products in India serving global markets." data-hi="भारत में डेयरी उत्पादों के अग्रणी निर्माता, निर्यातक और आयातक।">Leading manufacturer, exporter and importer of dairy products in India serving global markets.</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> info@markandeshwarfoods.com</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-en="Our Brands" data-hi="हमारे ब्रांड्स">Our Brands</h3>
+                <p><a href="#products">MURLI</a></p>
+                <p><a href="#products">MADHUSAGAR</a></p>
+                <p><a href="#products">LORD KRISHNA</a></p>
+                <p><a href="#products">GOODDAY</a></p>
+            </div>
+            <div class="footer-section">
+                <h3 data-en="Manufacturing Units" data-hi="विनिर्माण इकाइयां">Manufacturing Units</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kurukshetra, Haryana</p>
+                <p><i class="fas fa-map-marker-alt"></i> Malekotla, Punjab</p>
+                <p><i class="fas fa-map-marker-alt"></i> Palwal, Haryana</p>
+                <p><i class="fas fa-building"></i> Head Office: 30km from Delhi Airport</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-en="Global Reach" data-hi="वैश्विक पहुंच">Global Reach</h3>
+                <p data-en="10 Sales Offices" data-hi="10 बिक्री कार्यालय">10 Sales Offices</p>
+                <p data-en="670+ Distributors" data-hi="670+ वितरक">670+ Distributors</p>
+                <p data-en="1,00,000+ Retailers" data-hi="1,00,000+ खुदरा विक्रेता">1,00,000+ Retailers</p>
+                <p data-en="International Export" data-hi="अंतर्राष्ट्रीय निर्यात">International Export</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-en="&copy; 2024 Markandeshwar Foods. All rights reserved. | AGMARK Certified Quality Products" data-hi="&copy; 2024 मार्कंडेश्वर फूड्स। सभी अधिकार सुरक्षित। | AGMARK प्रमाणित गुणवत्ता उत्पाद">&copy; 2024 Markandeshwar Foods. All rights reserved. | AGMARK Certified Quality Products</p>
+        </div>
+    </footer>
+
+    <script>
+        // Global variables
+        let currentSlide = 0;
+        let currentTestimonialIndex = 0;
+        let currentLanguage = 'en';
+        let isCartVisible = false;
+
+        // Products data for search
+        const products = [
+            { name: 'Mannuban Desi Ghee', price: '₹850/kg', description: 'AGMARK granular desi ghee made from fresh milk' },
+            { name: 'Natural Cow Ghee', price: '₹920/kg', description: 'Pure cow ghee made with traditional churning methods' },
+            { name: 'Murli Desi Ghee', price: '₹880/kg', description: 'AGMARK granular desi ghee for healthy family' },
+            { name: 'Madhusagar Desi Ghee', price: '₹900/kg', description: 'AGMARK granular desi ghee with natural flavour' },
+            { name: 'Goodday Milk Powder', price: '₹450/kg', description: 'Premium spray dried powder untouched by hands' },
+            { name: 'Mahadev Milk Powder', price: '₹420/kg', description: 'Premium spray dried skimmed milk powder for sweets' },
+            { name: 'Lord Krishna Milk Powder', price: '₹400/kg', description: 'Skimmed milk powder specially for Khoya & Chhenna' }
+        ];
+
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loader after page load
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1500);
+
+            // Initialize all features
+            initializeCarousel();
+            initializeScrollAnimations();
+            initializeFAQ();
+            initializeTestimonials();
+            initializeSearch();
+            initializeThemeToggle();
+            initializeLanguageToggle();
+            initializeNewsletterPopup();
+            initializeLazyLoading();
+            initializeAddToCart();
+            
+            // Show newsletter popup after 5 seconds
+            setTimeout(showNewsletterPopup, 5000);
+        });
+
+        // Carousel functionality
+        function initializeCarousel() {
+            const carousel = document.getElementById('productCarousel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const cards = carousel.children;
+            const cardWidth = 330; // 300px + 30px margin
+
+            prevBtn.addEventListener('click', () => {
+                currentSlide = Math.max(0, currentSlide - 1);
+                updateCarousel();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                const maxSlide = Math.max(0, cards.length - Math.floor(carousel.parentElement.offsetWidth / cardWidth));
+                currentSlide = Math.min(maxSlide, currentSlide + 1);
+                updateCarousel();
+            });
+
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+            }
+
+            // Auto-scroll carousel
+            setInterval(() => {
+                const maxSlide = Math.max(0, cards.length - Math.floor(carousel.parentElement.offsetWidth / cardWidth));
+                currentSlide = currentSlide >= maxSlide ? 0 : currentSlide + 1;
+                updateCarousel();
+            }, 4000);
+        }
+
+        // Scroll animations
+        function initializeScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in, .timeline-item').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // FAQ functionality
+        function initializeFAQ() {
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    const answer = faqItem.querySelector('.faq-answer');
+                    const isActive = faqItem.classList.contains('active');
+
+                    // Close all FAQ items
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-answer').classList.remove('active');
+                    });
+
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        faqItem.classList.add('active');
+                        answer.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Testimonials functionality
+        function initializeTestimonials() {
+            const testimonials = document.querySelectorAll('.testimonial-card');
+            
+            setInterval(() => {
+                testimonials[currentTestimonialIndex].classList.remove('active');
+                currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+                testimonials[currentTestimonialIndex].classList.add('active');
+                updateTestimonialDots();
+            }, 5000);
+        }
+
+        function currentTestimonial(index) {
+            const testimonials = document.querySelectorAll('.testimonial-card');
+            testimonials[currentTestimonialIndex].classList.remove('active');
+            currentTestimonialIndex = index - 1;
+            testimonials[currentTestimonialIndex].classList.add('active');
+            updateTestimonialDots();
+        }
+
+        function updateTestimonialDots() {
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentTestimonialIndex);
+            });
+        }
+
+        // Search functionality
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const searchResults = document.getElementById('searchResults');
+
+            searchInput.addEventListener('input', handleSearch);
+            searchBtn.addEventListener('click', handleSearch);
+
+            function handleSearch() {
+                const query = searchInput.value.toLowerCase().trim();
+                
+                if (query.length === 0) {
+                    searchResults.classList.remove('show');
+                    return;
+                }
+
+                const filteredProducts = products.filter(product => 
+                    product.name.toLowerCase().includes(query) ||
+                    product.description.toLowerCase().includes(query)
+                );
+
+                displaySearchResults(filteredProducts);
+            }
+
+            function displaySearchResults(results) {
+                if (results.length === 0) {
+                    searchResults.innerHTML = '<div class="search-result-item">No products found</div>';
+                } else {
+                    searchResults.innerHTML = results.map(product => 
+                        `<div class="search-result-item">
+                            <strong>${product.name}</strong> - ${product.price}
+                            <br><small>${product.description}</small>
+                        </div>`
+                    ).join('');
+                }
+                searchResults.classList.add('show');
+            }
+
+            // Hide search results when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.search-box')) {
+                    searchResults.classList.remove('show');
+                }
+            });
+        }
+
+        // Theme toggle
+        function initializeThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            const icon = themeToggle.querySelector('i');
+
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                
+                localStorage.setItem('theme', newTheme);
+                showToast('Theme changed successfully!');
+            });
+
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            icon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // Language toggle
+        function initializeLanguageToggle() {
+            const langToggle = document.getElementById('langToggle');
+
+            langToggle.addEventListener('click', () => {
+                currentLanguage = currentLanguage === 'en' ? 'hi' : 'en';
+                langToggle.textContent = currentLanguage === 'en' ? 'हिं' : 'EN';
+                
+                updateLanguage();
+                showToast(currentLanguage === 'en' ? 'Language changed to English' : 'भाषा हिंदी में बदली गई');
+            });
+        }
+
+        function updateLanguage() {
+            document.querySelectorAll('[data-en][data-hi]').forEach(element => {
+                element.textContent = element.getAttribute(`data-${currentLanguage}`);
+            });
+        }
+
+        // Newsletter popup
+        function initializeNewsletterPopup() {
+            const popup = document.getElementById('newsletterPopup');
+            const closeBtn = document.getElementById('newsletterClose');
+            const form = document.getElementById('newsletterForm');
+
+            closeBtn.addEventListener('click', hideNewsletterPopup);
+            
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) hideNewsletterPopup();
+            });
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = form.querySelector('input[type="email"]').value;
+                showToast('Thank you for subscribing!');
+                hideNewsletterPopup();
+                localStorage.setItem('newsletterShown', 'true');
+            });
+        }
+
+        function showNewsletterPopup() {
+            if (!localStorage.getItem('newsletterShown')) {
+                document.getElementById('newsletterPopup').classList.add('show');
+            }
+        }
+
+        function hideNewsletterPopup() {
+            document.getElementById('newsletterPopup').classList.remove('show');
+        }
+
+        // Lazy loading
+        function initializeLazyLoading() {
+            const lazyImages = document.querySelectorAll('.lazy-image');
+            
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('loaded');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => imageObserver.observe(img));
+        }
+
+        // Add to cart functionality
+        function initializeAddToCart() {
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productName = e.target.getAttribute('data-product');
+                    const productPrice = e.target.getAttribute('data-price');
+                    
+                    showStickyCart(productName, productPrice);
+                    showToast(`${productName} added to cart!`);
+                });
+            });
+        }
+
+        function showStickyCart(productName, price) {
+            const stickyCart = document.getElementById('stickyCart');
+            const cartProductName = document.getElementById('cartProductName');
+            const cartProductPrice = document.getElementById('cartProductPrice');
+
+            cartProductName.textContent = productName;
+            cartProductPrice.textContent = `₹${price}`;
+            
+            stickyCart.classList.add('show');
+            isCartVisible = true;
+
+            // Hide after 10 seconds
+            setTimeout(() => {
+                stickyCart.classList.remove('show');
+                isCartVisible = false;
+            }, 10000);
+        }
+
+        // Toast notifications
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--card-bg)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Performance optimization - Debounce scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Optimized scroll handler
+        const optimizedScrollHandler = debounce(function() {
+            const scrollTop = window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            
+            // Parallax effect for hero section
+            const hero = document.querySelector('.hero');
+            if (hero && scrollTop < windowHeight) {
+                hero.style.transform = `translateY(${scrollTop * 0.5}px)`;
+            }
+        }, 16);
+
+        window.addEventListener('scroll', optimizedScrollHandler);
+
+        // Accessibility improvements
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+            if (e.key === 'Escape') {
+                hideNewsletterPopup();
+                document.getElementById('searchResults').classList.remove('show');
+            }
+        });
+
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const email = formData.get('email') || form.querySelector('input[type="email"]')?.value;
+                
+                if (email) {
+                    showToast('Thank you for subscribing!');
+                    form.reset();
+                } else {
+                    showToast('Please enter a valid email address', 'error');
+                }
+            });
+        });
+
+        // Track user interactions for analytics
+        function trackEvent(eventName, eventData) {
+            console.log('Event tracked:', eventName, eventData);
+        }
+
+        // Track button clicks
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                trackEvent('button_click', {
+                    button_text: this.textContent.trim(),
+                    page_url: window.location.href
+                });
+            });
+        });
+
+        // Error handling
+        window.addEventListener('error', function(e) {
+            console.error('JavaScript error:', e.error);
+            showToast('Something went wrong. Please try again.', 'error');
+        });
+
+        console.log('Markandeshwar Foods website initialized successfully!');
+    </script>
+</body>
+</html>
