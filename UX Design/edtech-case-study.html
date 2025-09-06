@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdTech Platform Homepage Design | Tanzil Garg</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Added comprehensive case study styling to match other case studies -->
+    <style>
+        /* Additional styles specific to case study */
+        .case-study-header {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 60px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7)), url('/placeholder.svg?height=1080&width=1920') center/cover no-repeat;
+        }
+
+        .case-study-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--color-text-muted);
+        }
+
+        .case-study-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .meta-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-purple-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-content {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .case-study-section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .case-study-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-heading {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-purple-light);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .image-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .quote-block {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid var(--color-purple);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .quote-text {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .solution-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: var(--backdrop-blur);
+            transition: var(--transition);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .solution-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(168, 85, 247, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-description {
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .design-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .design-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            backdrop-filter: var(--backdrop-blur);
+            transition: var(--transition);
+        }
+
+        .design-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .design-card-content {
+            padding: 1.5rem;
+        }
+
+        .design-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--color-purple-light);
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--color-border);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .color-swatch::after {
+            content: attr(data-color);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+        }
+
+        .next-prev-projects {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .prev-project, .next-project {
+            max-width: 45%;
+        }
+
+        .project-nav-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .project-nav-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-nav-title:hover {
+            color: var(--color-purple-light);
+        }
+
+        @media (max-width: 992px) {
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .design-showcase {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-study-title {
+                font-size: 2.5rem;
+            }
+
+            .case-study-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .meta-item {
+                min-width: 100%;
+            }
+
+            .next-prev-projects {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .prev-project, .next-project {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Updated navigation to match other case studies -->
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Tanzil.</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                        <li><a href="index.html#about" class="nav-link">About</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
+                </nav>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">Tanzil.</a>
+            <button class="menu-close" aria-label="Close menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <nav>
+            <ul class="mobile-nav-list">
+                <li><a href="index.html#projects" class="mobile-nav-link">Projects</a></li>
+                <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
+                <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-primary mobile-cta">Get in Touch</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Completely restructured header section to match other case studies -->
+        <!-- Case Study Header -->
+        <section class="case-study-header">
+            <div class="container">
+                <div class="case-study-content">
+                    <h1 class="case-study-title">EdTech Platform Homepage Design</h1>
+                    <p class="case-study-subtitle">Designing an engaging and functional homepage for young learners from Pre-K to Class 6</p>
+                    <div class="case-study-meta">
+                        <div class="meta-item">
+                            <h4 class="meta-title">My Role</h4>
+                            <p class="meta-content">UI/UX Designer</p>
+                        </div>
+                        <div class="meta-item">
+                            <h4 class="meta-title">Duration</h4>
+                            <p class="meta-content">August 2025</p>
+                        </div>
+                        <div class="meta-item">
+                            <h4 class="meta-title">Platform</h4>
+                            <p class="meta-content">Web Application</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Restructured all content sections to match case study format -->
+        <!-- Project Overview -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Project Overview</h2>
+                <div class="two-column">
+                    <div>
+                        <p>This project focused on designing a homepage for an EdTech web application targeting children from Pre-K to Class 6. The primary goal was to create an interface that balances engagement with functionality, ensuring young learners can enjoy their educational journey while navigating intuitively through the platform.</p>
+                        <p>The design adhered to specified brand guidelines while incorporating child-computer interaction principles to create an age-appropriate learning environment that supports both independent exploration and parental oversight.</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="/placeholder.svg?height=400&width=600" alt="EdTech Platform Homepage Design">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem & Goals -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Problem + Goals</h2>
+                <p>Designing for young learners presents unique challenges: varying reading abilities, short attention spans, and the need for interfaces that are both educational and entertaining. The platform needed to accommodate children with different developmental stages while maintaining educational focus.</p>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Design Challenges:</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>Creating intuitive navigation for early readers with limited text comprehension</li>
+                    <li>Balancing visual engagement without overwhelming young users</li>
+                    <li>Ensuring accessibility across different developmental stages and abilities</li>
+                    <li>Maintaining educational focus while incorporating playful, motivating elements</li>
+                </ul>
+
+                <div class="quote-block">
+                    <p class="quote-text">"The interface must speak the language of children—visual, intuitive, and encouraging—while supporting their educational growth and development."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Plan -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Research Plan</h2>
+                <p>To create an effective design for young learners, I conducted comprehensive research into child-computer interaction principles, competitive analysis, and accessibility guidelines specific to educational platforms.</p>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Methodologies</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>Competitive Analysis of EdTech platforms (BYJU's, Khan Academy Kids, Duolingo Kids)</li>
+                    <li>Child-Computer Interaction (CCI) principles research</li>
+                    <li>Color psychology and typography studies for young users</li>
+                    <li>Accessibility guidelines analysis for children with varying abilities</li>
+                </ul>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Key Research Questions</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>How do children navigate digital interfaces differently than adults?</li>
+                    <li>What visual cues help early readers understand navigation and functionality?</li>
+                    <li>How can we balance engagement with educational focus without distraction?</li>
+                    <li>What accessibility considerations are crucial for Pre-K to Class 6 age group?</li>
+                    <li>How do familiar interaction patterns reduce cognitive load for young users?</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Research Findings -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Key Findings</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Major Competitors Analyzed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">85%</div>
+                        <div class="stat-label">Children Prefer Visual Navigation</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">44px</div>
+                        <div class="stat-label">Minimum Touch Target Size</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Core Design Principles Identified</div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem; margin-bottom: 1rem;">Research Insights</h3>
+                
+                <div class="two-column" style="margin-top: 2rem;">
+                    <div>
+                        <h4 style="color: var(--color-purple-light); margin-bottom: 1rem;">Key Discoveries</h4>
+                        <div class="quote-block">
+                            <p class="quote-text">"Children rely heavily on icons and visual cues for navigation, especially early readers who may struggle with text-only interfaces."</p>
+                        </div>
+                        <div class="quote-block">
+                            <p class="quote-text">"Progress indicators and achievement systems significantly increase motivation and sustained engagement."</p>
+                        </div>
+                        <div class="quote-block">
+                            <p class="quote-text">"Familiar patterns from platforms like YouTube Kids reduce cognitive load and improve usability."</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-purple-light); margin-bottom: 1rem;">Design Implications</h4>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                            <li>Dual-modal navigation combining icons with text labels</li>
+                            <li>Large touch targets (minimum 44px) for developing motor skills</li>
+                            <li>High contrast colors for improved readability</li>
+                            <li>Progress bars and visual feedback for motivation</li>
+                            <li>Rounded, friendly design elements to reduce intimidation</li>
+                        </ul>
+
+                        <h4 style="color: var(--color-purple-light); margin-bottom: 1rem;">Competitive Analysis Insights</h4>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                            <li><strong>BYJU's:</strong> Content-rich but text-heavy, opportunity for visual simplification</li>
+                            <li><strong>Khan Academy Kids:</strong> Overly cartoonish, balance needed between playful and educational</li>
+                            <li><strong>Duolingo Kids:</strong> Effective gamification without educational distraction</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Solutions -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Proposed Solutions</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                        </div>
+                        <h3 class="solution-title">Child-Friendly Color System</h3>
+                        <p class="solution-description">Implemented a balanced palette using Caribbean Green (#00D486) and Golden Yellow (#FFDA00) as primary colors, creating vibrant energy without overwhelming young users.</p>
+                        <div class="color-palette">
+                            <div class="color-swatch" style="background-color: #00D486;" data-color="#00D486"></div>
+                            <div class="color-swatch" style="background-color: #FFDA00;" data-color="#FFDA00"></div>
+                            <div class="color-swatch" style="background-color: #34113D;" data-color="#34113D"></div>
+                            <div class="color-swatch" style="background-color: #7FB3BF;" data-color="#7FB3BF"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path><path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path></svg>
+                        </div>
+                        <h3 class="solution-title">Dual-Modal Navigation</h3>
+                        <p class="solution-description">Combined icons with text labels to support both visual recognition and reading development, making navigation accessible for varying literacy levels.</p>
+                        <div class="image-container">
+                            <img src="/placeholder.svg?height=200&width=300" alt="Dual-Modal Navigation System">
+                        </div>
+                    </div>
+                    
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <h3 class="solution-title">Progress & Feedback Systems</h3>
+                        <p class="solution-description">Integrated progress bars, star ratings, and achievement indicators to provide immediate feedback and maintain motivation throughout the learning journey.</p>
+                        <div class="image-container">
+                            <img src="/placeholder.svg?height=200&width=300" alt="Progress and Feedback Indicators">
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem; margin-bottom: 1.5rem;">Layout & Interaction Design</h3>
+                <div class="design-showcase">
+                    <div class="design-card">
+                        <div class="image-container">
+                            <img src="/placeholder.svg?height=250&width=400" alt="Banner Carousel Design">
+                        </div>
+                        <div class="design-card-content">
+                            <h4>Banner Carousel</h4>
+                            <p>Grade-specific recommendations with automatic rotation to showcase different learning areas while maintaining user engagement.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="design-card">
+                        <div class="image-container">
+                            <img src="/placeholder.svg?height=250&width=400" alt="Content Carousels">
+                        </div>
+                        <div class="design-card-content">
+                            <h4>Content Organization</h4>
+                            <p>Horizontal carousels for different categories (Courses, Books, Videos, Games) following familiar interaction patterns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accessibility Considerations -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Accessibility Considerations</h2>
+                
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: var(--color-purple-light); margin-bottom: 1rem;">Inclusive Design Features</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                            <li><strong>High Contrast Design:</strong> Ensured sufficient color contrast ratios for users with visual impairments</li>
+                            <li><strong>Large Touch Targets:</strong> Minimum 44px interactive areas for developing motor skills</li>
+                            <li><strong>Simple Navigation:</strong> Clear, predictable patterns that reduce cognitive load</li>
+                            <li><strong>Visual Hierarchy:</strong> Clear information architecture supporting different reading levels</li>
+                            <li><strong>Responsive Design:</strong> Optimized for various devices and screen sizes</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="quote-block">
+                            <p class="quote-text">"Accessibility considerations for children often benefit all users, creating more inclusive and intuitive interfaces that support diverse learning needs and abilities."</p>
+                        </div>
+                        <div class="image-container">
+                            <img src="/placeholder.svg?height=300&width=400" alt="Accessibility Features">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflection -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Reflection + Lessons Learned</h2>
+                
+                <p>This project reinforced the importance of designing with empathy and understanding the unique needs of different user groups. Working within the constraints of child-computer interaction principles challenged me to think beyond traditional design patterns and consider how developmental stages impact user experience.</p>
+                
+                <p>Key takeaways include the critical role of visual hierarchy in supporting early readers, the power of familiar interaction patterns in reducing cognitive load, and the importance of balancing engagement with educational focus. The project also highlighted how accessibility considerations for children often benefit all users, creating more inclusive and intuitive interfaces.</p>
+
+                <div class="quote-block" style="margin-top: 2rem;">
+                    <p class="quote-text">"Moving forward, I would love to conduct user testing with actual children in the target age range to validate design decisions and gather insights that can only come from direct user feedback."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Updated navigation to match other case studies -->
+        <!-- Next/Prev Projects -->
+        <div class="container">
+            <div class="next-prev-projects">
+                <div class="prev-project">
+                    <span class="project-nav-label">Previous Project</span>
+                    <a href="neon-fractal-tree-case-study.html" class="project-nav-title">Neon Fractal Tree: A Visual Interaction Experiment</a>
+                </div>
+                <div class="next-project">
+                    <span class="project-nav-label">Next Project</span>
+                    <a href="instagram-case-study.html" class="project-nav-title">Instagram UX Research Study</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Updated footer to match other case studies -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Tanzil.</a>
+                    <p>Designing future-ready experiences</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> Tanzil. All rights reserved.</p>
+                <p>Designed and built with passion and precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
