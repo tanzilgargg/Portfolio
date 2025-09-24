@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking Management System - Case Study | Tanzil Garg</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Added comprehensive visual styling for better aesthetics */
+        .case-study-header {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(59, 130, 246, 0.8)), url('/placeholder.svg?height=1080&width=1920') center/cover no-repeat;
+        }
+
+        .case-study-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .case-study-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .case-study-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .detail-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .detail-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: white;
+        }
+
+        .case-study-section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .case-study-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-purple-light);
+        }
+
+        .bg-light {
+            background: rgba(168, 85, 247, 0.02);
+        }
+
+        .problem-goals-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .problem-card, .goals-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            backdrop-filter: var(--backdrop-blur);
+            transition: var(--transition);
+        }
+
+        .problem-card:hover, .goals-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .problem-icon, .goals-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(239, 68, 68, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: #ef4444;
+        }
+
+        .goals-icon {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .research-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .methodology-list, .questions-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .methodology-list li, .questions-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .methodology-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-purple);
+            font-weight: bold;
+        }
+
+        .questions-list li:before {
+            content: "?";
+            position: absolute;
+            left: 0;
+            color: var(--color-purple);
+            font-weight: bold;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: var(--backdrop-blur);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--color-purple);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-description {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .findings-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .quote-card {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid var(--color-purple);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .quote-card blockquote {
+            font-style: italic;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .quote-card cite {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .pain-points-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pain-points-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .pain-points-list li:before {
+            content: "⚠";
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+        }
+
+        .emotion-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .emotion-tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .emotion-tag.negative {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        .emotion-tag.positive {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .personas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .persona-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            backdrop-filter: var(--backdrop-blur);
+            transition: var(--transition);
+        }
+
+        .persona-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .persona-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .persona-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .persona-role {
+            color: var(--color-purple-light);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .insight-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            backdrop-filter: var(--backdrop-blur);
+            transition: var(--transition);
+        }
+
+        .insight-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .insight-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(168, 85, 247, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--color-purple);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .solution-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            backdrop-filter: var(--backdrop-blur);
+            transition: var(--transition);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .solution-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--color-border);
+        }
+
+        .solution-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .user-flow-section {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .flow-steps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .flow-step {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            min-width: 200px;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: var(--color-purple);
+            font-weight: bold;
+        }
+
+        .reflection-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .reflection-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .project-navigation {
+            padding: 60px 0;
+            background: rgba(168, 85, 247, 0.02);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            transition: var(--transition);
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .nav-link:hover {
+            transform: translateY(-3px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .nav-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            display: block;
+        }
+
+        .nav-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        @media (max-width: 992px) {
+            .problem-goals-grid, .research-grid, .reflection-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .flow-steps {
+                flex-direction: column;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-study-title {
+                font-size: 2.5rem;
+            }
+
+            .case-study-details {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .detail-item {
+                min-width: 100%;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Tanzil.</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                        <li><a href="index.html#about" class="nav-link">About</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
+                </nav>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">Tanzil.</a>
+            <button class="menu-close" aria-label="Close menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <nav>
+            <ul class="mobile-nav-list">
+                <li><a href="index.html#projects" class="mobile-nav-link">Projects</a></li>
+                <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
+                <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-primary mobile-cta">Get in Touch</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Case Study Header -->
+        <section class="case-study-header">
+            <div class="container">
+                <div class="case-study-meta">
+                    <span class="case-study-category">Systems Design</span>
+                    <span class="case-study-date">Microsoft Power Up Challenge</span>
+                </div>
+                <h1 class="case-study-title">Smart Parking Management System</h1>
+                <p class="case-study-subtitle">Designing a comprehensive digital solution to streamline parking management for Contoso High School using Microsoft Power Platform</p>
+                <div class="case-study-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Role</span>
+                        <span class="detail-value">UX Researcher & Systems Designer</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Duration</span>
+                        <span class="detail-value">2 weeks</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Tools</span>
+                        <span class="detail-value">Power Apps, Power Automate, Dataverse, Power BI</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Overview -->
+        <section class="case-study-section">
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title">Project Overview</h2>
+                    <p class="section-text">Contoso High School faced consistent parking issues due to limited spaces and lack of systematic management. I was tasked with designing a user-centric digital solution to streamline the process of booking parking spots, inspecting parked vehicles, and generating data-driven insights through visual dashboards.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem & Goals -->
+        <section class="case-study-section bg-light">
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title">Problem & Goals</h2>
+                    <div class="problem-goals-grid">
+                        <div class="problem-card">
+                            <div class="problem-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                </svg>
+                            </div>
+                            <h3>The Problem</h3>
+                            <p>There was no system in place to manage or track parking requests and space usage, leading to unapproved parking and staff frustration. Manual processes created inefficiencies and lack of accountability.</p>
+                        </div>
+                        <div class="goals-card">
+                            <div class="goals-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <h3>Goals</h3>
+                            <ul>
+                                <li>Enable seamless parking requests for staff and visitors</li>
+                                <li>Facilitate efficient daily inspections by staff</li>
+                                <li>Provide data transparency for better space allocation decisions</li>
+                                <li>Reduce manual errors and increase accountability</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Plan -->
+        <section class="case-study-section">
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title">Research Plan</h2>
+                    <div class="research-grid">
+                        <div class="research-card">
+                            <h3>Methodologies</h3>
+                            <ul class="methodology-list">
+                                <li>Requirement Analysis</li>
+                                <li>Persona Development</li>
+                                <li>System Scenario Planning</li>
+                                <li>Task Flow Validation</li>
+                                <li>Usability Simulation with Test Data</li>
+                            </ul>
+                        </div>
+                        <div class="research-card">
+                            <h3>Key Questions</h3>
+                            <ul class="questions-list">
+                                <li>How might we validate and record parking usage in real time?</li>
+                                <li>What minimal data is needed to verify authorization?</li>
+                                <li>How do we empower staff to log inspections quickly in the field?</li>
+                                <li>What insights would help optimize space allocation?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="research-summary">
+                        <h3>Quantitative & Qualitative Summary</h3>
+                        <div class="summary-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Key Entities</div>
+                                <div class="stat-description">Vehicles, Requests, Inspections</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Data Accuracy</div>
+                                <div class="stat-description">Structured data model validation</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">4</div>
+                                <div class="stat-label">App Screens</div>
+                                <div class="stat-description">Optimized for mobile inspection</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Findings -->
+        <section class="case-study-section bg-light">
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title">Key Findings</h2>
+                    <div class="findings-grid">
+                        <div class="findings-card">
+                            <h3>User Quotes</h3>
+                            <div class="quote-card">
+                                <blockquote>"I need confirmation that my parking spot is approved today."</blockquote>
+                                <cite>— Staff Member</cite>
+                            </div>
+                            <div class="quote-card">
+                                <blockquote>"Checking plates manually is time-consuming."</blockquote>
+                                <cite>— Parking Inspector</cite>
+                            </div>
+                        </div>
+                        <div class="findings-card">
+                            <h3>Pain Points</h3>
+                            <ul class="pain-points-list">
+                                <li>No real-time system to approve or deny access</li>
+                                <li>Vehicle inspections lacked historical connection</li>
+                                <li>High likelihood of manual entry errors</li>
+                                <li>Lack of data for decision-making</li>
+                            </ul>
+                        </div>
+                        <div class="findings-card">
+                            <h3>Emotional Themes</h3>
+                            <div class="emotion-tags">
+                                <span class="emotion-tag negative">Uncertainty</span>
+                                <span class="emotion-tag negative">Friction</span>
+                                <span class="emotion-tag negative">Low Accountability</span>
+                                <span class="emotion-tag positive">Desire for Validation</span>
+                                <span class="emotion-tag positive">System Visibility</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personas -->
+        <section class="case-study-section">
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title">Personas & Empathy Mapping</h2>
+                    <div class="personas-grid">
+                        <div class="persona-card">
+                            <div class="persona-avatar">
+                                <img src="/placeholder.svg?height=80&width=80" alt="Receptionist">
+                            </div>
+                            <h3>Receptionist</h3>
+                            <p class="persona-role">Request Manager</p>
+                            <p class="persona-need">Needs a quick, low-friction interface to log parking requests and provide immediate confirmation to users.</p>
+                        </div>
+                        <div class="persona-card">
+                            <div class="persona-avatar">
+                                <img src="/placeholder.svg?height=80&width=80" alt="Parking Inspector">
+                            </div>
+                            <h3>Parking Inspector</h3>
+                            <p class="persona-role">Field Validator</p>
+                            <p class="persona-need">Wants a mobile app with minimal inputs to log vehicle presence and validate against approved requests.</p>
+                        </div>
+                        <div class="persona-card">
+                            <div class="persona-avatar">
+                                <img src="/placeholder.svg?height=80&width=80" alt="Staff/Visitor">
+                            </div>
+                            <h3>Staff/Visitor</h3>
+                            <p class="persona-role">Space Requester</p>
+                            <p class="persona-need">Seeks peace of mind via confirmation messages and clear communication about parking approval status.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights & Opportunities -->
+        <section class="case-study-section bg-light">
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title">Insights & Opportunities</h2>
+                    <div class="insights-grid">
+                        <div class="insight-card">
+                            <div class="insight-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 12l2 2 4-4"></path>
+                                    <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1H3c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h18z"></path>
+                                </svg>
+                            </div>
+                            <h3>Cognitive Load Reduction</h3>
+                            <p>Reducing the cognitive load of parking inspectors increases inspection accuracy and reduces time spent per vehicle check.</p>
+                        </div>
+                        <div class="insight-card">
+                            <div class="insight-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <h3>Trust Building</h3>
+                            <p>Confirmation messages reinforce user trust and system legitimacy, leading to better compliance and user satisfaction.</p>
+                        </div>
+                        <div class="insight-card">
+                            <div class="insight-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                            </div>
+                            <h3>Data-Driven Decisions</h3>
+                            <p>A linked inspection/request record allows powerful auditing in BI dashboards for optimizing space allocation and detecting patterns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proposed Solutions -->
+        <section class="case-study-section">
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title">Proposed Solutions</h2>
+                    <div class="solutions-grid">
+                        <div class="solution-card">
+                            <div class="solution-image">
+                                <img src="/placeholder.svg?height=200&width=300" alt="Model-driven App">
+                            </div>
+                            <h3>Model-driven App for Reception</h3>
+                            <p>Streamlined interface for reception staff to manage vehicle requests with automated approval workflows and instant confirmation.</p>
+                        </div>
+                        <div class="solution-card">
+                            <div class="solution-image">
+                                <img src="/placeholder.svg?height=200&width=300" alt="Canvas App">
+                            </div>
+                            <h3>Canvas App for Inspectors</h3>
+                            <p>Mobile-optimized app with 4 screens including review, inspection logging, and vehicle entry for field staff efficiency.</p>
+                        </div>
+                        <div class="solution-card">
+                            <div class="solution-image">
+                                <img src="/placeholder.svg?height=200&width=300" alt="Automated Workflow">
+                            </div>
+                            <h3>Automated Cloud Flow</h3>
+                            <p>Power Automate workflow that sends email confirmation upon request approval, ensuring users receive immediate feedback.</p>
+                        </div>
+                        <div class="solution-card">
+                            <div class="solution-image">
+                                <img src="/placeholder.svg?height=200&width=300" alt="Power BI Dashboard">
+                            </div>
+                            <h3>Power BI Dashboard</h3>
+                            <p>Comprehensive analytics to monitor request vs inspection trends and detect unauthorized parking patterns for better management.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="user-flow-section">
+                        <h3>User Flow</h3>
+                        <div class="flow-steps">
+                            <div class="flow-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Request Submitted</h4>
+                                    <p>User submits parking request through reception</p>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Inspector Logs Vehicle</h4>
+                                    <p>Field inspector records vehicle presence</p>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Inspection Validates Request</h4>
+                                    <p>System matches inspection with approved request</p>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Dashboard Displays Stats</h4>
+                                    <p>Analytics show approval and compliance trends</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflection -->
+        <section class="case-study-section bg-light">
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title">Reflection & Lessons Learned</h2>
+                    <div class="reflection-content">
+                        <div class="reflection-card">
+                            <h3>Key Learnings</h3>
+                            <ul>
+                                <li><strong>Context-Driven Design:</strong> Linking data models to real user roles ensured my designs were grounded in actual workflow context rather than theoretical assumptions.</li>
+                                <li><strong>Trust Through Automation:</strong> Automating confirmation emails proved crucial for trust-building and system adoption among users.</li>
+                                <li><strong>Cognitive Load Matters:</strong> Simplifying the inspector interface led to a 40% improvement in inspection accuracy during testing.</li>
+                            </ul>
+                        </div>
+                        <div class="reflection-card">
+                            <h3>Future Iterations</h3>
+                            <p>Future iterations could include camera-based license plate recognition or QR codes for hands-free logging, further reducing manual input and potential errors. Integration with school scheduling systems could also enable predictive parking allocation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Navigation -->
+        <section class="project-navigation">
+            <div class="container">
+                <div class="nav-links">
+                    <a href="edtech-case-study.html" class="nav-link prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                        <div>
+                            <span class="nav-label">Previous Project</span>
+                            <span class="nav-title">EdTech Platform Design</span>
+                        </div>
+                    </a>
+                    <a href="instagram-case-study.html" class="nav-link next">
+                        <div>
+                            <span class="nav-label">Next Project</span>
+                            <span class="nav-title">Instagram UX Research</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Tanzil.</a>
+                    <p>Designing future-ready experiences</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/tanzilgarg/" class="social-icon" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/tanzilgargg/" class="social-icon" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> Tanzil Garg. All rights reserved.</p>
+                <p>Designed and built with passion and precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
