@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copilot Studio AI Chat Assistant | Tanzil Garg</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Case study specific styles */
+        .case-study-header {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 60px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7)), url('/placeholder.svg?height=1080&width=1920&query=AI chatbot conversational interface copilot studio') center/cover no-repeat;
+        }
+
+        .case-study-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--color-text-muted);
+        }
+
+        .case-study-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .meta-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-purple-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-content {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .case-study-section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .case-study-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-heading {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-purple-light);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .image-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .quote-block {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid var(--color-purple);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .quote-text {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .goal-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .goal-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .goal-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .research-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .method-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .method-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .finding-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .finding-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .finding-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .personas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .persona-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .persona-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .persona-avatar {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .persona-needs {
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .persona-needs h4 {
+            color: var(--color-purple-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-features {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(168, 85, 247, 0.05);
+            border-radius: var(--border-radius);
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-icon {
+            background: var(--color-purple);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h4 {
+            margin-bottom: 0.5rem;
+            color: var(--color-purple-light);
+        }
+
+        .reflection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .reflection-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .reflection-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .reflection-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .chat-demo {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            max-width: 500px;
+        }
+
+        .chat-message {
+            display: flex;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .chat-message.user {
+            justify-content: flex-end;
+        }
+
+        .chat-bubble {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .chat-bubble.user {
+            background: var(--color-purple);
+            color: white;
+            border-bottom-right-radius: 0.25rem;
+        }
+
+        .chat-bubble.bot {
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid var(--color-border);
+            border-bottom-left-radius: 0.25rem;
+        }
+
+        .chat-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin: 0 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .chat-avatar.user {
+            background: var(--color-purple);
+            color: white;
+        }
+
+        .chat-avatar.bot {
+            background: rgba(168, 85, 247, 0.2);
+        }
+
+        .next-prev-projects {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .prev-project, .next-project {
+            max-width: 45%;
+        }
+
+        .project-nav-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .project-nav-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-nav-title:hover {
+            color: var(--color-purple-light);
+        }
+
+        @media (max-width: 992px) {
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-study-title {
+                font-size: 2.5rem;
+            }
+
+            .case-study-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .meta-item {
+                min-width: 100%;
+            }
+
+            .goals-grid,
+            .research-methods-grid,
+            .findings-grid,
+            .personas-grid,
+            .reflection-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Tanzil.</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                        <li><a href="index.html#about" class="nav-link">About</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
+                </nav>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">Tanzil.</a>
+            <button class="menu-close" aria-label="Close menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <nav>
+            <ul class="mobile-nav-list">
+                <li><a href="index.html#projects" class="mobile-nav-link">Projects</a></li>
+                <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
+                <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-primary mobile-cta">Get in Touch</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Case Study Header -->
+        <section class="case-study-header">
+            <div class="container">
+                <div class="case-study-content">
+                    <h1 class="case-study-title">Copilot Studio AI Chat Assistant</h1>
+                    <p class="case-study-subtitle">Conversational Agents Challenge - Building an AI-powered assistant to replace static FAQs with intelligent, grounded responses</p>
+                    <div class="case-study-meta">
+                        <div class="meta-item">
+                            <h4 class="meta-title">My Role</h4>
+                            <p class="meta-content">UX Researcher & Conversational Agent Designer</p>
+                        </div>
+                        <div class="meta-item">
+                            <h4 class="meta-title">Duration</h4>
+                            <p class="meta-content">3 Days</p>
+                        </div>
+                        <div class="meta-item">
+                            <h4 class="meta-title">Tools Used</h4>
+                            <p class="meta-content">Copilot Studio, Microsoft Learn, Knowledge Curation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Overview -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Project Overview</h2>
+                <div class="two-column">
+                    <div>
+                        <p>Built an AI-powered assistant that answers common questions about Microsoft Copilot Studio using curated internal and external documents. The assistant was designed to replace static FAQs and reduce reliance on live support while maintaining accuracy and trust through grounded responses.</p>
+                        
+                        <p>This project was part of the Conversational Agents Challenge in the Microsoft Power Up Program, focusing on creating intelligent, reliable AI assistants that enhance user experience without compromising on accuracy.</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="/placeholder.svg?height=400&width=600&query=AI chatbot interface copilot studio conversation" alt="Copilot Studio Chat Interface">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem + Goals -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Problem + Goals</h2>
+                
+                <div class="findings-grid">
+                    <div class="finding-card">
+                        <div class="finding-icon">📄</div>
+                        <h4>Outdated Static Pages</h4>
+                        <p>Static help pages were insufficient and outdated</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="finding-icon">🎯</div>
+                        <h4>Need for Scalability</h4>
+                        <p>Required a scalable, on-brand AI assistant grounded in real documentation</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="finding-icon">🛡️</div>
+                        <h4>Reduce Hallucination</h4>
+                        <p>Minimize AI hallucination risk and improve onboarding for new users</p>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p class="quote-text">"How might we create an AI assistant that provides accurate, trustworthy information while maintaining a friendly, helpful tone?"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Plan -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Research Plan</h2>
+                
+                <div class="research-methods-grid">
+                    <div class="method-card">
+                        <div class="method-icon">🎯</div>
+                        <h4>Intent Analysis</h4>
+                        <p>Understanding user query patterns and intentions</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">📚</div>
+                        <h4>Content Audit</h4>
+                        <p>Documentation selection and curation process</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">🧪</div>
+                        <h4>Agent Behavior Testing</h4>
+                        <p>Testing tone, accuracy, and escalation logic</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Key Research Questions</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>What questions do new users ask most often?</li>
+                    <li>Can we reduce answer ambiguity with grounded sources?</li>
+                    <li>How should tone shift across different types of users (tech vs non-tech)?</li>
+                </ul>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Test Queries Processed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Responses Properly Cited</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Days Development Time</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Findings -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Key Findings</h2>
+                
+                <div class="quote-block">
+                    <p class="quote-text">"I got a weird answer — where did that info come from?"</p>
+                </div>
+                <div class="quote-block">
+                    <p class="quote-text">"This sounds like ChatGPT, but I wanted a real answer from Microsoft."</p>
+                </div>
+                
+                <div class="findings-grid">
+                    <div class="finding-card">
+                        <div class="finding-icon">🤖</div>
+                        <h4>AI Hallucination Risk</h4>
+                        <p>Generic AI knowledge sources led to unreliable responses</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="finding-icon">💬</div>
+                        <h4>Impersonal Tone</h4>
+                        <p>Default templates felt robotic and unhelpful</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="finding-icon">🔐</div>
+                        <h4>Login Friction</h4>
+                        <p>Authentication barriers prevented quick access to basic information</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="finding-icon">🔍</div>
+                        <h4>Source Transparency</h4>
+                        <p>Users needed to know where information came from</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Emotional Themes</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                    <li>Distrust in generic AI answers</li>
+                    <li>Preference for friendly, human-sounding tone</li>
+                    <li>Need for fast, accessible answers</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Personas -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Personas</h2>
+                
+                <div class="personas-grid">
+                    <div class="persona-card">
+                        <div class="persona-avatar">👩‍💼</div>
+                        <h3>First-Time Admin</h3>
+                        <div class="persona-needs">
+                            <h4>Needs</h4>
+                            <ul>
+                                <li>Fast, accurate setup instructions</li>
+                                <li>Step-by-step guidance</li>
+                                <li>Clear troubleshooting help</li>
+                            </ul>
+                            <h4>Says</h4>
+                            <p>"I need to get this working quickly for my team."</p>
+                        </div>
+                    </div>
+
+                    <div class="persona-card">
+                        <div class="persona-avatar">👨‍💻</div>
+                        <h3>Developer Evaluator</h3>
+                        <div class="persona-needs">
+                            <h4>Needs</h4>
+                            <ul>
+                                <li>Technical accuracy validation</li>
+                                <li>API documentation access</li>
+                                <li>Integration examples</li>
+                            </ul>
+                            <h4>Says</h4>
+                            <p>"I'm testing the limits of what this AI can actually do."</p>
+                        </div>
+                    </div>
+
+                    <div class="persona-card">
+                        <div class="persona-avatar">👔</div>
+                        <h3>Business User</h3>
+                        <div class="persona-needs">
+                            <h4>Needs</h4>
+                            <ul>
+                                <li>Clear, jargon-free explanations</li>
+                                <li>No login friction</li>
+                                <li>Business value understanding</li>
+                            </ul>
+                            <h4>Says</h4>
+                            <p>"I just want to understand what this tool can do for us."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights & Solution -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Insights & Proposed Solution</h2>
+                
+                <div class="findings-grid">
+                    <div class="finding-card">
+                        <div class="finding-icon">🎭</div>
+                        <h4>Tone = Trust</h4>
+                        <p>Even accurate answers lose power if phrasing feels impersonal</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="finding-icon">📖</div>
+                        <h4>Source Citations</h4>
+                        <p>Citing sources increases perceived reliability and trust</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="finding-icon">🔓</div>
+                        <h4>Remove Auth Barriers</h4>
+                        <p>Public access unlocks greater utility for basic queries</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem; margin-bottom: 1rem;">Solution Features</h3>
+                <div class="solution-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">📚</div>
+                        <div class="feature-content">
+                            <h4>Grounded Knowledge Base</h4>
+                            <p>Built using only uploaded files and Microsoft Learn documentation to ensure accuracy</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🚫</div>
+                        <div class="feature-content">
+                            <h4>Hallucination Prevention</h4>
+                            <p>Disabled general AI knowledge to reduce unreliable responses</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💬</div>
+                        <div class="feature-content">
+                            <h4>Custom Welcome & Quick Replies</h4>
+                            <p>Personalized prompts like "What is Copilot Studio?" for common queries</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🌐</div>
+                        <div class="feature-content">
+                            <h4>Public Access</h4>
+                            <p>No login required, tested on demo site for maximum accessibility</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🆘</div>
+                        <div class="feature-content">
+                            <h4>Smart Escalation</h4>
+                            <p>Fine-tuned escalation topic for helpful fallback guidance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Chat Demo</h3>
+                <div class="chat-demo">
+                    <div class="chat-message user">
+                        <div class="chat-bubble user">What is Copilot Studio?</div>
+                        <div class="chat-avatar user">👤</div>
+                    </div>
+                    <div class="chat-message">
+                        <div class="chat-avatar bot">🤖</div>
+                        <div class="chat-bubble bot">Microsoft Copilot Studio is a low-code conversational AI platform that enables you to create powerful chatbots using a guided, no-code graphical interface. You can build bots that can have natural conversations with users on websites, mobile apps, Facebook, Microsoft Teams, and other channels. <br><br><em>Source: Microsoft Learn Documentation</em></div>
+                    </div>
+                    <div class="chat-message user">
+                        <div class="chat-bubble user">How do I get started?</div>
+                        <div class="chat-avatar user">👤</div>
+                    </div>
+                    <div class="chat-message">
+                        <div class="chat-avatar bot">🤖</div>
+                        <div class="chat-bubble bot">To get started with Copilot Studio: 1) Sign in to Copilot Studio, 2) Create your first bot, 3) Test your bot in the test pane, 4) Publish your bot to channels. Would you like detailed steps for any of these?</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflection -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Reflection & Lessons Learned</h2>
+                
+                <div class="reflection-grid">
+                    <div class="reflection-card">
+                        <div class="reflection-icon">✍️</div>
+                        <h4>UX Writing Matters</h4>
+                        <p>Conversational AI depends as much on UX writing as it does on technology</p>
+                    </div>
+                    <div class="reflection-card">
+                        <div class="reflection-icon">🔍</div>
+                        <h4>Transparency Builds Trust</h4>
+                        <p>Trust is built through transparency, especially with source citations</p>
+                    </div>
+                    <div class="reflection-card">
+                        <div class="reflection-icon">📊</div>
+                        <h4>Data-Driven Improvements</h4>
+                        <p>Usage analytics and user feedback are crucial for continuous improvement</p>
+                    </div>
+                    <div class="reflection-card">
+                        <div class="reflection-icon">🚀</div>
+                        <h4>Future Enhancements</h4>
+                        <p>Multi-language support and product onboarding integration opportunities</p>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p class="quote-text">"This project reinforced that successful AI assistants aren't just about technical capabilities—they're about creating trustworthy, helpful experiences that feel genuinely human while maintaining accuracy and reliability."</p>
+                </div>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Future Ideas</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                    <li>Live usage analytics for continuous improvement</li>
+                    <li>Multi-language support for global accessibility</li>
+                    <li>Integration into product onboarding flows</li>
+                    <li>Advanced sentiment analysis for user satisfaction tracking</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Next/Prev Projects -->
+        <div class="container">
+            <div class="next-prev-projects">
+                <div class="prev-project">
+                    <span class="project-nav-label">Previous Project</span>
+                    <a href="new-hire-welcome-agent.html" class="project-nav-title">New Hire Welcome Agent</a>
+                </div>
+                <div class="next-project">
+                    <span class="project-nav-label">Next Project</span>
+                    <a href="instagram-case-study.html" class="project-nav-title">Instagram User Experience Research</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Tanzil.</a>
+                    <p>Designing future-ready experiences</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/tanzilgarg/" class="social-icon" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.instagram.com/tanzilgargg/" class="social-icon" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> Tanzil Garg. All rights reserved.</p>
+                <p>Designed and built with passion and precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
