@@ -3,940 +3,779 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Hire Welcome Agent — Case Study | Tanzil Garg</title>
+    <title>New Hire Welcome Agent | Tanzil Garg</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* Added comprehensive visual styling for better aesthetics */
-    .case-study-header {
-        min-height: 60vh;
-        display: flex;
-        align-items: center;
-        position: relative;
-        overflow: hidden;
-        padding: 120px 0 60px;
-        background: linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(59, 130, 246, 0.8)), url('/placeholder.svg?height=1080&width=1920') center/cover no-repeat;
-    }
-
-    .case-study-title {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: white;
-    }
-
-    .case-study-subtitle {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        color: rgba(255, 255, 255, 0.9);
-    }
-
-    .case-study-details {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-
-    .detail-item {
-        flex: 1;
-        min-width: 200px;
-    }
-
-    .detail-label {
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 0.5rem;
-        display: block;
-    }
-
-    .detail-value {
-        font-size: 1.1rem;
-        font-weight: 500;
-        color: white;
-    }
-
-    .case-study-section {
-        padding: 80px 0;
-        border-bottom: 1px solid var(--color-border);
-    }
-
-    .case-study-section:last-child {
-        border-bottom: none;
-    }
-
-    .section-title {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-        color: var(--color-purple-light);
-    }
-
-    .bg-light {
-        background: rgba(168, 85, 247, 0.02);
-    }
-
-    .problem-goals-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        margin-top: 2rem;
-    }
-
-    .problem-card, .goals-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius);
-        padding: 2rem;
-        backdrop-filter: var(--backdrop-blur);
-        transition: var(--transition);
-    }
-
-    .problem-card:hover, .goals-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--color-purple);
-        box-shadow: var(--shadow-glow);
-    }
-
-    .problem-icon, .goals-icon {
-        width: 60px;
-        height: 60px;
-        background: rgba(239, 68, 68, 0.2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-        color: #ef4444;
-    }
-
-    .goals-icon {
-        background: rgba(34, 197, 94, 0.2);
-        color: #22c55e;
-    }
-
-    .research-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-
-    .research-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius);
-        padding: 2rem;
-        backdrop-filter: var(--backdrop-blur);
-    }
-
-    .methodology-list, .questions-list {
-        list-style: none;
-        padding: 0;
-    }
-
-    .methodology-list li, .questions-list li {
-        padding: 0.5rem 0;
-        border-bottom: 1px solid var(--color-border);
-        position: relative;
-        padding-left: 1.5rem;
-    }
-
-    .methodology-list li:before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: var(--color-purple);
-        font-weight: bold;
-    }
-
-    .questions-list li:before {
-        content: "?";
-        position: absolute;
-        left: 0;
-        color: var(--color-purple);
-        font-weight: bold;
-    }
-
-    .summary-stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
-    }
-
-    .stat-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius);
-        padding: 1.5rem;
-        text-align: center;
-        backdrop-filter: var(--backdrop-blur);
-        transition: var(--transition);
-    }
-
-    .stat-card:hover {
-        transform: translateY(-3px);
-        border-color: var(--color-purple);
-    }
-
-    .stat-number {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        background: var(--gradient-text);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-
-    .stat-label {
-        font-size: 0.9rem;
-        color: var(--color-text-muted);
-        margin-bottom: 0.25rem;
-    }
-
-    .stat-description {
-        font-size: 0.8rem;
-        color: var(--color-text-muted);
-    }
-
-    .findings-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-
-    .findings-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius);
-        padding: 2rem;
-        backdrop-filter: var(--backdrop-blur);
-    }
-
-    .quote-card {
-        background: rgba(168, 85, 247, 0.1);
-        border-left: 4px solid var(--color-purple);
-        padding: 1rem;
-        margin: 1rem 0;
-        border-radius: 0 var(--border-radius) var(--border-radius) 0;
-    }
-
-    .quote-card blockquote {
-        font-style: italic;
-        margin: 0 0 0.5rem 0;
-    }
-
-    .quote-card cite {
-        font-size: 0.9rem;
-        color: var(--color-text-muted);
-    }
-
-    .pain-points-list {
-        list-style: none;
-        padding: 0;
-    }
-
-    .pain-points-list li {
-        padding: 0.5rem 0;
-        position: relative;
-        padding-left: 1.5rem;
-    }
-
-    .pain-points-list li:before {
-        content: "⚠";
-        position: absolute;
-        left: 0;
-        color: #ef4444;
-    }
-
-    .emotion-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 1rem;
-    }
-
-    .emotion-tag {
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 500;
-    }
-
-    .emotion-tag.negative {
-        background: rgba(239, 68, 68, 0.2);
-        color: #ef4444;
-    }
-
-    .emotion-tag.positive {
-        background: rgba(34, 197, 94, 0.2);
-        color: #22c55e;
-    }
-
-    .personas-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-
-    .persona-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius);
-        padding: 2rem;
-        backdrop-filter: var(--backdrop-blur);
-        transition: var(--transition);
-    }
-
-    .persona-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--color-purple);
-        box-shadow: var(--shadow-glow);
-    }
-
-    .persona-avatar {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background: var(--gradient-primary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1rem;
-    }
-
-    .persona-avatar img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-
-    .persona-role {
-        color: var(--color-purple-light);
-        font-weight: 500;
-        margin-bottom: 1rem;
-    }
-
-    .insights-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-
-    .insight-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius);
-        padding: 2rem;
-        backdrop-filter: var(--backdrop-blur);
-        transition: var(--transition);
-    }
-
-    .insight-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--color-purple);
-        box-shadow: var(--shadow-glow);
-    }
-
-    .insight-icon {
-        width: 60px;
-        height: 60px;
-        background: rgba(168, 85, 247, 0.2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-        color: var(--color-purple);
-    }
-
-    .solutions-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-
-    .solution-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius);
-        padding: 2rem;
-        backdrop-filter: var(--backdrop-blur);
-        transition: var(--transition);
-    }
-
-    .solution-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--color-purple);
-        box-shadow: var(--shadow-glow);
-    }
-
-    .solution-image {
-        border-radius: var(--border-radius);
-        overflow: hidden;
-        margin-bottom: 1.5rem;
-        border: 1px solid var(--color-border);
-    }
-
-    .solution-image img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-    }
-
-    .user-flow-section {
-        margin-top: 4rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--color-border);
-    }
-
-    .flow-steps {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-top: 2rem;
-    }
-
-    .flow-step {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius);
-        padding: 1.5rem;
-        text-align: center;
-        min-width: 200px;
-        backdrop-filter: var(--backdrop-blur);
-    }
-
-    .step-number {
-        width: 40px;
-        height: 40px;
-        background: var(--gradient-primary);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1rem;
-        color: white;
-        font-weight: bold;
-    }
-
-    .flow-arrow {
-        font-size: 1.5rem;
-        color: var(--color-purple);
-        font-weight: bold;
-    }
-
-    .reflection-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-
-    .reflection-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius);
-        padding: 2rem;
-        backdrop-filter: var(--backdrop-blur);
-    }
-
-    .project-navigation {
-        padding: 60px 0;
-        background: rgba(168, 85, 247, 0.02);
-    }
-
-    .nav-links {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .nav-link {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem 1.5rem;
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius);
-        text-decoration: none;
-        transition: var(--transition);
-        backdrop-filter: var(--backdrop-blur);
-    }
-
-    .nav-link:hover {
-        transform: translateY(-3px);
-        border-color: var(--color-purple);
-        box-shadow: var(--shadow-glow);
-    }
-
-    .nav-label {
-        font-size: 0.9rem;
-        color: var(--color-text-muted);
-        display: block;
-    }
-
-    .nav-title {
-        font-size: 1.1rem;
-        font-weight: 500;
-        color: var(--color-text);
-    }
-
-    @media (max-width: 992px) {
-        .problem-goals-grid, .research-grid, .reflection-content {
-            grid-template-columns: 1fr;
-            gap: 2rem;
+    <style>
+        /* Case study specific styles */
+        .case-study-header {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 60px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7)), url('/placeholder.svg?height=1080&width=1920&query=autonomous agent automation welcome onboarding') center/cover no-repeat;
         }
 
-        .flow-steps {
-            flex-direction: column;
-        }
-
-        .flow-arrow {
-            transform: rotate(90deg);
-        }
-    }
-
-    @media (max-width: 768px) {
         .case-study-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--color-text-muted);
+        }
+
+        .case-study-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .meta-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-purple-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-content {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .case-study-section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .case-study-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-heading {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-purple-light);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .image-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .quote-block {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid var(--color-purple);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .quote-text {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .stat-number {
             font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        .case-study-details {
-            flex-direction: column;
-            gap: 1rem;
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
         }
 
-        .detail-item {
-            min-width: 100%;
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .nav-links {
-            flex-direction: column;
-            gap: 1rem;
+        .goal-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
         }
-    }
-</style>
+
+        .goal-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .goal-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .research-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .method-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .method-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .finding-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .finding-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .finding-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .personas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .persona-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .persona-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .persona-avatar {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .persona-needs {
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .persona-needs h4 {
+            color: var(--color-purple-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .persona-needs ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+        }
+
+        .solution-flow {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(168, 85, 247, 0.05);
+            border-radius: var(--border-radius);
+        }
+
+        .flow-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .flow-number {
+            background: var(--color-purple);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: 600;
+        }
+
+        .reflection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .reflection-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .reflection-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .reflection-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .next-prev-projects {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .prev-project, .next-project {
+            max-width: 45%;
+        }
+
+        .project-nav-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .project-nav-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-nav-title:hover {
+            color: var(--color-purple-light);
+        }
+
+        @media (max-width: 992px) {
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-study-title {
+                font-size: 2.5rem;
+            }
+
+            .case-study-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .meta-item {
+                min-width: 100%;
+            }
+
+            .goals-grid,
+            .research-methods-grid,
+            .findings-grid,
+            .personas-grid,
+            .reflection-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <header class="header">
-    <div class="container">
-        <div class="header-content">
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Tanzil.</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                        <li><a href="index.html#about" class="nav-link">About</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
+                </nav>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
             <a href="index.html" class="logo">Tanzil.</a>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="index.html#projects" class="nav-link">Projects</a></li>
-                    <li><a href="index.html#about" class="nav-link">About</a></li>
-                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-                </ul>
-                <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
-            </nav>
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="menu-close" aria-label="Close menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
             </button>
         </div>
+        <nav>
+            <ul class="mobile-nav-list">
+                <li><a href="index.html#projects" class="mobile-nav-link">Projects</a></li>
+                <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
+                <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-primary mobile-cta">Get in Touch</a>
+        </nav>
     </div>
-</header>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu">
-  <div class="mobile-menu-header">
-      <a href="index.html" class="logo">Tanzil.</a>
-      <button class="menu-close" aria-label="Close menu">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-      </button>
-  </div>
-  <nav>
-      <ul class="mobile-nav-list">
-          <li><a href="index.html#projects" class="mobile-nav-link">Projects</a></li>
-          <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
-          <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
-      </ul>
-      <a href="index.html#contact" class="btn btn-primary mobile-cta">Get in Touch</a>
-  </nav>
-</div>
+    <main>
+        <!-- Case Study Header -->
+        <section class="case-study-header">
+            <div class="container">
+                <div class="case-study-content">
+                    <h1 class="case-study-title">New Hire Welcome Agent</h1>
+                    <p class="case-study-subtitle">Autonomous Agents Challenge - Designing AI-powered onboarding automation to enhance employee experience</p>
+                    <div class="case-study-meta">
+                        <div class="meta-item">
+                            <h4 class="meta-title">My Role</h4>
+                            <p class="meta-content">UX Researcher & Autonomous Agent Designer</p>
+                        </div>
+                        <div class="meta-item">
+                            <h4 class="meta-title">Duration</h4>
+                            <p class="meta-content">1 Day</p>
+                        </div>
+                        <div class="meta-item">
+                            <h4 class="meta-title">Tools Used</h4>
+                            <p class="meta-content">Microsoft Power Automate, Dataverse, Logic Flows</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<main>
-  <!-- Case Study Header -->
-  <section class="case-study-header">
-      <div class="container">
-          <div class="case-study-meta">
-              <span class="case-study-category">Systems Design</span>
-              <span class="case-study-date">Autonomous Agents Challenge</span>
-          </div>
-          <h1 class="case-study-title">New Hire Welcome Agent</h1>
-          <p class="case-study-subtitle">An autonomous onboarding flow that greets every new teammate on day zero and assigns a buddy with fair rotation.</p>
-          <div class="case-study-details">
-              <div class="detail-item">
-                  <span class="detail-label">Role</span>
-                  <span class="detail-value">UX Researcher & Agent Designer</span>
-              </div>
-              <div class="detail-item">
-                  <span class="detail-label">Duration</span>
-                  <span class="detail-value">1 Day</span>
-              </div>
-              <div class="detail-item">
-                  <span class="detail-label">Tools</span>
-                  <span class="detail-value">Power Automate • Dataverse • Logic Flows</span>
-              </div>
-          </div>
-      </div>
-  </section>
+        <!-- Project Overview -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Project Overview</h2>
+                <div class="two-column">
+                    <div>
+                        <p>As part of the Autonomous Agents Challenge in the Microsoft Power Up Program, I designed and implemented an AI-powered agent that automates onboarding communication. The agent detects new hires in a company database and sends them a personalized welcome message, while also assigning them a buddy or manager for support.</p>
+                        
+                        <p>The aim was to explore how autonomous systems can enhance employee experience without manual intervention — and how structured onboarding flows can be translated into logic-driven automation.</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="/placeholder.svg?height=400&width=600&query=autonomous agent workflow diagram" alt="Autonomous Agent Workflow">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- Project Overview -->
-  <section class="case-study-section">
-    <div class="container">
-        <div class="section-content">
-            <h2 class="section-title">Project Overview</h2>
-            <p class="section-text">As part of the Microsoft Power Up Program’s Autonomous Agents Challenge, I designed a lightweight agent that detects new hire records in Dataverse and immediately sends a personalized welcome while assigning an onboarding buddy or manager. The focus: translate HR’s “day‑one” ritual into clear, auditable logic without adding work for people ops.</p>
+        <!-- Problem + Goals -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Problem + Goals</h2>
+                
+                <div class="quote-block">
+                    <p class="quote-text">New hires often report feeling disoriented in their first few days due to gaps in communication and lack of structured onboarding. HR teams are stretched thin and may not send welcome messages or assign onboarding support in a timely manner.</p>
+                </div>
+                
+                <div class="goals-grid">
+                    <div class="goal-card">
+                        <div class="goal-icon">🚀</div>
+                        <h4>Autonomous Initiation</h4>
+                        <p>Build an agent that initiates contact the moment a new hire is added to the system</p>
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-icon">💌</div>
+                        <h4>Personalized Welcome</h4>
+                        <p>Ensure every new employee receives a friendly, personalized welcome</p>
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-icon">👥</div>
+                        <h4>Buddy Assignment</h4>
+                        <p>Automatically assign an onboarding "buddy" or manager</p>
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-icon">⚡</div>
+                        <h4>Reduce HR Workload</h4>
+                        <p>Minimize HR workload and improve consistency</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Plan -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Research Plan</h2>
+                
+                <div class="research-methods-grid">
+                    <div class="method-card">
+                        <div class="method-icon">🗺️</div>
+                        <h4>Business Process Mapping</h4>
+                        <p>HR workflows analysis</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">🔧</div>
+                        <h4>Automation Feasibility</h4>
+                        <p>Technical capability assessment</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">⚙️</div>
+                        <h4>Logic Prototyping</h4>
+                        <p>Trigger and action logic development</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">🗄️</div>
+                        <h4>Data Structure Alignment</h4>
+                        <p>Using Dataverse for data management</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Key Research Questions</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>What kind of message makes a new hire feel welcomed?</li>
+                    <li>How can we reliably detect and respond to new records in a database?</li>
+                    <li>How do we fairly assign buddies from an existing list?</li>
+                    <li>Which communication channel (email, Teams, etc.) feels personal yet scalable?</li>
+                </ul>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Simulated Onboarding Events</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Message Delivery Success</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">Day Development Time</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Findings -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Key Findings</h2>
+                
+                <div class="quote-block">
+                    <p class="quote-text">"That first welcome message really sets the tone for how I see the company."</p>
+                </div>
+                <div class="quote-block">
+                    <p class="quote-text">"I felt a little lost my first day. I didn't know who to ask."</p>
+                </div>
+                
+                <div class="findings-grid">
+                    <div class="finding-card">
+                        <div class="finding-icon">📧</div>
+                        <h4>Inconsistent Messaging</h4>
+                        <p>HR struggles with timely, consistent welcome communications</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="finding-icon">❓</div>
+                        <h4>Lack of Support Contact</h4>
+                        <p>New hires don't know who to reach out to for help</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="finding-icon">⏰</div>
+                        <h4>Delayed Buddy Assignment</h4>
+                        <p>Manual buddy assignment often forgotten or delayed</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="finding-icon">💭</div>
+                        <h4>Emotional Impact</h4>
+                        <p>First-day experience significantly affects company perception</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personas -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Personas</h2>
+                
+                <div class="personas-grid">
+                    <div class="persona-card">
+                        <div class="persona-avatar">👋</div>
+                        <h3>The New Hire</h3>
+                        <div class="persona-needs">
+                            <h4>Needs</h4>
+                            <ul>
+                                <li>Clear welcome and context</li>
+                                <li>Someone to ask questions</li>
+                                <li>Sense of belonging</li>
+                            </ul>
+                            <h4>Feels</h4>
+                            <p>Anxious but excited; overwhelmed by unknowns</p>
+                            <h4>Says</h4>
+                            <p>"Who should I talk to if I get stuck?"</p>
+                        </div>
+                    </div>
+
+                    <div class="persona-card">
+                        <div class="persona-avatar">👩‍💼</div>
+                        <h3>The HR Coordinator</h3>
+                        <div class="persona-needs">
+                            <h4>Needs</h4>
+                            <ul>
+                                <li>Scalable, low-effort onboarding touchpoints</li>
+                                <li>Consistent process execution</li>
+                                <li>Time for strategic work</li>
+                            </ul>
+                            <h4>Feels</h4>
+                            <p>Overloaded; relies on automated support</p>
+                            <h4>Says</h4>
+                            <p>"I don't have time to write every welcome email myself."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights & Solution -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Insights & Proposed Solution</h2>
+                
+                <div class="findings-grid">
+                    <div class="finding-card">
+                        <div class="finding-icon">📈</div>
+                        <h4>First-Day Impact</h4>
+                        <p>First-day messaging dramatically influences new hire morale</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="finding-icon">🔄</div>
+                        <h4>Automation Benefits</h4>
+                        <p>Automation closes communication gaps without full HR intervention</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="finding-icon">⚖️</div>
+                        <h4>Fair Distribution</h4>
+                        <p>Rotational logic prevents overload on select team members</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="finding-icon">💝</div>
+                        <h4>Personalization Matters</h4>
+                        <p>Friendly tone and personalization increase perceived care</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem; margin-bottom: 1rem;">Autonomous Agent Solution</h3>
+                <div class="solution-flow">
+                    <div class="flow-step">
+                        <div class="flow-number">1</div>
+                        <div>
+                            <h4>Trigger Detection</h4>
+                            <p>Detect new record in "New Employees" Dataverse table</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">2</div>
+                        <div>
+                            <h4>Welcome Message</h4>
+                            <p>Send personalized welcome message via email or Teams</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">3</div>
+                        <div>
+                            <h4>Buddy Assignment</h4>
+                            <p>Randomly assign a buddy/manager from "Available Support List"</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">4</div>
+                        <div>
+                            <h4>Logging & Audit</h4>
+                            <p>Log assignment in "Buddy Assignment" table for future auditing</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Scalability Considerations</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                    <li>Logic can be modified to include department-specific messaging</li>
+                    <li>System can be extended to schedule check-ins at day 7 or 30</li>
+                    <li>Integration with Teams for richer welcome messages using adaptive cards</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Reflection -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Reflection & Lessons Learned</h2>
+                
+                <div class="reflection-grid">
+                    <div class="reflection-card">
+                        <div class="reflection-icon">🏢</div>
+                        <h4>Internal UX Matters</h4>
+                        <p>UX applies to internal workflows, not just end-user apps</p>
+                    </div>
+                    <div class="reflection-card">
+                        <div class="reflection-icon">🤖</div>
+                        <h4>Human-Centered Automation</h4>
+                        <p>Automation should reflect real human tone and emotion</p>
+                    </div>
+                    <div class="reflection-card">
+                        <div class="reflection-icon">💫</div>
+                        <h4>Small Interventions, Big Impact</h4>
+                        <p>Simple welcome messages have outsized impact on trust and culture</p>
+                    </div>
+                    <div class="reflection-card">
+                        <div class="reflection-icon">🔮</div>
+                        <h4>Future Enhancements</h4>
+                        <p>Adaptive cards in Teams and feedback forms for continuous improvement</p>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p class="quote-text">"This project deepened my understanding of how thoughtful automation can enhance human connection rather than replace it. The key is designing systems that feel personal and caring, even when they're fully automated."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next/Prev Projects -->
+        <div class="container">
+            <div class="next-prev-projects">
+                <div class="prev-project">
+                    <span class="project-nav-label">Previous Project</span>
+                    <a href="smart-parking-case-study.html" class="project-nav-title">Smart Parking Management System</a>
+                </div>
+                <div class="next-project">
+                    <span class="project-nav-label">Next Project</span>
+                    <a href="instagram-case-study.html" class="project-nav-title">Instagram User Experience Research</a>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </main>
 
-<!-- Problem & Goals -->
-<section class="case-study-section bg-light">
-  <div class="container">
-      <div class="section-content">
-          <h2 class="section-title">Problem & Goals</h2>
-          <div class="problem-goals-grid">
-              <div class="problem-card">
-                  <div class="problem-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                          <line x1="12" y1="9" x2="12" y2="13"></line>
-                          <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                      </svg>
-                  </div>
-                  <h3>The Problem</h3>
-                  <p>New teammates often experience uncertainty on day one because initial contact is inconsistent and support owners aren’t always assigned on time. HR bandwidth makes “nice‑to‑have” steps slip.</p>
-              </div>
-              <div class="goals-card">
-                  <div class="goals-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                      </svg>
-                  </div>
-                  <h3>Goals</h3>
-                  <ul>
-                    <li>Trigger immediate, warm welcome on record creation.</li>
-                    <li>Guarantee every new hire has a named support person.</li>
-                    <li>Rotate assignments fairly to avoid overload.</li>
-                    <li>Reduce manual HR effort and variability.</li>
-                  </ul>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-
-<!-- Research Plan -->
-<section class="case-study-section">
-  <div class="container">
-      <div class="section-content">
-          <h2 class="section-title">Research Plan</h2>
-          <div class="research-grid">
-              <div class="research-card">
-                  <h3>Methodologies</h3>
-                  <ul class="methodology-list">
-                    <li>HR workflow mapping</li>
-                    <li>Automation feasibility review</li>
-                    <li>Trigger → action prototyping</li>
-                    <li>Dataverse schema alignment</li>
-                  </ul>
-              </div>
-              <div class="research-card">
-                  <h3>Key Questions</h3>
-                  <ul class="questions-list">
-                    <li>What wording feels genuinely welcoming?</li>
-                    <li>How to detect new records reliably?</li>
-                    <li>What’s a fair buddy rotation strategy?</li>
-                    <li>Which channel scales but stays personal?</li>
-                  </ul>
-              </div>
-          </div>
-          <div class="research-summary">
-              <h3>Quantitative & Qualitative Summary</h3>
-              <div class="summary-stats">
-                  <div class="stat-card">
-                      <div class="stat-number">3</div>
-                      <div class="stat-label">Simulated Onboardings</div>
-                  </div>
-                  <div class="stat-card">
-                      <div class="stat-number">100%</div>
-                      <div class="stat-label">Message Consistency</div>
-                  </div>
-                  <div class="stat-card">
-                      <div class="stat-number">↻</div>
-                      <div class="stat-label">Even Rotation</div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-
-<!-- Findings -->
-<section class="case-study-section bg-light">
-  <div class="container">
-      <div class="section-content">
-          <h2 class="section-title">Key Findings</h2>
-          <div class="findings-grid">
-              <div class="findings-card">
-                  <h3>User Quotes</h3>
-                  <div class="quote-card">
-                    <blockquote class="quote">“That first welcome message really set the tone.”</blockquote>
-                    <blockquote class="quote">“I wasn’t sure who to ask on day one.”</blockquote>
-                  </div>
-              </div>
-              <div class="findings-card">
-                  <h3>Pain Points</h3>
-                  <ul class="pain-points-list">
-                    <li>Inconsistent first contact</li>
-                    <li>No named support person</li>
-                    <li>Manual assignment gets skipped</li>
-                  </ul>
-              </div>
-              <div class="findings-card">
-                  <h3>Emotional Themes</h3>
-                  <div class="emotion-tags">
-                    <span class="chip chip--neg">Anxiety</span>
-                    <span class="chip chip--neg">Uncertainty</span>
-                    <span class="chip chip--pos">Belonging</span>
-                    <span class="chip chip--pos">Early Support</span>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-
-<!-- Personas -->
-<section class="case-study-section">
-  <div class="container">
-      <div class="section-content">
-          <h2 class="section-title">Personas & Empathy Mapping</h2>
-          <div class="personas-grid">
-              <div class="persona-card">
-                  <section id="personas" class="section">
-                    <h2 class="h">Personas</h2>
-                    <div class="grid-2">
-                      <div class="card">
-                        <h3 class="kicker">The New Hire</h3>
-                        <p><strong>Needs:</strong> Clear welcome, context, first contact.</p>
-                        <p><strong>Feels:</strong> Excited yet overwhelmed.</p>
-                        <p><strong>Says:</strong> “Who do I ping if I’m stuck?”</p>
-                      </div>
-                      <div class="card">
-                        <h3 class="kicker">The HR Coordinator</h3>
-                        <p><strong>Needs:</strong> Scalable touchpoints with low overhead.</p>
-                        <p><strong>Feels:</strong> Overloaded, grateful for automation.</p>
-                        <p><strong>Says:</strong> “I can’t hand‑craft every email.”</p>
-                      </div>
-          </div>
-      </div>
-  </div>
-</section>
-
- <!-- Insights & Opportunities -->
- <section class="case-study-section bg-light">
-  <div class="container">
-      <div class="section-content">
-          <h2 class="section-title">Insights & Opportunities</h2>
-          <div class="insights-grid">
-              <div class="insight-card">
-                  <div class="insight-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M9 12l2 2 4-4"></path>
-                          <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1H3c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h18z"></path>
-                      </svg>
-                  </div>
-                  <h3>Day‑one sets culture</h3>
-                  <p>Warm, timely contact nudges trust and morale.</p>
-              </div>
-              <div class="insight-card">
-                  <div class="insight-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                      </svg>
-                  </div>
-                  <h3>Agent ≠ cold</h3>
-                  <p>Automation can still feel human with tone and context.</p>
-              </div>
-              <div class="insight-card">
-                  <div class="insight-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                          <line x1="16" y1="2" x2="16" y2="6"></line>
-                          <line x1="8" y1="2" x2="8" y2="6"></line>
-                          <line x1="3" y1="10" x2="21" y2="10"></line>
-                      </svg>
-                  </div>
-                  <h3>Rotation = fairness</h3>
-                  <p>Even distribution protects teammates from overload.</p>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-
-<!-- Proposed Solutions -->
-<section class="case-study-section">
-  <div class="container">
-      <div class="section-content">
-          <h2 class="section-title">Proposed Solutions</h2>
-          <div class="solutions-grid">
-              <div class="solution-card">
-                  <div class="solution-image">
-                      <img src="/placeholder.svg?height=200&width=300" alt="New record">
-                  </div>
-                  <h3>New record</h3>
-                  <p>Listen to <em>New Employees</em> table.</p>
-              </div>
-              <div class="solution-card">
-                  <div class="solution-image">
-                      <img src="/placeholder.svg?height=200&width=300" alt="Personalized welcome">
-                  </div>
-                  <h3>Personalized welcome</h3>
-                  <p>Email or Teams message with friendly tone.</p>
-              </div>
-              <div class="solution-card">
-                  <div class="solution-image">
-                      <img src="/placeholder.svg?height=200&width=300" alt="Buddy assignment">
-                  </div>
-                  <h3>Buddy assignment</h3>
-                  <p>Fair rotation from support list.</p>
-              </div>
-              <div class="solution-card">
-                  <div class="solution-image">
-                      <img src="/placeholder.svg?height=200&width=300" alt="Audit trail">
-                  </div>
-                  <h3>Audit trail</h3>
-                  <p>Write to <em>Buddy Assignment</em> for tracking.</p>
-              </div>
-          </div>
-          
-          <div class="grid-2 mt">
-            <div class="card">
-              <h3 class="kicker">Scale‑ups</h3>
-              <ul class="list">
-                <li>Dept‑specific templates</li>
-                <li>Day 7 / Day 30 check‑ins</li>
-              </ul>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Tanzil.</a>
+                    <p>Designing future-ready experiences</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/tanzilgarg/" class="social-icon" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.instagram.com/tanzilgargg/" class="social-icon" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                </div>
             </div>
-            <div class="card">
-              <h3 class="kicker">Quality Bar</h3>
-              <ul class="list">
-                <li>Readable audit logs</li>
-                <li>Consistent tone library</li>
-                <li>Assign‑rate analytics</li>
-              </ul>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> Tanzil Garg. All rights reserved.</p>
+                <p>Designed and built with passion and precision.</p>
             </div>
-          </div>
-</section>
+        </div>
+    </footer>
 
-<!-- Reflection -->
-<section class="case-study-section bg-light">
-  <div class="container">
-      <div class="section-content">
-          <h2 class="section-title">Reflection & Lessons Learned</h2>
-          <div class="reflection-content">
-              <div class="reflection-card">
-                  <h3>Key Learnings</h3>
-                  <ul>
-                    <li>Internal UX lives and dies by tone and trust.</li>
-                    <li>Agents should sound human, not robotic.</li>
-                    <li>Small, reliable touchpoints change day‑one sentiment.</li>
-                  </ul>
-              </div>
-              <div class="reflection-card">
-                  <h3>Future Iterations</h3>
-                  <p>Ship Teams Adaptive Cards + week‑one feedback micro‑survey.</p>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-
-<!-- Project Navigation -->
-<section class="project-navigation">
-  <div class="container">
-      <div class="nav-links">
-          <a href="smart-parking-case-study.html" class="nav-link prev">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="19" y1="12" x2="5" y2="12"></line>
-                  <polyline points="12 19 5 12 12 5"></polyline>
-              </svg>
-              <div>
-                  <span class="nav-label">Previous Project</span>
-                  <span class="nav-title">Smart Parking Case Study</span>
-              </div>
-          </a>
-          <a href="instagram-case-study.html" class="nav-link next">
-              <div>
-                  <span class="nav-label">Next Project</span>
-                  <span class="nav-title">Instagram UX Research</span>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-          </a>
-      </div>
-  </div>
-</section>
-</main>
-
-<!-- Footer -->
-<footer class="footer">
-<div class="container">
-  <div class="footer-content">
-      <div class="footer-brand">
-          <a href="index.html" class="logo">Tanzil.</a>
-          <p>Designing future-ready experiences</p>
-      </div>
-      <div class="footer-social">
-          <a href="https://www.linkedin.com/in/tanzilgarg/" class="social-icon" aria-label="LinkedIn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect x="2" y="9" width="4" height="12"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
-              </svg>
-          </a>
-          <a href="https://www.instagram.com/tanzilgargg/" class="social-icon" aria-label="Instagram">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-              </svg>
-          </a>
-      </div>
-  </div>
-  <div class="footer-bottom">
-      <p>© <span id="currentYear"></span> Tanzil Garg. All rights reserved.</p>
-      <p>Designed and built with passion and precision.</p>
-  </div>
-</div>
-</footer>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
