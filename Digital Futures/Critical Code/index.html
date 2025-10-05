@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Hand as Cursor — Week 3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <!-- MediaPipe Hands + Utils (via jsDelivr) -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+</head>
+<body>
+  <main>
+    <canvas id="stage" width="960" height="540" aria-label="Gesture canvas"></canvas>
+    <video id="input" playsinline style="display:none;"></video>
+  </main>
+  <footer>
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+      <small>✨ Webcam stays local. No images are saved. ✨</small>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <small><kbd>Space</kbd> Pause</small>
+        <small><kbd>C</kbd> Cursor Style</small>
+        <small><kbd>A</kbd> Accessibility</small>
+        <small><kbd>S</kbd> Sound</small>
+        <small><kbd>N</kbd> Snap</small>
+        <small><kbd>P</kbd> Privacy</small>
+      </div>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
