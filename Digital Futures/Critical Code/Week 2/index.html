@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message Kaleidoscope</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="canvas-container"></div>
+  
+  <div id="data-panel">
+    <h2>Message Kaleidoscope</h2>
+    
+    <div class="platforms-section">
+      <div class="metric-label">Add Messages by Platform</div>
+      <div id="platforms-list"></div>
+      <button id="add-platform-btn">+ Add Platform</button>
+    </div>
+
+    <div class="daily-section">
+      <div class="metric-label">Messages Per Day</div>
+      <input 
+        type="number" 
+        id="daily-messages" 
+        min="0" 
+        value="0" 
+        placeholder="Enter daily messages"
+        class="daily-input"
+      >
+    </div>
+
+    <div class="metric">
+      <div class="metric-label">Total Messages</div>
+      <div class="metric-value">
+        <span id="total-messages">0</span>
+      </div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label">Daily Messages</div>
+      <div class="metric-value">
+        <span id="daily-messages-display">0</span>
+      </div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label">Symmetry</div>
+      <div class="metric-value">
+        <span id="symmetry">6</span>
+        <span class="metric-unit">×</span>
+      </div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label">Rotation Speed</div>
+      <div class="metric-value">
+        <span id="rotation-speed">1.0</span>
+        <span class="metric-unit">×</span>
+      </div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label">Active Particles</div>
+      <div class="metric-value" id="particle-count">0</div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
 
