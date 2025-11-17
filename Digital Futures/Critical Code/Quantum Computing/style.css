@@ -1,0 +1,253 @@
+/* importing Space Grotesk so everything has a sci-fi feel */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap');
+
+/* reset defaults so spacing stays predictable */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* backdrop gradient + global text color */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: radial-gradient(circle at top, #0b1124 0%, #03060f 55%, #010104 100%);
+    color: #e4f1ff;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* canvas fills the viewport and shows grab cursor */
+#blochSphere {
+    display: block;
+    cursor: grab;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, rgba(43, 64, 128, 0.35) 0%, rgba(1, 1, 4, 0.6) 60%, rgba(1, 1, 4, 1) 100%);
+}
+
+#blochSphere:active {
+    cursor: grabbing;
+}
+
+/* HUD sticks to the corner without blocking clicks */
+.hud {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 2rem;
+    width: min(420px, 90vw);
+    pointer-events: none;
+}
+
+/* translucent card for the control panel */
+.panel {
+    backdrop-filter: blur(18px);
+    background: rgba(6, 12, 26, 0.78);
+    border: 1px solid rgba(100, 168, 255, 0.35);
+    border-radius: 24px;
+    padding: 1.75rem;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    pointer-events: auto;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+}
+
+/* make sure long panels can scroll smoothly */
+.panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.panel::-webkit-scrollbar-thumb {
+    background: rgba(151, 203, 255, 0.4);
+    border-radius: 3px;
+}
+
+/* little label above the title */
+.tag {
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #7cc0ff;
+}
+
+/* headline explaining the experience */
+h1 {
+    font-size: 1.9rem;
+    margin: 0.35rem 0;
+    color: #f7fbff;
+}
+
+/* subtext describing the axes */
+.subtitle {
+    font-size: 0.95rem;
+    color: rgba(228, 241, 255, 0.7);
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+/* toggle buttons container */
+.mode-toggle {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+}
+
+/* base style for each mode button */
+.mode-toggle button {
+    border: none;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    color: #e4f1ff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* highlight the active mapping mode */
+.mode-toggle button.active {
+    background: linear-gradient(120deg, #49c6ff, #967bff);
+    color: #050914;
+}
+
+/* vertical stack of slider groups */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* uppercase label styling */
+.controls label {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(228, 241, 255, 0.75);
+}
+
+/* helper text under each slider */
+.controls .desc {
+    font-size: 0.78rem;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: rgba(228, 241, 255, 0.6);
+    line-height: 1.3;
+}
+
+/* default range track */
+.controls input[type="range"] {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    height: 4px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+/* glowing slider thumb for WebKit browsers */
+.controls input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #9ad1ff;
+    border: 2px solid rgba(4, 10, 22, 0.9);
+    box-shadow: 0 0 12px rgba(154, 209, 255, 0.6);
+}
+
+/* glowing slider thumb for Firefox */
+.controls input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #9ad1ff;
+    border: 2px solid rgba(4, 10, 22, 0.9);
+    box-shadow: 0 0 12px rgba(154, 209, 255, 0.6);
+}
+
+/* numeric readout values beside sliders */
+.controls .value {
+    font-size: 0.9rem;
+    color: #9ad1ff;
+}
+
+/* container for color preview + numbers */
+.color-readout {
+    margin: 1.4rem 0 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* square showing the live color */
+.color-chip {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.35), 0 12px 24px rgba(0, 0, 0, 0.55);
+}
+
+/* stacked text values */
+.color-values {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+}
+
+/* small uppercase labels inside the readout */
+.color-values .label {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    color: rgba(228, 241, 255, 0.55);
+    margin-right: 0.35rem;
+}
+
+/* instructional hint at the bottom */
+.hint {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(228, 241, 255, 0.5);
+    margin-top: 0.5rem;
+}
+
+/* mobile tweaks so HUD docks at the bottom */
+@media (max-width: 900px) {
+    .hud {
+        width: 100%;
+        padding: 1rem;
+        bottom: 0;
+        top: auto;
+    }
+
+    .panel {
+        padding: 1.25rem;
+        border-radius: 18px 18px 0 0;
+    }
+}
+

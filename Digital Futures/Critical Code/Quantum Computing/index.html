@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloch Sphere - RGB Color Mapping</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Primary canvas where the Bloch sphere is drawn -->
+    <canvas id="blochSphere" aria-label="Interactive Bloch sphere"></canvas>
 
+    <!-- Floating HUD that explains controls and shows readouts -->
+    <section class="hud" aria-live="polite">
+        <div class="panel">
+            <header>
+                <p class="tag">Quantum Computing</p>
+                <h1>Bloch Sphere</h1>
+                <p class="subtitle">
+                    Rotate, collapse, and map qubit states to color. Axes: X = ± state, Y = −i ⇄ +i phase, Z = 0 ⇄ 1 probability.
+                </p>
+            </header>
+
+            <!-- Mode buttons letting you switch between RGB and HSV mappings -->
+            <div class="mode-toggle" role="group" aria-label="Color space mode">
+                <button data-mode="rgb" class="active">RGB Vector</button>
+                <button data-mode="hsv">HSV Wave</button>
+            </div>
+
+            <!-- Sliders to adjust the qubit state and camera angles -->
+            <div class="controls">
+                <label>
+                    <span>Theta (0° pole ⇄ 180°)</span>
+                    <p class="desc">Moves the qubit between |0⟩ (north pole) and |1⟩ (south pole).</p>
+                    <input type="range" id="thetaControl" min="0" max="180" step="1" value="90">
+                    <span class="value" id="thetaValue">90°</span>
+                </label>
+
+                <label>
+                    <span>Phi (0° ⇄ 360°)</span>
+                    <p class="desc">Rotates the state around the equator, changing the phase between |0⟩ and |1⟩.</p>
+                    <input type="range" id="phiControl" min="0" max="360" step="1" value="0">
+                    <span class="value" id="phiValue">0°</span>
+                </label>
+
+                <label>
+                    <span>Collapse toward |0⟩ (−1) ⇄ |1⟩ (+1)</span>
+                    <p class="desc">Slide toward −1 to favor |0⟩, toward +1 to favor |1⟩ as the qubit collapses.</p>
+                    <input type="range" id="collapseControl" min="-1" max="1" step="0.01" value="0">
+                    <span class="value" id="collapseValue">z = 0</span>
+                </label>
+
+                <label>
+                    <span>Rotate X (tilt)</span>
+                    <p class="desc">Tilts your camera up or down to view the sphere from different latitudes.</p>
+                    <input type="range" id="tiltControl" min="-90" max="90" step="1" value="20">
+                    <span class="value" id="tiltValue">20°</span>
+                </label>
+
+                <label>
+                    <span>Rotate Y (spin)</span>
+                    <p class="desc">Spins the sphere around the vertical axis for a full 360° orbit.</p>
+                    <input type="range" id="spinControl" min="0" max="360" step="1" value="45">
+                    <span class="value" id="spinValue">45°</span>
+                </label>
+            </div>
+
+            <!-- Preview card showing the live color and coordinates -->
+            <div class="color-readout">
+                <div class="color-chip" id="colorChip" aria-label="Qubit color preview"></div>
+                <div class="color-values">
+                    <div>
+                        <span class="label">RGB</span>
+                        <span id="rgbValue">0, 0, 0</span>
+                    </div>
+                    <div>
+                        <span class="label">HSV</span>
+                        <span id="hsvValue">0°, 0%, 0°</span>
+                    </div>
+                    <div>
+                        <span class="label">Vector</span>
+                        <span id="vectorValue">x 0 · y 0 · z 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="hint">Tip: drag anywhere on the sphere to free-rotate. Spacebar toggles auto-spin.</p>
+        </div>
+    </section>
+
+    <!-- Visualization logic -->
+    <script src="script.js"></script>
+</body>
+</html>
