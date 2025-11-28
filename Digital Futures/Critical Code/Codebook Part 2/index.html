@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Presence Archive</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="canvas-container"></div>
+  
+  <div id="control-panel">
+    <div class="panel-header">
+      <h1>Digital Presence Archive</h1>
+      <div class="status-indicator" id="status-indicator">
+        <span class="pulse"></span>
+        <span>LIVE</span>
+      </div>
+    </div>
 
+    <div class="section">
+      <h3>Message Sources</h3>
+      <div id="platforms-container"></div>
+      <button id="add-platform-btn" class="btn-primary">+ Add Platform</button>
+    </div>
+
+    <div class="section">
+      <h3>Quick Input</h3>
+      <div class="input-group">
+        <label>Messages Today</label>
+        <input type="number" id="daily-messages" min="0" value="0" placeholder="0">
+      </div>
+      <!-- Added restart reminder notification -->
+      <div class="restart-reminder">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <span>Restart to apply changes to message count</span>
+      </div>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric">
+        <div class="metric-label">Total Messages</div>
+        <div class="metric-value" id="total-messages">0</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Active Elements</div>
+        <div class="metric-value" id="active-elements">0</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Intensity</div>
+        <div class="metric-value" id="intensity">0%</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Overflow</div>
+        <div class="metric-value" id="overflow-status">STABLE</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Piano Music</h3>
+      <button id="audio-toggle" class="btn-secondary">Enable Music</button>
+      <div class="audio-controls" id="audio-controls" style="display: none;">
+        <label>Volume</label>
+        <input type="range" id="volume-slider" min="0" max="100" value="30">
+        <button id="export-audio-btn" class="btn-primary" style="margin-top: 12px;">Export Piano Track</button>
+        <button id="export-image-btn" class="btn-primary" style="margin-top: 8px;">Export Typography Artwork</button>
+        <div class="metric" style="margin-top: 12px;">
+          <div class="metric-label">Tempo</div>
+          <div class="metric-value" id="tempo-display">80 BPM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="glitch-overlay"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
