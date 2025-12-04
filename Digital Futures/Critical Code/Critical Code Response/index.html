@@ -1,1 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jailbreak Canada - Digital Sovereignty Research Project</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">🔓 Jailbreak Canada</a>
+      <ul class="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#apps">Explore Apps</a></li>
+        <li><a href="#context">Context</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
 
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Reclaiming Digital Sovereignty</h1>
+      <p class="hero-subtitle">A speculative design exploring what Canadian digital infrastructure could look like without platform monopolies, anti-circumvention restrictions, or the 30% app tax.</p>
+      <div class="hero-cta">
+        <a href="#apps" class="btn btn-primary">Explore Prototype</a>
+        <a href="#about" class="btn btn-secondary">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-banner">
+      <div class="hero-stat">
+        <div class="stat-number">30%</div>
+        <div class="stat-label">App Tax Rate</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-number">$billions</div>
+        <div class="stat-label">Leaving Canada Annually</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Platform Monopolies</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="section-light" id="about">
+    <div class="container-narrow">
+      <h2 class="section-title">About This Project</h2>
+      <p class="section-intro">
+        This is a critical design prototype that imagines alternative digital futures for Canada. 
+        It explores what becomes possible when we challenge platform monopolies, anti-circumvention laws, 
+        and the extraction of wealth from local communities by foreign tech corporations.
+      </p>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🇨🇦</div>
+          <h3>Digital Sovereignty</h3>
+          <p>Imagining Canadian-controlled digital infrastructure that serves local communities instead of Silicon Valley shareholders.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h3>Right to Repair</h3>
+          <p>Exploring what happens when you can actually fix the devices you own without manufacturer permission.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3>Fair Economics</h3>
+          <p>Questioning why billions of dollars leave Canada annually through mandatory platform fees.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔓</div>
+          <h3>User Freedom</h3>
+          <p>Imagining a world where you control your own devices, data, and digital experiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP SHOWCASE SECTION -->
+  <section class="section-dark" id="apps">
+    <div class="container">
+      <h2 class="section-title">Speculative App Store</h2>
+      <p class="section-intro">
+        These are fictional apps that could exist if anti-circumvention laws didn't prevent them. 
+        Each one challenges a different aspect of platform monopoly power.
+      </p>
+
+      <!-- FILTERS -->
+      <div class="filters">
+        <div class="filter-section">
+          <span class="filter-label">Categories</span>
+          <div class="category-filters" id="categoryFilters">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="news">News & Media</button>
+            <button class="filter-btn" data-category="finance">Finance & Payments</button>
+            <button class="filter-btn" data-category="tools">Tools & Repair</button>
+            <button class="filter-btn" data-category="social">Social & Communication</button>
+            <button class="filter-btn" data-category="civic">Civic & Public</button>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <span class="filter-label">Additional Filters</span>
+          <div class="toggle-filters">
+            <div class="toggle-item">
+              <input type="checkbox" id="openSourceFilter">
+              <label for="openSourceFilter">Show Only Open-Source Apps</label>
+            </div>
+            <div class="toggle-item">
+              <input type="checkbox" id="noSurveillanceFilter">
+              <label for="noSurveillanceFilter">Hide Surveillance-Based Apps</label>
+            </div>
+            <div class="toggle-item">
+              <input type="checkbox" id="noTaxFilter">
+              <label for="noTaxFilter">Show Apps That Avoid 30% Tax</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- APP GRID -->
+      <div class="app-grid" id="appGrid">
+        <!-- Apps will be dynamically rendered here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEXT SECTION -->
+  <section class="section-light" id="context">
+    <div class="container-narrow">
+      <h2 class="section-title">Understanding the Problem</h2>
+      
+      <div class="context-block">
+        <h3>Platform Monopolies</h3>
+        <p>
+          Apple and Google control almost 100% of the smartphone operating system market in Canada. 
+          They force all app distribution through their stores and take 30% of every transaction. 
+          This "app tax" extracts billions from the Canadian economy annually, enriching foreign shareholders 
+          while local developers and communities struggle.
+        </p>
+      </div>
+
+      <div class="context-block">
+        <h3>Anti-Circumvention Laws</h3>
+        <p>
+          Canadian copyright law makes it illegal to bypass digital locks, even for legal purposes like 
+          repairing your own devices or installing alternative software. These laws give manufacturers 
+          enormous control over products you supposedly own. You can't fix your phone, modify your tractor, 
+          or choose where to install apps—not because it's technically impossible, but because it's illegal.
+        </p>
+      </div>
+
+      <div class="context-block">
+        <h3>Surveillance Capitalism</h3>
+        <p>
+          Most digital platforms profit by extracting, analyzing, and selling your personal data. 
+          Your behavior, relationships, and private information become commodities. Platform monopolies 
+          make it nearly impossible to opt out—you either accept surveillance or lose access to essential 
+          digital services.
+        </p>
+      </div>
+
+      <div class="context-block">
+        <h3>Digital Sovereignty</h3>
+        <p>
+          Digital sovereignty means having meaningful control over your digital life and infrastructure. 
+          It means choosing your own software, controlling your own data, and supporting local digital 
+          economies instead of being locked into foreign platforms. This project imagines what that could look like.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH SECTION -->
+  <section class="section-dark" id="research">
+    <div class="container-narrow">
+      <h2 class="section-title">Research Foundation</h2>
+      <p class="section-intro">
+        This speculative prototype is grounded in critical technology research and inspired by scholars 
+        and activists working on digital rights, platform regulation, and technological sovereignty.
+      </p>
+
+      <div class="research-grid">
+        <div class="research-card">
+          <h3>Key Concepts</h3>
+          <ul class="research-list">
+            <li><strong>Enshittification:</strong> The gradual degradation of platforms as they prioritize profits over users (Cory Doctorow)</li>
+            <li><strong>Right to Repair:</strong> The principle that consumers should be able to repair their own devices</li>
+            <li><strong>Interoperability:</strong> The ability of different systems to work together without permission</li>
+            <li><strong>Adversarial Interoperability:</strong> Making systems work together even when companies try to prevent it</li>
+          </ul>
+        </div>
+
+        <div class="research-card">
+          <h3>Influenced By</h3>
+          <ul class="research-list">
+            <li>Cory Doctorow's work on digital rights and platform regulation</li>
+            <li>Canadian right-to-repair advocacy</li>
+            <li>Platform economy critique (Nick Srnicek, Shoshana Zuboff)</li>
+            <li>Critical design and speculative futures (Dunne & Raby)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <h3>Academic Context</h3>
+        <p>
+          This is a <strong>speculative design prototype</strong> created for research and educational purposes. 
+          The apps described are fictional and do not actually exist. This work uses critical design methods 
+          to explore alternative technological futures and provoke discussion about digital rights, 
+          platform monopolies, and Canadian digital sovereignty.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section-light" id="contact">
+    <div class="container-narrow">
+      <h2 class="section-title">Get Involved</h2>
+      <p class="section-intro">
+        Interested in digital sovereignty, platform regulation, or alternative technological futures? 
+        This prototype is part of ongoing research exploring these questions.
+      </p>
+      
+      <div class="contact-options">
+        <div class="contact-card">
+          <h3>For Researchers</h3>
+          <p>If you're working on related topics and want to discuss this prototype, collaboration opportunities, or critical technology research.</p>
+        </div>
+        <div class="contact-card">
+          <h3>For Students</h3>
+          <p>This project can serve as inspiration for your own critical design work, research projects, or discussions about platform power.</p>
+        </div>
+        <div class="contact-card">
+          <h3>For Activists</h3>
+          <p>Working on right-to-repair, platform regulation, or digital rights advocacy? Let's connect and explore how speculative design can support your work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>🔓 Jailbreak Canada</h4>
+        <p>A critical design prototype exploring digital sovereignty and platform alternatives.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#apps">Explore Apps</a></li>
+          <li><a href="#context">Context</a></li>
+          <li><a href="#research">Research</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Important Note</h4>
+        <p>This is a fictional speculative prototype for educational and research purposes. All apps described are conceptual.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Jailbreak Canada Research Project. Created as critical design research.</p>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+        <h2 class="modal-app-name" id="modalAppName"></h2>
+        <div class="app-category" id="modalAppCategory"></div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3>About This App</h3>
+          <p id="modalAppDetails"></p>
+        </div>
+
+        <div class="modal-section">
+          <h3>What This App Jailbreaks</h3>
+          <ul id="modalJailbreakEffects"></ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Political Context</h3>
+          <p id="modalPoliticalContext"></p>
+        </div>
+
+        <div class="modal-section">
+          <h3>Impact Indicators</h3>
+          <div class="indicators" id="modalIndicators"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="close-modal-btn" id="closeModalBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
