@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Compass | Tanzil Garg</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to case study */
+        .case-study-header {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 60px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7)), url('/placeholder.svg?height=1080&width=1920') center/cover no-repeat;
+        }
+
+        .case-study-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--color-text-muted);
+        }
+
+        .case-study-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .meta-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-purple-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-content {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .case-study-section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .case-study-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-heading {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-purple-light);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .image-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .quote-block {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid var(--color-purple);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .quote-text {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .solution-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: var(--backdrop-blur);
+            transition: var(--transition);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .solution-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(168, 85, 247, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-description {
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .next-prev-projects {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .prev-project, .next-project {
+            max-width: 45%;
+        }
+
+        .project-nav-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .project-nav-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-nav-title:hover {
+            color: var(--color-purple-light);
+        }
+
+        @media (max-width: 992px) {
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-study-title {
+                font-size: 2.5rem;
+            }
+
+            .case-study-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .meta-item {
+                min-width: 100%;
+            }
+
+            .next-prev-projects {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .prev-project, .next-project {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Tanzil.</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                        <li><a href="index.html#about" class="nav-link">About</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
+                </nav>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">Tanzil.</a>
+            <button class="menu-close" aria-label="Close menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <nav>
+            <ul class="mobile-nav-list">
+                <li><a href="index.html#projects" class="mobile-nav-link">Projects</a></li>
+                <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
+                <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-primary mobile-cta">Get in Touch</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Case Study Header -->
+        <section class="case-study-header">
+            <div class="container">
+                <div class="case-study-content">
+                    <h1 class="case-study-title">UX Compass</h1>
+                    <p class="case-study-subtitle">A comprehensive mobile-first learning platform designed to help UX/design students navigate structured learning paths, practice real projects, and develop portfolio-ready deliverables.</p>
+                    <div class="case-study-meta">
+                        <div class="meta-item">
+                            <h4 class="meta-title">My Role</h4>
+                            <p class="meta-content">UX Designer & Researcher</p>
+                        </div>
+                        <div class="meta-item">
+                            <h4 class="meta-title">Duration</h4>
+                            <p class="meta-content">6 weeks</p>
+                        </div>
+                        <div class="meta-item">
+                            <h4 class="meta-title">Platform</h4>
+                            <p class="meta-content">Mobile-First Application</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Overview -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Project Overview</h2>
+                <p>UX Compass is a comprehensive mobile-first learning platform designed to help UX/design students (ages 18–25) navigate structured learning paths, practice real projects, and develop portfolio-ready deliverables. The platform combines step-by-step project guidance, curated resources, gamification elements, and a reflection system into a cohesive, engaging experience.</p>
+                <p style="margin-top: 1rem;">The project includes a complete design system, five core screens (Onboarding, Dashboard, Project Stage, Resources, Portfolio), reusable components, and a responsive mobile-first layout.</p>
+            </div>
+        </section>
+
+        <!-- Problem & Goals -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Problem + Goals</h2>
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: var(--color-purple-light); margin-bottom: 1rem;">Problem</h3>
+                        <p>UX students often struggle with fragmented learning resources, unclear project expectations, and difficulty translating theory into actionable portfolio work. Existing platforms fail to guide users through the complete UX process in a structured and motivating way, leading to low confidence and inconsistent outcomes.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-purple-light); margin-bottom: 1rem;">Goals</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                            <li>Build a single, coherent system for UX learning and project execution</li>
+                            <li>Reduce cognitive overload through clear visual hierarchy and progressive disclosure</li>
+                            <li>Incorporate gamification and progress tracking to encourage consistent engagement</li>
+                            <li>Provide reflection and portfolio-building tools to foster design reasoning</li>
+                            <li>Support accessibility and mobile-first usability for students on the go</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Plan -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Research Plan</h2>
+                <p>To understand the needs and challenges of UX students, I conducted comprehensive research using multiple methodologies to gather both qualitative and quantitative insights.</p>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--color-purple-light);">Methodologies</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>Semi-structured interviews with beginner/intermediate UX students</li>
+                    <li>Online surveys to gather broader quantitative insights</li>
+                    <li>Competitive analysis of existing UX learning apps and resources</li>
+                </ul>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--color-purple-light);">Questions Asked</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>How do you currently learn UX concepts and methods?</li>
+                    <li>What are the biggest challenges in completing UX projects?</li>
+                    <li>How do you understand portfolio expectations?</li>
+                    <li>What motivates you to complete learning tasks consistently?</li>
+                    <li>What features would make a learning app useful and engaging?</li>
+                </ul>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--color-purple-light);">Quantitative & Qualitative Summary</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">30</div>
+                        <div class="stat-label">Survey Respondents</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Interviewees</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">70%</div>
+                        <div class="stat-label">Felt Overwhelmed by Resources</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">65%</div>
+                        <div class="stat-label">Struggled with Theory to Practice</div>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem;">Students relied on blogs, videos, and peer advice, but found guidance inconsistent and fragmented across multiple sources.</p>
+            </div>
+        </section>
+
+        <!-- Findings -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Findings</h2>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--color-purple-light);">User Quotes</h3>
+                <div class="quote-block">
+                    <p class="quote-text">"I know the steps of UX, but I don't know if I'm doing them right."</p>
+                </div>
+                <div class="quote-block">
+                    <p class="quote-text">"I spend more time figuring out what to do next than actually designing."</p>
+                </div>
+                <div class="quote-block">
+                    <p class="quote-text">"Portfolio requirements feel unclear until it's too late."</p>
+                </div>
+
+                <div class="two-column" style="margin-top: 3rem;">
+                    <div>
+                        <h3 style="color: var(--color-purple-light); margin-bottom: 1rem;">Pain Points</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                            <li>Fragmented and unstructured learning materials</li>
+                            <li>Difficulty translating theory into projects</li>
+                            <li>Low confidence in UX decision-making</li>
+                            <li>Minimal feedback or reflection opportunities</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-purple-light); margin-bottom: 1rem;">Emotional Themes</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                            <li>Overwhelm and anxiety around learning and portfolio creation</li>
+                            <li>Frustration with scattered guidance</li>
+                            <li>Desire for clarity, reassurance, and structured progress</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personas + Empathy Map -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Personas + Empathy Map</h2>
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: var(--color-purple-light); margin-bottom: 1rem;">Persona</h3>
+                        <p><strong>Name:</strong> Maya, 21, UX design student</p>
+                        <p><strong>Needs:</strong> Step-by-step guidance, clear expectations, portfolio-ready output</p>
+                        <p><strong>Behaviors:</strong> Searches online for tutorials, switches between platforms, often unsure of next steps</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-purple-light); margin-bottom: 1rem;">Empathy Map Highlights</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                            <li><strong>Think:</strong> "Am I learning UX correctly?"</li>
+                            <li><strong>Feel:</strong> Anxious, overwhelmed, unmotivated without structure</li>
+                            <li><strong>Say:</strong> "I'm not sure how to start this project."</li>
+                            <li><strong>Do:</strong> Jump between resources, take notes, but rarely complete full projects</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights & Opportunities -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Insights & Opportunities</h2>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>Students need guided, structured pathways, not more scattered content</li>
+                    <li>Reflection and rationale improve learning retention</li>
+                    <li>Progress tracking and gamification can enhance engagement</li>
+                    <li>Translating industry and academic expectations into actionable steps builds confidence</li>
+                    <li>Bite-sized tasks with clear completion markers reduce cognitive load</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Proposed Solutions -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Proposed Solutions</h2>
+                <p>UX Compass addresses these insights through:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                        </div>
+                        <h3 class="solution-title">Step-by-step Project Modules</h3>
+                        <p class="solution-description">Research → Ideation → Wireframing → Testing → Reflection</p>
+                    </div>
+                    
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path><path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path></svg>
+                        </div>
+                        <h3 class="solution-title">Guided Tasks and Checklists</h3>
+                        <p class="solution-description">Expandable cards with estimated times and tips</p>
+                    </div>
+                    
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <h3 class="solution-title">Gamification</h3>
+                        <p class="solution-description">Streaks, badges, and progress indicators</p>
+                    </div>
+
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="8" y1="12" x2="16" y2="12"></line><line x1="12" y1="8" x2="12" y2="16"></line></svg>
+                        </div>
+                        <h3 class="solution-title">Portfolio & Reflection Integration</h3>
+                        <p class="solution-description">Journal entries, deliverables gallery, upload system</p>
+                    </div>
+
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                        </div>
+                        <h3 class="solution-title">Curated Learning Resources</h3>
+                        <p class="solution-description">Skills matrix and example projects for context</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem; margin-bottom: 1rem; color: var(--color-purple-light);">Brief User Flow</h3>
+                <p>Onboarding → Dashboard → Project Stages → Resources → Portfolio → Profile</p>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--color-purple-light);">Wireframes</h3>
+                <p>Five core screens with reusable components and mobile-first design. Progressive disclosure of information, expandable task cards, horizontal scrolling carousels, and touch-friendly interactions.</p>
+            </div>
+        </section>
+
+        <!-- Reflection -->
+        <section class="case-study-section">
+            <div class="container">
+                <h2 class="section-heading">Reflection + Lessons Learned</h2>
+                <p>Designing UX Compass reinforced that effective UX education requires clarity, structure, and engagement. Students benefit from guided learning rather than self-directed exploration alone.</p>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--color-purple-light);">Key takeaways:</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li>Gamification and progress visualization increase consistent engagement</li>
+                    <li>Reflection prompts encourage deeper understanding of design reasoning</li>
+                    <li>Building a robust component library improves scalability and consistency</li>
+                    <li>Mobile-first, accessible design ensures usability for all students</li>
+                    <li>Iterative testing with target users is essential for balancing guidance with autonomy</li>
+                </ul>
+
+                <div class="quote-block">
+                    <p class="quote-text">UX Compass demonstrates the value of designing educational tools with the user at the center, integrating learning, doing, and reflecting into a seamless experience.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next/Prev Projects -->
+        <div class="container">
+            <div class="next-prev-projects">
+                <div class="prev-project">
+                    <span class="project-nav-label">Previous Project</span>
+                    <a href="copilot-studio-case-study.html" class="project-nav-title">Copilot Studio AI Chat Assistant</a>
+                </div>
+                <div class="next-project">
+                    <span class="project-nav-label">Next Project</span>
+                    <a href="instagram-case-study.html" class="project-nav-title">Instagram UX Research Study</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Tanzil.</a>
+                    <p>Designing future-ready experiences</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> Tanzil. All rights reserved.</p>
+                <p>Designed and built with passion and precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
